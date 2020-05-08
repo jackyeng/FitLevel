@@ -11,16 +11,16 @@
         <scene sceneID="ePi-qT-TZv">
             <objects>
                 <tableViewController id="q40-7D-rLG" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oqN-Fv-fti">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="oqN-Fv-fti">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="LWy-LD-Xkf">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LWy-LD-Xkf" id="OH2-uN-Shd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -105,7 +105,7 @@
             </objects>
             <point key="canvasLocation" x="936" y="834"/>
         </scene>
-        <!--Recommended Plans-->
+        <!--Recommended Workout Plans-->
         <scene sceneID="gwT-1w-pvZ">
             <objects>
                 <tableViewController id="kKK-dU-OU9" sceneMemberID="viewController">
@@ -128,7 +128,7 @@
                             <outlet property="delegate" destination="kKK-dU-OU9" id="w7l-JS-lnU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recommended Plans" id="sAK-9m-B7G"/>
+                    <navigationItem key="navigationItem" title="Recommended Workout Plans" id="sAK-9m-B7G"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45Z-5x-ibV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,7 +163,7 @@
             </objects>
             <point key="canvasLocation" x="1713" y="-589"/>
         </scene>
-        <!--Workout Videos-->
+        <!--Workout List-->
         <scene sceneID="Cdl-gv-DgM">
             <objects>
                 <tableViewController id="gDC-nZ-JOi" sceneMemberID="viewController">
@@ -189,7 +189,7 @@
                             <outlet property="delegate" destination="gDC-nZ-JOi" id="Gfm-2m-u2t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Workout Videos" id="XpY-0L-bgc"/>
+                    <navigationItem key="navigationItem" title="Workout List" id="XpY-0L-bgc"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6a8-dL-cT9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -247,13 +247,17 @@
         <!--Navigation Controller-->
         <scene sceneID="nd3-iJ-ygC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f26-ln-VIq" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="f26-ln-VIq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X39-Bq-52g">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z3f-as-SNK">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="q40-7D-rLG" kind="relationship" relationship="rootViewController" id="H43-dm-Q5a"/>
                     </connections>
