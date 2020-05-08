@@ -10,7 +10,7 @@
         <!--Home-->
         <scene sceneID="ePi-qT-TZv">
             <objects>
-                <tableViewController id="q40-7D-rLG" sceneMemberID="viewController">
+                <tableViewController id="q40-7D-rLG" customClass="HomeScreenTableViewController" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="oqN-Fv-fti">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="936.23188405797111" y="82.366071428571431"/>
         </scene>
-        <!--View Controller-->
+        <!--Routine Plan View Controller-->
         <scene sceneID="zUJ-kF-PMh">
             <objects>
-                <viewController id="ZYG-pz-AiI" sceneMemberID="viewController">
+                <viewController id="ZYG-pz-AiI" customClass="RoutinePlanViewController" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="neO-oF-AmA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,7 +92,7 @@
         <!--Workout Stats-->
         <scene sceneID="kz4-kg-kaJ">
             <objects>
-                <viewController id="2FD-s6-LZ5" sceneMemberID="viewController">
+                <viewController id="2FD-s6-LZ5" customClass="WorkoutStatsViewController" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NKk-WL-bAp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
         <!--Recommended Workout Plans-->
         <scene sceneID="gwT-1w-pvZ">
             <objects>
-                <tableViewController id="kKK-dU-OU9" sceneMemberID="viewController">
+                <tableViewController id="kKK-dU-OU9" customClass="WorkoutPlansTableViewController" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nIF-VF-9dt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,7 @@
         <!--Workout Routine-->
         <scene sceneID="1SD-Hy-BEv">
             <objects>
-                <tableViewController id="LU6-mh-QAf" sceneMemberID="viewController">
+                <tableViewController id="LU6-mh-QAf" customClass="WorkoutRoutineTableViewController" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="is9-37-pMa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,7 +166,7 @@
         <!--Workout List-->
         <scene sceneID="Cdl-gv-DgM">
             <objects>
-                <tableViewController id="gDC-nZ-JOi" sceneMemberID="viewController">
+                <tableViewController id="gDC-nZ-JOi" customClass="WorkoutListTableViewController" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ctU-b0-JeB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,7 +198,7 @@
         <!--Edit Workout-->
         <scene sceneID="Fq3-rs-sKs">
             <objects>
-                <viewController title="Edit Workout" id="EFs-0b-ufi" sceneMemberID="viewController">
+                <viewController title="Edit Workout" id="EFs-0b-ufi" customClass="EditWorkout" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Q8-k8-THb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

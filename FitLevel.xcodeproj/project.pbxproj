@@ -19,6 +19,10 @@
 		85FD53DE2465C768004E9AB9 /* WorkoutPlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53DD2465C768004E9AB9 /* WorkoutPlansTableViewController.swift */; };
 		85FD53E02465C7B0004E9AB9 /* WorkoutListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53DF2465C7B0004E9AB9 /* WorkoutListTableViewController.swift */; };
 		85FD53E22465C7E7004E9AB9 /* WorkoutRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53E12465C7E7004E9AB9 /* WorkoutRoutineTableViewController.swift */; };
+		85FD53E52465E063004E9AB9 /* Workout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53E32465E063004E9AB9 /* Workout.xcdatamodeld */; };
+		85FD53E72465E106004E9AB9 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53E62465E106004E9AB9 /* DatabaseProtocol.swift */; };
+		85FD53E92465E112004E9AB9 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53E82465E112004E9AB9 /* MulticastDelegate.swift */; };
+		85FD53EB2465E123004E9AB9 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53EA2465E123004E9AB9 /* CoreDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		85FD53DD2465C768004E9AB9 /* WorkoutPlansTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlansTableViewController.swift; sourceTree = "<group>"; };
 		85FD53DF2465C7B0004E9AB9 /* WorkoutListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListTableViewController.swift; sourceTree = "<group>"; };
 		85FD53E12465C7E7004E9AB9 /* WorkoutRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRoutineTableViewController.swift; sourceTree = "<group>"; };
+		85FD53E42465E063004E9AB9 /* Workout.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workout.xcdatamodel; sourceTree = "<group>"; };
+		85FD53E62465E106004E9AB9 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		85FD53E82465E112004E9AB9 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		85FD53EA2465E123004E9AB9 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,10 @@
 		85FD53B824651C93004E9AB9 /* FitLevel */ = {
 			isa = PBXGroup;
 			children = (
+				85FD53BF24651C93004E9AB9 /* Main.storyboard */,
+				85FD53C224651C94004E9AB9 /* Assets.xcassets */,
+				85FD53C424651C94004E9AB9 /* LaunchScreen.storyboard */,
+				85FD53C724651C95004E9AB9 /* Info.plist */,
 				85FD53DC2465A41C004E9AB9 /* Main */,
 				85FD53D32465A0E2004E9AB9 /* View Controller */,
 				85FD53D22465A0D6004E9AB9 /* Delegate */,
@@ -81,6 +93,9 @@
 		85FD53CE2465A038004E9AB9 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				85FD53E62465E106004E9AB9 /* DatabaseProtocol.swift */,
+				85FD53E82465E112004E9AB9 /* MulticastDelegate.swift */,
+				85FD53EA2465E123004E9AB9 /* CoreDataController.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -88,6 +103,7 @@
 		85FD53D02465A0C6004E9AB9 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				85FD53E32465E063004E9AB9 /* Workout.xcdatamodeld */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -125,10 +141,6 @@
 		85FD53DC2465A41C004E9AB9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				85FD53BF24651C93004E9AB9 /* Main.storyboard */,
-				85FD53C224651C94004E9AB9 /* Assets.xcassets */,
-				85FD53C424651C94004E9AB9 /* LaunchScreen.storyboard */,
-				85FD53C724651C95004E9AB9 /* Info.plist */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -207,12 +219,16 @@
 				85FD53DE2465C768004E9AB9 /* WorkoutPlansTableViewController.swift in Sources */,
 				85FD53D52465A111004E9AB9 /* HomeScreenTableViewController.swift in Sources */,
 				85FD53D72465A146004E9AB9 /* EditWorkout.swift in Sources */,
+				85FD53E52465E063004E9AB9 /* Workout.xcdatamodeld in Sources */,
 				85FD53BA24651C93004E9AB9 /* AppDelegate.swift in Sources */,
+				85FD53E72465E106004E9AB9 /* DatabaseProtocol.swift in Sources */,
 				85FD53BC24651C93004E9AB9 /* SceneDelegate.swift in Sources */,
 				85FD53E02465C7B0004E9AB9 /* WorkoutListTableViewController.swift in Sources */,
+				85FD53EB2465E123004E9AB9 /* CoreDataController.swift in Sources */,
 				85FD53E22465C7E7004E9AB9 /* WorkoutRoutineTableViewController.swift in Sources */,
 				85FD53DB2465A194004E9AB9 /* WorkoutStatsViewController.swift in Sources */,
 				85FD53D92465A165004E9AB9 /* RoutinePlanViewController.swift in Sources */,
+				85FD53E92465E112004E9AB9 /* MulticastDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +424,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		85FD53E32465E063004E9AB9 /* Workout.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				85FD53E42465E063004E9AB9 /* Workout.xcdatamodel */,
+			);
+			currentVersion = 85FD53E42465E063004E9AB9 /* Workout.xcdatamodel */;
+			path = Workout.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 85FD53AE24651C93004E9AB9 /* Project object */;
 }
