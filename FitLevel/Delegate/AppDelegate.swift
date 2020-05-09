@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //Tab bar icon customization
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UITabBar.appearance().barTintColor = .black
-        UITabBar.appearance().tintColor = .purple
+        UITabBar.appearance().tintColor = .systemIndigo
         
         return true
     }
