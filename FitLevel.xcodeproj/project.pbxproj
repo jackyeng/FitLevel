@@ -60,8 +60,8 @@
 		85FD53AD24651C93004E9AB9 = {
 			isa = PBXGroup;
 			children = (
-				85FD53B824651C93004E9AB9 /* FitLevel */,
 				85FD53B724651C93004E9AB9 /* Products */,
+				85FD53B824651C93004E9AB9 /* FitLevel */,
 			);
 			sourceTree = "<group>";
 		};
