@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rPF-mV-CGm">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ruV-RK-PcG">
+            <objects>
+                <tabBarController id="rPF-mV-CGm" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k9h-Ne-77f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ffF-xK-DyG" kind="relationship" relationship="viewControllers" id="L8Y-fN-ZsF"/>
+                        <segue destination="aS6-AX-5aa" kind="relationship" relationship="viewControllers" id="yDg-1q-H6q"/>
+                        <segue destination="Fgs-k0-KBD" kind="relationship" relationship="viewControllers" id="F9W-dm-f6K"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6dU-8V-ne7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-906" y="113"/>
+        </scene>
+        <!--Routine-->
+        <scene sceneID="9BJ-cC-go4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Routine" id="aS6-AX-5aa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Routine" image="icons8-walking-50" id="07Y-VV-Zdq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K7u-NS-zNg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-907" y="635"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="r6m-6y-mBI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="ffF-xK-DyG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="icons8-lotus-64" id="Dgj-0s-CWu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YYh-lx-pC5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1372" y="635"/>
+        </scene>
+        <!--Stat-->
+        <scene sceneID="A0W-Sq-9he">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Stat" id="Fgs-k0-KBD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Workout Stats" image="icons8-bar-chart-50" id="0Yw-7n-rZa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JIT-AN-wYy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-426" y="635"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icons8-bar-chart-50" width="25" height="25"/>
+        <image name="icons8-lotus-64" width="32" height="32"/>
+        <image name="icons8-walking-50" width="25" height="25"/>
+    </resources>
+</document>
