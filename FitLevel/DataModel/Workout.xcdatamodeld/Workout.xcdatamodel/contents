@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Routine" representedClassName="Routine" syncable="YES" codeGenerationType="class">
+    <entity name="Plan" representedClassName="Plan" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="plan" inverseEntity="Workout"/>
     </entity>
-    <entity name="Workout" representedClassName="Workout" syncable="YES" codeGenerationType="class">
+    <entity name="Routine" representedClassName="Routine" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="routine" inverseEntity="Workout"/>
+    </entity>
+    <entity name="Workout" representedClassName="Workout" syncable="YES">
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="repetition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="set" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plan" inverseName="workout" inverseEntity="Plan"/>
+        <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine" inverseName="workout" inverseEntity="Routine"/>
     </entity>
     <elements>
-        <element name="Routine" positionX="-63" positionY="-18" width="128" height="58"/>
-        <element name="Workout" positionX="-54" positionY="-9" width="128" height="103"/>
+        <element name="Routine" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Workout" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="Plan" positionX="-54" positionY="18" width="128" height="88"/>
     </elements>
 </model>

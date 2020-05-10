@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		857EF7EE2468288200323533 /* Plan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7E82468288200323533 /* Plan+CoreDataClass.swift */; };
+		857EF7EF2468288200323533 /* Plan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7E92468288200323533 /* Plan+CoreDataProperties.swift */; };
+		857EF7F02468288200323533 /* Routine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7EA2468288200323533 /* Routine+CoreDataClass.swift */; };
+		857EF7F12468288200323533 /* Routine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7EB2468288200323533 /* Routine+CoreDataProperties.swift */; };
+		857EF7F22468288200323533 /* Workout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7EC2468288200323533 /* Workout+CoreDataClass.swift */; };
+		857EF7F32468288200323533 /* Workout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7ED2468288200323533 /* Workout+CoreDataProperties.swift */; };
 		85FD53BA24651C93004E9AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53B924651C93004E9AB9 /* AppDelegate.swift */; };
 		85FD53BC24651C93004E9AB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53BB24651C93004E9AB9 /* SceneDelegate.swift */; };
 		85FD53C124651C93004E9AB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85FD53BF24651C93004E9AB9 /* Main.storyboard */; };
@@ -26,6 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		857EF7E82468288200323533 /* Plan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataClass.swift"; sourceTree = "<group>"; };
+		857EF7E92468288200323533 /* Plan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		857EF7EA2468288200323533 /* Routine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routine+CoreDataClass.swift"; sourceTree = "<group>"; };
+		857EF7EB2468288200323533 /* Routine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routine+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		857EF7EC2468288200323533 /* Workout+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataClass.swift"; sourceTree = "<group>"; };
+		857EF7ED2468288200323533 /* Workout+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		85FD53B624651C93004E9AB9 /* FitLevel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitLevel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FD53B924651C93004E9AB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85FD53BB24651C93004E9AB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +115,12 @@
 		85FD53D02465A0C6004E9AB9 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				857EF7E82468288200323533 /* Plan+CoreDataClass.swift */,
+				857EF7E92468288200323533 /* Plan+CoreDataProperties.swift */,
+				857EF7EA2468288200323533 /* Routine+CoreDataClass.swift */,
+				857EF7EB2468288200323533 /* Routine+CoreDataProperties.swift */,
+				857EF7EC2468288200323533 /* Workout+CoreDataClass.swift */,
+				857EF7ED2468288200323533 /* Workout+CoreDataProperties.swift */,
 				85FD53E32465E063004E9AB9 /* Workout.xcdatamodeld */,
 			);
 			path = DataModel;
@@ -216,18 +234,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857EF7F02468288200323533 /* Routine+CoreDataClass.swift in Sources */,
 				85FD53DE2465C768004E9AB9 /* WorkoutPlansTableViewController.swift in Sources */,
 				85FD53D52465A111004E9AB9 /* HomeScreenTableViewController.swift in Sources */,
+				857EF7EE2468288200323533 /* Plan+CoreDataClass.swift in Sources */,
 				85FD53D72465A146004E9AB9 /* EditWorkout.swift in Sources */,
+				857EF7F12468288200323533 /* Routine+CoreDataProperties.swift in Sources */,
 				85FD53E52465E063004E9AB9 /* Workout.xcdatamodeld in Sources */,
 				85FD53BA24651C93004E9AB9 /* AppDelegate.swift in Sources */,
 				85FD53E72465E106004E9AB9 /* DatabaseProtocol.swift in Sources */,
 				85FD53BC24651C93004E9AB9 /* SceneDelegate.swift in Sources */,
 				85FD53E02465C7B0004E9AB9 /* WorkoutListTableViewController.swift in Sources */,
+				857EF7EF2468288200323533 /* Plan+CoreDataProperties.swift in Sources */,
 				85FD53EB2465E123004E9AB9 /* CoreDataController.swift in Sources */,
+				857EF7F22468288200323533 /* Workout+CoreDataClass.swift in Sources */,
 				85FD53E22465C7E7004E9AB9 /* WorkoutRoutineTableViewController.swift in Sources */,
 				85FD53DB2465A194004E9AB9 /* WorkoutStatsViewController.swift in Sources */,
 				85FD53D92465A165004E9AB9 /* RoutinePlanViewController.swift in Sources */,
+				857EF7F32468288200323533 /* Workout+CoreDataProperties.swift in Sources */,
 				85FD53E92465E112004E9AB9 /* MulticastDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
