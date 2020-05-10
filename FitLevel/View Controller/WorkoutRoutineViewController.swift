@@ -11,15 +11,25 @@ import UIKit
 class WorkoutRoutineViewController: UIViewController {
     //https://www.youtube.com/watch?v=O3ltwjDJaMk
     let shapeLayer = CAShapeLayer()
+    //WorkoutData(name:"S",sets:"s",reps"s")
+    var workouts = [WorkoutData(name:"Inclined Push-Ups",sets:"1",reps:"1"),WorkoutData(name:"Inclined Plank",sets:"2",reps:"2"),WorkoutData(name:"Inclined Barbell Push",sets:"3",reps:"3"),WorkoutData(name:"Squat",sets:"4",reps:"4")]
+    
+    var workoutprogress = 0
+    var workoutcount = 3
+    @IBOutlet weak var workoutName: UILabel!
+    @IBOutlet weak var workoutSets: UILabel!
+    @IBOutlet weak var workoutReps: UILabel!
+    @IBOutlet weak var CompleteButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        let center = view.center
-        
+        //let center = view.center
+        let coordinate = CGPoint(x:207,y:338)
         //create my track layer
         let trackLayer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2 , endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: coordinate, radius: 100, startAngle: -CGFloat.pi / 2 , endAngle: 2 * CGFloat.pi, clockwise: true)
                
         trackLayer.path = circularPath.cgPath
                
@@ -40,8 +50,28 @@ class WorkoutRoutineViewController: UIViewController {
         shapeLayer.strokeEnd = 0
         view.layer.addSublayer(shapeLayer)
         
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
-        // Do any additional setup after loading the view.
+        //view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+
+        
+        //Initialize title
+        workoutName.text = workouts[workoutprogress].name
+        workoutSets.text = "Sets: " + workouts[workoutprogress].sets
+        workoutReps.text = "Reps: " + workouts[workoutprogress].reps
+        
+        
+        //Allignment
+        workoutName.textAlignment = .center
+        workoutSets.textAlignment = .center
+        workoutReps.textAlignment = .center
+
+        workoutName.center = CGPoint(x: 207, y: 200)
+        workoutSets.center = CGPoint(x: 207, y: 480)
+        workoutReps.center = CGPoint(x: 207, y: 510)
+        CompleteButton.center = CGPoint(x: 207, y: 638)
+        
+        
+        
+ 
     }
     
     
@@ -69,11 +99,42 @@ class WorkoutRoutineViewController: UIViewController {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         
         basicAnimation.toValue = 1
-        basicAnimation.duration = 2
+        basicAnimation.duration = 1
         basicAnimation.fillMode = CAMediaTimingFillMode.forwards
         basicAnimation.isRemovedOnCompletion = false
+    
+        shapeLayer.add(basicAnimation, forKey: "Basic")
         
-        shapeLayer.add(basicAnimation, forKey: "urSoBasic")
+        //https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9, execute: {
+            self.updateWorkout()
+        })
     }
     
+    func updateWorkout(){
+        
+        workoutprogress += 1
+        if workoutprogress > workoutcount{
+            displayMessage(title: "Congratulation!", message: "You have completed your workout.")
+            return
+        }
+        
+        workoutName.text = workouts[workoutprogress].name
+        workoutSets.text = "Sets: " + workouts[workoutprogress].sets
+        workoutReps.text = "Reps: " + workouts[workoutprogress].reps
+        
+    }
+    
+    func displayMessage(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message,
+            preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Done",
+                                                style: UIAlertAction.Style.default,
+                                                handler: {(alert: UIAlertAction!) in self.popViewController()}))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func popViewController(){
+        self.navigationController?.popViewController(animated: false)
+    }
 }
