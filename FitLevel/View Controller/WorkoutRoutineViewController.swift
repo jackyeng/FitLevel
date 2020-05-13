@@ -23,8 +23,8 @@ class WorkoutRoutineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+     
         //let center = view.center
         let coordinate = CGPoint(x:207,y:338)
         //create my track layer
@@ -69,7 +69,8 @@ class WorkoutRoutineViewController: UIViewController {
         workoutReps.center = CGPoint(x: 207, y: 510)
         CompleteButton.center = CGPoint(x: 207, y: 638)
         
-        
+        CompleteButton.layer.borderWidth = 1
+        CompleteButton.layer.cornerRadius = 20
         
  
     }
@@ -106,7 +107,7 @@ class WorkoutRoutineViewController: UIViewController {
         shapeLayer.add(basicAnimation, forKey: "Basic")
         
         //https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
             self.updateWorkout()
         })
     }

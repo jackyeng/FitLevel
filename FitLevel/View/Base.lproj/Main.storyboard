@@ -61,5 +61,5 @@
         <image name="icons8-lotus-64" width="32" height="32"/>
         <image name="icons8-walking-50" width="25" height="25"/>
     </resources>
-    <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>
