@@ -11,7 +11,12 @@ import UIKit
 //https://www.youtube.com/watch?v=0o06EIPY0JI by Asterios R.
 class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    
+    var workoutlinks = ["https://wger.de/media/exercise-images/6/Leg-press-2-1024x670.png",
+        "https://wger.de/media/exercise-images/177/Seated-leg-curl-1.png",
+    "https://wger.de/media/exercise-images/26/Biceps-curl-1.png",
+    "https://wger.de/media/exercise-images/82/Tricep-dips-2-2.png",
+
+    "https://wger.de/media/exercise-images/244/Close-grip-front-lat-pull-down-2.png"]
     
     
     @IBOutlet weak var Calender: UICollectionView!
@@ -232,4 +237,51 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     
-}
+    
+    
+    //Workout image API does not have name
+    //The name of the workout is in the workout image link
+    //the function filter out the name and associate it with the image
+    @IBAction func WorkoutName(_ sender: Any) {
+        for i in workoutlinks{
+            let mySubstring = i
+            var startindex = 0
+            var endindex = -1
+            for (index,char) in mySubstring.enumerated(){
+             
+                if char.isUppercase{
+                   startindex = index
+                }
+                if char.isNumber{
+                    if (startindex != 0 && endindex == -1){
+                        endindex = index
+                    }
+                    
+                }
+            
+            }
+            endindex -= (mySubstring.count + 1)
+            let start = i.index(i.startIndex, offsetBy: startindex)
+            let end = i.index(i.endIndex, offsetBy: endindex)
+            let range = start..<end
+            let finalstring = String(mySubstring[range])
+            print(finalstring)
+            
+            var workoutname = ""
+            for char in finalstring{
+                if char == "-"{
+                    workoutname += " "
+                    
+                }
+                else{
+                 workoutname += String(char)
+            }
+                }
+            print(workoutname)
+            }
+            
+            
+        }
+    }
+    
+

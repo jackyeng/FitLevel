@@ -9,6 +9,8 @@
 import UIKit
 
 class WorkoutRoutineViewController: UIViewController {
+    
+    
     //https://www.youtube.com/watch?v=O3ltwjDJaMk
     let shapeLayer = CAShapeLayer()
     //WorkoutData(name:"S",sets:"s",reps"s")
@@ -21,12 +23,15 @@ class WorkoutRoutineViewController: UIViewController {
     @IBOutlet weak var workoutReps: UILabel!
     @IBOutlet weak var CompleteButton: UIButton!
     
+    
+    @IBOutlet weak var ImageView: UIImageView!
+    
     var actionStatus = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     
+        get_image("https://wger.de/media/exercise-images/133/seated-leg-curl-large-1.png", ImageView)
         //let center = view.center
         let coordinate = CGPoint(x:207,y:338)
         //create my track layer
@@ -37,7 +42,7 @@ class WorkoutRoutineViewController: UIViewController {
                
         trackLayer.strokeColor = UIColor.lightGray.cgColor
         trackLayer.lineWidth = 10
-        trackLayer.fillColor = UIColor.clear.cgColor
+        trackLayer.fillColor = UIColor.white.cgColor
         trackLayer.lineCap = CAShapeLayerLineCap.round
         
         view.layer.addSublayer(trackLayer)
@@ -74,7 +79,7 @@ class WorkoutRoutineViewController: UIViewController {
         CompleteButton.layer.borderWidth = 1
         CompleteButton.layer.cornerRadius = 20
         
- 
+        self.view.bringSubviewToFront(ImageView)
     }
     
     
@@ -145,5 +150,24 @@ class WorkoutRoutineViewController: UIViewController {
     
     func popViewController(){
         self.navigationController?.popViewController(animated: false)
+    }
+    
+    func get_image(_ url_str:String, _ ImageView:UIImageView){
+        let url:URL = URL(string: url_str)!
+        let session = URLSession.shared
+        let task = session.dataTask(with: url, completionHandler: {
+            (data, response, error) in
+            if data != nil {
+                let image = UIImage(data: data!)
+                if(image != nil)
+                {
+                    DispatchQueue.main.async(execute: {
+                        ImageView.image = image
+                
+                    })
+                }
+            }
+        })
+        task.resume()
     }
 }
