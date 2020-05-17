@@ -18,6 +18,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     @IBOutlet weak var MonthLabel: UILabel!
     
+    @IBOutlet weak var TopWorkout: UILabel!
+    
     
     let Months = ["January","February", "March", "April", "May", "June","July","August","September", "October", "November" ,"December"]
     let DaysOfMonth = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
@@ -38,7 +40,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     var dayCounter = 0
     
-    
+    var LeapYearCounter = 0
     
     
     
@@ -58,6 +60,10 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             weekday = 7
         }
         GetStartDateDayPosition()
+        
+        TopWorkout.layer.cornerRadius = 15
+        TopWorkout.layer.masksToBounds = true
+        
        }
        
     
@@ -189,6 +195,10 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         
         cell.backgroundColor = UIColor.clear
         
+        
+        cell.layer.cornerRadius = 25
+        cell.layer.masksToBounds = true
+        
         if cell.isHidden{
             cell.isHidden = false
         }
@@ -202,10 +212,24 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         default:
             fatalError()
         }
+        
+        switch cell.DateLabel.text{
+        case "5":
+            cell.backgroundColor = UIColor.systemIndigo
+        case "9":
+            cell.backgroundColor = UIColor.systemIndigo
+        case "21":
+            cell.backgroundColor = UIColor.systemIndigo
+        default:
+            break
+        }
+        
         if Int(cell.DateLabel.text!)! < 1 {
             cell.isHidden = true
         }
-        
+        cell.DateLabel.textAlignment = .center
         return cell
     }
+    
+    
 }

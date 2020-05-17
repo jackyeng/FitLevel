@@ -21,6 +21,8 @@ class WorkoutRoutineViewController: UIViewController {
     @IBOutlet weak var workoutReps: UILabel!
     @IBOutlet weak var CompleteButton: UIButton!
     
+    var actionStatus = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,6 +99,10 @@ class WorkoutRoutineViewController: UIViewController {
     }
     */
     @IBAction func Complete(_ sender: Any) {
+        if !actionStatus  {
+            return
+        }
+        actionStatus = false
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         
         basicAnimation.toValue = 1
@@ -109,7 +115,9 @@ class WorkoutRoutineViewController: UIViewController {
         //https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
             self.updateWorkout()
+            self.actionStatus = true
         })
+        
     }
     
     func updateWorkout(){
