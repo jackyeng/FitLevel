@@ -11,6 +11,7 @@
         <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="routine" inverseEntity="Workout"/>
     </entity>
     <entity name="Workout" representedClassName="Workout" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="repetition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -19,8 +20,8 @@
         <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine" inverseName="workout" inverseEntity="Routine"/>
     </entity>
     <elements>
-        <element name="Routine" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Workout" positionX="-54" positionY="-9" width="128" height="133"/>
         <element name="Plan" positionX="-54" positionY="18" width="128" height="88"/>
+        <element name="Routine" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Workout" positionX="-54" positionY="-9" width="128" height="148"/>
     </elements>
 </model>

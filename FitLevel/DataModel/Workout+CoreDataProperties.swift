@@ -2,7 +2,7 @@
 //  Workout+CoreDataProperties.swift
 //  FitLevel
 //
-//  Created by Jacky Eng on 10/05/2020.
+//  Created by Jacky Eng on 18/05/2020.
 //  Copyright © 2020 Jacky Eng. All rights reserved.
 //
 //
@@ -21,6 +21,7 @@ extension Workout {
     @NSManaged public var name: String?
     @NSManaged public var repetition: Int16
     @NSManaged public var set: Int16
+    @NSManaged public var image: String?
     @NSManaged public var plan: Plan?
     @NSManaged public var routine: Routine?
 

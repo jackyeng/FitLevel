@@ -14,7 +14,7 @@ class WorkoutRoutineViewController: UIViewController {
     //https://www.youtube.com/watch?v=O3ltwjDJaMk
     let shapeLayer = CAShapeLayer()
     //WorkoutData(name:"S",sets:"s",reps"s")
-    var workouts = [WorkoutData(name:"Inclined Push-Ups",sets:"1",reps:"1"),WorkoutData(name:"Inclined Plank",sets:"2",reps:"2"),WorkoutData(name:"Inclined Barbell Push",sets:"3",reps:"3"),WorkoutData(name:"Squat",sets:"4",reps:"4")]
+    var workouts = [WorkoutClass(name:"Inclined Push-Ups",sets:"1",reps:"1"),WorkoutClass(name:"Inclined Plank",sets:"2",reps:"2"),WorkoutClass(name:"Inclined Barbell Push",sets:"3",reps:"3"),WorkoutClass(name:"Squat",sets:"4",reps:"4")]
     
     var workoutprogress = 0
     var workoutcount = 3
@@ -152,6 +152,9 @@ class WorkoutRoutineViewController: UIViewController {
         self.navigationController?.popViewController(animated: false)
     }
     
+    
+    
+    //https://www.youtube.com/watch?time_continue=128&v=Z6D68MMx2pw&feature=emb_logo
     func get_image(_ url_str:String, _ ImageView:UIImageView){
         let url:URL = URL(string: url_str)!
         let session = URLSession.shared

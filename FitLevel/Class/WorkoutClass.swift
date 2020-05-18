@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WorkoutData: NSObject {
+class WorkoutClass: NSObject {
     
     var name: String
     var sets: String

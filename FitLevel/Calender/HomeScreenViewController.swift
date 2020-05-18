@@ -18,6 +18,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
 
     "https://wger.de/media/exercise-images/244/Close-grip-front-lat-pull-down-2.png"]
     
+    var workoutlist = [WorkoutData]()
     
     @IBOutlet weak var Calender: UICollectionView!
     
@@ -68,6 +69,9 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         
         TopWorkout.layer.cornerRadius = 15
         TopWorkout.layer.masksToBounds = true
+        
+        
+        requestWorkoutImage()
         
        }
        
@@ -243,6 +247,10 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     //The name of the workout is in the workout image link
     //the function filter out the name and associate it with the image
     @IBAction func WorkoutName(_ sender: Any) {
+        for i in workoutlist{
+            print(i.imageURL!)
+        }
+        
         for i in workoutlinks{
             let mySubstring = i
             var startindex = 0
@@ -281,6 +289,44 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             }
             
             
+        }
+    
+    
+    func requestWorkoutImage() {
+        let searchString = "https://wger.de/api/v2/exerciseimage.json/?is_main=True&language=2&page=9"
+        let jsonURL =
+            URL(string: searchString.addingPercentEncoding(withAllowedCharacters:
+            .urlQueryAllowed)!)
+
+        let task = URLSession.shared.dataTask(with: jsonURL!) {
+        (data, response, error) in
+        // Regardless of response end the loading icon from the main thread
+        DispatchQueue.main.async {
+            
+        }
+
+        if let error = error {
+            print(error)
+            return
+        }
+
+        do {
+            let decoder = JSONDecoder()
+            let volumeData = try decoder.decode(VolumeData.self, from: data!)
+            if let workouts = volumeData.Workout { //change
+                self.workoutlist.append(contentsOf: workouts) //change
+             
+                DispatchQueue.main.async {
+                    
+                }
+            }
+        } catch let err {
+            print(err)
+        }
+        }
+
+        task.resume()
+    
         }
     }
     
