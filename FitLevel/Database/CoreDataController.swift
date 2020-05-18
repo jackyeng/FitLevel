@@ -9,6 +9,33 @@
 import UIKit
 import CoreData
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
+    
+    
+    
+    func addWorkout(name: String, imageURL: String?) {
+        let workout = NSEntityDescription.insertNewObject(forEntityName: "Workout",
+                    into: childContext!) as! Workout
+        workout.name = name
+        workout.image = imageURL
+    }
+    
+    func addRoutine(routineName: String) {
+        let routine = NSEntityDescription.insertNewObject(forEntityName: "Routine",
+                    into: childContext!) as! Routine
+        routine.name = routineName
+    }
+    
+    func addPlan(planName: String) {
+        let plan = NSEntityDescription.insertNewObject(forEntityName: "Plan",
+                                                         into: childContext!) as! Plan
+        plan.name = planName
+    }
+    
+ 
+    func addRoutineToPlan() {
+        
+    }
+    
     func addWorkoutToPlan(workout: Workout, plan: Plan) -> Bool {
         return true
     }
@@ -17,15 +44,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return true
     }
     
-    func addPlan(planName: String) -> Plan {
-        let object = [Plan]()
-        return object[0]
-    }
     
-    func addRoutine(routineName: String) -> Routine {
-        let object = [Routine]()
-        return object[0]
-    }
     
 
 
@@ -37,8 +56,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     var allWorkoutsFetchedResultsController: NSFetchedResultsController<Workout>?
     var routineWorkoutsFetchedResultsController: NSFetchedResultsController<Workout>?
     var planWorkoutsFetchedResultsController: NSFetchedResultsController<Workout>?
-
-
+    var workoutlist = [WorkoutData]()
+    var loadstatus = false
+    
     override init() { // Core database is loaded here
         // Load the Core Data Stack
         persistentContainer = NSPersistentContainer(name: "Workout")
@@ -53,6 +73,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         childContext?.parent = self.persistentContainer.viewContext
        
         if fetchAllWorkouts().count == 0 {
+            requestWorkoutImage()
+            while loadstatus == false {
+
+            }
+            AddWorkout()
+            createDefaultWorkout()
             saveDraft()
         }
     }
@@ -95,6 +121,21 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         saveContext()
     }
     
+    
+    ////////////////////////////
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ///////////////////////////
  
 
   
@@ -167,11 +208,120 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return workout
     }
 
+    func AddWorkout(){
+        filterName()
+    }
+    
+    
+    func filterName(){
+        for i in workoutlist{
+            let mySubstring = String(i.imageURL!)
+            var startindex = 0
+            var endindex = -1
+            var count = 0
+            print(mySubstring)
+            for (index,char) in mySubstring.enumerated(){
+                print(index,char)
+                if count == 6 && startindex == 0{
+                   startindex = index
+                }
+                if char == "/"{
+                    count += 1
+                }
+                
+                if char.isNumber{
+                    if (startindex != 0 && endindex == -1){
+                        endindex = index
+                    }
+                    
+                }
+            
+            }
+            
+            endindex -= (mySubstring.count + 1)
+            print(startindex)
+            print(endindex)
+            let start = mySubstring.index(mySubstring.startIndex, offsetBy: startindex)
+            
+            let end = mySubstring.index(mySubstring.endIndex, offsetBy: endindex)
+            let range = start..<end
+            let finalstring = String(mySubstring[range])
+            print(finalstring)
+            
+            var workoutname = ""
+            for char in finalstring{
+                if char == "-"{
+                    workoutname += " "
+                    
+                }
+                else{
+                 workoutname += String(char)
+            }
+                }
+            print(workoutname)
+            }
+            
+        
+    }
+    
+    func requestWorkoutImage() {
+        let searchString = "https://wger.de/api/v2/exerciseimage.json/?is_main=True&language=2&page=9"
+        let jsonURL =
+            URL(string: searchString.addingPercentEncoding(withAllowedCharacters:
+            .urlQueryAllowed)!)
 
- 
+        let task = URLSession.shared.dataTask(with: jsonURL!) {
+        (data, response, error) in
+        // Regardless of response end the loading icon from the main thread
+        DispatchQueue.main.async {
+            
+        }
+
+        if let error = error {
+            print(error)
+            return
+        }
+
+        do {
+            let decoder = JSONDecoder()
+            let volumeData = try decoder.decode(VolumeData.self, from: data!)
+            if let workouts = volumeData.Workout { //change
+                self.workoutlist.append(contentsOf: workouts) //change
+                self.loadstatus = true
+
+                DispatchQueue.main.async {
+                                    }
+            }
+        } catch let err {
+            print(err)
+        }
+        }
+
+        task.resume()
+    
+        }
+
+    //Add routine to plans
+    func createDefaultPlans(){
+        
+        
+    }
+
+    
+    func createDefaultRoutine(){
+        //routine name
+        //link workout to the routine list
+    }
+    
+    func createDefaultWorkout(){
+        let _ = addWorkout(name: "Push ups", imageURL: "")
+        let _ = addWorkout(name: "Sit ups", imageURL: "")
+        let _ = addWorkout(name: "Pull ups", imageURL: "")
+        let _ = addWorkout(name: "Planks", imageURL: "")
+
+    }
     
 
 
-        
 }
 

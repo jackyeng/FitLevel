@@ -10,14 +10,16 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    var databaseController: DatabaseProtocol?
+    
     var window: UIWindow?
     //https://www.youtube.com/watch?v=n7NNAdaIDKQ
     //Tab bar icon customization
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UITabBar.appearance().barTintColor = .black
         UITabBar.appearance().tintColor = .systemIndigo
-        
+        databaseController = CoreDataController()
         return true
     }
 

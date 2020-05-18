@@ -9,7 +9,11 @@
 import UIKit
 
 class WorkoutListTableViewController: UITableViewController {
-
+    
+    
+    var workout = ["push up", "pull up", "plank"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,23 +28,27 @@ class WorkoutListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return workout.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let cell =
+              tableView.dequeueReusableCell(withIdentifier: "workout", for: indexPath)
+              as! WorkoutTableViewCell
+          //let workout = plan[indexPath.row]
+          cell.WorkoutNameLabel.text = workout[indexPath.row] //display cocktails in My Drink
+        
+          cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+          cell.textLabel?.numberOfLines = 0
+          return cell //display cocktails in My Drink
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

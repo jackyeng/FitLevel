@@ -38,10 +38,17 @@ protocol DatabaseProtocol: AnyObject {
     
     //Workout
     func addWorkoutToPlan(workout: Workout, plan: Plan) -> Bool
+    //create routine
+    func addRoutine(routineName: String)
     func addWorkoutToRoutine(workout: Workout, routine: Plan) -> Bool
-    func addPlan(planName: String) -> Plan
-    func addRoutine(routineName: String) -> Routine
-
+    
+    //create plan/ saved routine
+    func addPlan(planName: String) //default plan
+    func addRoutineToPlan()
+   
+    
+    //add new workout
+    func addWorkout(name: String, imageURL: String?)
     //Plan
     
     //Routine

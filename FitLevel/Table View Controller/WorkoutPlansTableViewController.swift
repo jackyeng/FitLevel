@@ -8,7 +8,23 @@
 
 import UIKit
 
-class WorkoutPlansTableViewController: UITableViewController {
+class WorkoutPlansTableViewController: UITableViewController, DatabaseListener {
+    var listenerType: ListenerType = .plan
+    
+    @IBOutlet weak var PlanName: UILabel!
+    
+    var plan = ["1","2","3"]
+    var beginnercell = "beginner"
+    
+    
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Workout]) {
+        
+    }
+    
+    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,23 +40,30 @@ class WorkoutPlansTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return plan.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
 
-        // Configure the cell...
+        let cell =
+            tableView.dequeueReusableCell(withIdentifier: beginnercell, for: indexPath)
+            as! PlanTableViewCell
+        //let workout = plan[indexPath.row]
+        cell.PlanNameLabel.text = plan[indexPath.row] //display cocktails in My Drink
+      
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell.textLabel?.numberOfLines = 0
+        return cell //display cocktails in My Drink
 
-        return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

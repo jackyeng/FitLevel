@@ -22,6 +22,9 @@
 		857F133F246AB0B300568E22 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F133E246AB0B300568E22 /* HomeScreenViewController.swift */; };
 		8593EAD32471735C00914C4D /* VolumeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD22471735C00914C4D /* VolumeData.swift */; };
 		8593EAD5247173B700914C4D /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD4247173B700914C4D /* WorkoutData.swift */; };
+		8593EAD82472EB0800914C4D /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD72472EB0800914C4D /* PlanTableViewCell.swift */; };
+		8593EADA2472EE7400914C4D /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */; };
+		8593EADC247313D600914C4D /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */; };
 		85B9D8FB246BCC2F00D17F2E /* CalenderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */; };
 		85FD53BA24651C93004E9AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53B924651C93004E9AB9 /* AppDelegate.swift */; };
 		85FD53BC24651C93004E9AB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53BB24651C93004E9AB9 /* SceneDelegate.swift */; };
@@ -56,6 +59,9 @@
 		857F133E246AB0B300568E22 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		8593EAD22471735C00914C4D /* VolumeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeData.swift; sourceTree = "<group>"; };
 		8593EAD4247173B700914C4D /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
+		8593EAD72472EB0800914C4D /* PlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
+		8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
+		8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderInfo.swift; sourceTree = "<group>"; };
 		85FD53B624651C93004E9AB9 /* FitLevel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitLevel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FD53B924651C93004E9AB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +122,16 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		8593EAD62472EAE100914C4D /* Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8593EAD72472EB0800914C4D /* PlanTableViewCell.swift */,
+				8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */,
+				8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */,
+			);
+			path = "Table View Cell";
+			sourceTree = "<group>";
+		};
 		85B9D8F9246BCC1A00D17F2E /* Calender */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,10 +161,11 @@
 		85FD53B824651C93004E9AB9 /* FitLevel */ = {
 			isa = PBXGroup;
 			children = (
+				857EF7F724683FF200323533 /* View */,
+				8593EAD62472EAE100914C4D /* Table View Cell */,
 				8593EAD124715E0800914C4D /* API */,
 				85B9D8F9246BCC1A00D17F2E /* Calender */,
 				857EF804246855A200323533 /* Class */,
-				857EF7F724683FF200323533 /* View */,
 				85FD53C224651C94004E9AB9 /* Assets.xcassets */,
 				85FD53C724651C95004E9AB9 /* Info.plist */,
 				85FD53DC2465A41C004E9AB9 /* Main */,
@@ -303,6 +320,7 @@
 				857F133F246AB0B300568E22 /* HomeScreenViewController.swift in Sources */,
 				857EF7EE2468288200323533 /* Plan+CoreDataClass.swift in Sources */,
 				85FD53D72465A146004E9AB9 /* EditWorkout.swift in Sources */,
+				8593EADA2472EE7400914C4D /* RoutineTableViewCell.swift in Sources */,
 				857EF7F12468288200323533 /* Routine+CoreDataProperties.swift in Sources */,
 				85B9D8FB246BCC2F00D17F2E /* CalenderInfo.swift in Sources */,
 				85FD53E52465E063004E9AB9 /* Workout.xcdatamodeld in Sources */,
@@ -310,9 +328,11 @@
 				85FD53BA24651C93004E9AB9 /* AppDelegate.swift in Sources */,
 				85FD53E72465E106004E9AB9 /* DatabaseProtocol.swift in Sources */,
 				85FD53BC24651C93004E9AB9 /* SceneDelegate.swift in Sources */,
+				8593EAD82472EB0800914C4D /* PlanTableViewCell.swift in Sources */,
 				8593EAD32471735C00914C4D /* VolumeData.swift in Sources */,
 				852BA574246BC86F00B15B7D /* DateCollectionViewCell.swift in Sources */,
 				85FD53E02465C7B0004E9AB9 /* WorkoutListTableViewController.swift in Sources */,
+				8593EADC247313D600914C4D /* WorkoutTableViewCell.swift in Sources */,
 				857EF7EF2468288200323533 /* Plan+CoreDataProperties.swift in Sources */,
 				85FD53EB2465E123004E9AB9 /* CoreDataController.swift in Sources */,
 				857EF7F22468288200323533 /* Workout+CoreDataClass.swift in Sources */,

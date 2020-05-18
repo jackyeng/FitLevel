@@ -10,6 +10,7 @@ import UIKit
 
 //https://www.youtube.com/watch?v=0o06EIPY0JI by Asterios R.
 class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    weak var databaseController: DatabaseProtocol?
     
     var workoutlinks = ["https://wger.de/media/exercise-images/6/Leg-press-2-1024x670.png",
         "https://wger.de/media/exercise-images/177/Seated-leg-curl-1.png",
@@ -55,6 +56,10 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
            super.viewDidLoad()
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            databaseController = appDelegate.databaseController
+        
            navigationController?.navigationBar.barTintColor = UIColor.systemIndigo
            currentMonth = Months[month]
         
