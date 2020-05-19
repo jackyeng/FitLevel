@@ -2,7 +2,7 @@
 //  Workout+CoreDataProperties.swift
 //  FitLevel
 //
-//  Created by Jacky Eng on 18/05/2020.
+//  Created by Jacky Eng on 19/05/2020.
 //  Copyright © 2020 Jacky Eng. All rights reserved.
 //
 //
@@ -17,12 +17,26 @@ extension Workout {
         return NSFetchRequest<Workout>(entityName: "Workout")
     }
 
+    @NSManaged public var image: String?
     @NSManaged public var level: Int16
     @NSManaged public var name: String?
-    @NSManaged public var repetition: Int16
-    @NSManaged public var set: Int16
-    @NSManaged public var image: String?
-    @NSManaged public var plan: Plan?
-    @NSManaged public var routine: Routine?
+    @NSManaged public var custom: NSSet?
+
+}
+
+// MARK: Generated accessors for custom
+extension Workout {
+
+    @objc(addCustomObject:)
+    @NSManaged public func addToCustom(_ value: CustomWorkout)
+
+    @objc(removeCustomObject:)
+    @NSManaged public func removeFromCustom(_ value: CustomWorkout)
+
+    @objc(addCustom:)
+    @NSManaged public func addToCustom(_ values: NSSet)
+
+    @objc(removeCustom:)
+    @NSManaged public func removeFromCustom(_ values: NSSet)
 
 }

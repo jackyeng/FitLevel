@@ -1,5 +1,5 @@
 //
-//  Plan+CoreDataProperties.swift
+//  CustomWorkout+CoreDataProperties.swift
 //  FitLevel
 //
 //  Created by Jacky Eng on 19/05/2020.
@@ -11,20 +11,21 @@ import Foundation
 import CoreData
 
 
-extension Plan {
+extension CustomWorkout {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Plan> {
-        return NSFetchRequest<Plan>(entityName: "Plan")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<CustomWorkout> {
+        return NSFetchRequest<CustomWorkout>(entityName: "CustomWorkout")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var type: String?
+    @NSManaged public var set: String?
+    @NSManaged public var repetition: String?
+    @NSManaged public var workout: Workout?
     @NSManaged public var routine: NSSet?
 
 }
 
 // MARK: Generated accessors for routine
-extension Plan {
+extension CustomWorkout {
 
     @objc(addRoutineObject:)
     @NSManaged public func addToRoutine(_ value: Routine)

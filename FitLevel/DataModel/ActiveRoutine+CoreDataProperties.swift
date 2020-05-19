@@ -1,5 +1,5 @@
 //
-//  Plan+CoreDataProperties.swift
+//  ActiveRoutine+CoreDataProperties.swift
 //  FitLevel
 //
 //  Created by Jacky Eng on 19/05/2020.
@@ -11,20 +11,19 @@ import Foundation
 import CoreData
 
 
-extension Plan {
+extension ActiveRoutine {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Plan> {
-        return NSFetchRequest<Plan>(entityName: "Plan")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ActiveRoutine> {
+        return NSFetchRequest<ActiveRoutine>(entityName: "ActiveRoutine")
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var type: String?
     @NSManaged public var routine: NSSet?
 
 }
 
 // MARK: Generated accessors for routine
-extension Plan {
+extension ActiveRoutine {
 
     @objc(addRoutineObject:)
     @NSManaged public func addToRoutine(_ value: Routine)

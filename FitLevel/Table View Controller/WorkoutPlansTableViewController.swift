@@ -13,6 +13,8 @@ class WorkoutPlansTableViewController: UITableViewController, DatabaseListener {
     
     @IBOutlet weak var PlanName: UILabel!
     
+    var databaseController: DatabaseProtocol?
+    
     var plan = ["1","2","3"]
     var beginnercell = "beginner"
     
@@ -28,6 +30,9 @@ class WorkoutPlansTableViewController: UITableViewController, DatabaseListener {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

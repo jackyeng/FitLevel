@@ -8,15 +8,32 @@
 
 import UIKit
 
-class WorkoutRoutineTableViewController: UITableViewController {
-
+class WorkoutRoutineTableViewController: UITableViewController, DatabaseListener {
+    
+    var listenerType: ListenerType = .routine
+     
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Workout]) {
+        
+    }
+    
+    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
+        
+    }
+    
+    
+    
+    
     var routine = ["1","2","3"]
+    
+    var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
         
         
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor.systemIndigo
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

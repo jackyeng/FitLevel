@@ -54,8 +54,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
    
     // Fetched Results Controllers
     var allWorkoutsFetchedResultsController: NSFetchedResultsController<Workout>?
-    var routineWorkoutsFetchedResultsController: NSFetchedResultsController<Workout>?
-    var planWorkoutsFetchedResultsController: NSFetchedResultsController<Workout>?
+    var routineWorkoutsFetchedResultsController: NSFetchedResultsController<ActiveRoutine>?
+    var planWorkoutsFetchedResultsController: NSFetchedResultsController<Plan>?
     var workoutlist = [WorkoutData]()
     var loadstatus = false
     
@@ -71,7 +71,19 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         super.init()
         childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         childContext?.parent = self.persistentContainer.viewContext
-       
+        
+        
+        let workouts = fetchAllWorkouts()
+        print(workouts)
+        for i in workouts{
+            print(i.name!)
+        }
+        requestWorkoutImage()
+        while loadstatus == false {
+
+        }
+        AddWorkout()
+        saveDraft()
         if fetchAllWorkouts().count == 0 {
             requestWorkoutImage()
             while loadstatus == false {
@@ -178,6 +190,11 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
 
     // MARK: - Core Data Fetch Requests
+    
+    func fetchRoutineWorkouts() -> [Workout]{
+        return [Workout]()
+    }
+    
     func fetchAllWorkouts() -> [Workout] {
         // If results controller not currently initialized
         if allWorkoutsFetchedResultsController == nil {
@@ -210,10 +227,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
 
     func AddWorkout(){
         filterName()
+        
     }
     
     
-    func filterName(){
+    func filterName() {
+       
         for i in workoutlist{
             let mySubstring = String(i.imageURL!)
             var startindex = 0
@@ -259,9 +278,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             }
                 }
             print(workoutname)
+            
+            addWorkout(name: workoutname, imageURL: mySubstring)
+            
             }
             
-        
+    
     }
     
     func requestWorkoutImage() {

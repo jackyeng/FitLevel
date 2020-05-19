@@ -8,15 +8,26 @@
 
 import UIKit
 
-class WorkoutListTableViewController: UITableViewController {
+class WorkoutListTableViewController: UITableViewController, DatabaseListener {
+    var listenerType: ListenerType = .workout
+    
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Workout]) {
+        
+    }
+    
+    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
+        workout = workouts
+    }
     
     
-    var workout = ["push up", "pull up", "plank"]
+    var databaseController: DatabaseProtocol?
+    var workout = [Workout]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -42,13 +53,23 @@ class WorkoutListTableViewController: UITableViewController {
               tableView.dequeueReusableCell(withIdentifier: "workout", for: indexPath)
               as! WorkoutTableViewCell
           //let workout = plan[indexPath.row]
-          cell.WorkoutNameLabel.text = workout[indexPath.row] //display cocktails in My Drink
+            cell.WorkoutNameLabel.text = workout[indexPath.row].name //display cocktails in My Drink
         
           cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
           cell.textLabel?.numberOfLines = 0
           return cell //display cocktails in My Drink
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
+         databaseController?.addListener(listener: self)
+     
+    }
+
+     override func viewWillDisappear(_ animated: Bool) {
+         super.viewWillDisappear(animated)
+         databaseController?.removeListener(listener: self)
+    }
 
     /*
     // Override to support conditional editing of the table view.

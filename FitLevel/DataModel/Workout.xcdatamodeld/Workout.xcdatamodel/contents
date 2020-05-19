@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ActiveRoutine" representedClassName="ActiveRoutine" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="routine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Routine" inverseName="activeroutine" inverseEntity="Routine"/>
+    </entity>
+    <entity name="CustomWorkout" representedClassName="CustomWorkout" syncable="YES">
+        <attribute name="repetition" optional="YES" attributeType="String"/>
+        <attribute name="set" optional="YES" attributeType="String"/>
+        <relationship name="routine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Routine" inverseName="customworkout" inverseEntity="Routine"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="custom" inverseEntity="Workout"/>
+    </entity>
     <entity name="Plan" representedClassName="Plan" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="plan" inverseEntity="Workout"/>
+        <relationship name="routine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Routine" inverseName="plan" inverseEntity="Routine"/>
     </entity>
     <entity name="Routine" representedClassName="Routine" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="routine" inverseEntity="Workout"/>
+        <relationship name="activeroutine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActiveRoutine" inverseName="routine" inverseEntity="ActiveRoutine"/>
+        <relationship name="customworkout" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CustomWorkout" inverseName="routine" inverseEntity="CustomWorkout"/>
+        <relationship name="plan" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Plan" inverseName="routine" inverseEntity="Plan"/>
     </entity>
     <entity name="Workout" representedClassName="Workout" syncable="YES">
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="repetition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="set" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plan" inverseName="workout" inverseEntity="Plan"/>
-        <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine" inverseName="workout" inverseEntity="Routine"/>
+        <relationship name="custom" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CustomWorkout" inverseName="workout" inverseEntity="CustomWorkout"/>
     </entity>
     <elements>
         <element name="Plan" positionX="-54" positionY="18" width="128" height="88"/>
-        <element name="Routine" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Workout" positionX="-54" positionY="-9" width="128" height="148"/>
+        <element name="Routine" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Workout" positionX="-54" positionY="-9" width="128" height="103"/>
+        <element name="ActiveRoutine" positionX="-54" positionY="45" width="128" height="73"/>
+        <element name="CustomWorkout" positionX="-45" positionY="45" width="128" height="103"/>
     </elements>
 </model>

@@ -210,7 +210,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.backgroundColor = UIColor.clear
         
         
-        cell.layer.cornerRadius = 25
+        cell.layer.cornerRadius = 18
         cell.layer.masksToBounds = true
         
         if cell.isHidden{
@@ -228,11 +228,11 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         }
         
         switch cell.DateLabel.text{
-        case "5":
+        case "8":
             cell.backgroundColor = UIColor.systemIndigo
         case "9":
             cell.backgroundColor = UIColor.systemIndigo
-        case "21":
+        case "10":
             cell.backgroundColor = UIColor.systemIndigo
         default:
             break
