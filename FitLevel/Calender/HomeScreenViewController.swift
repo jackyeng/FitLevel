@@ -234,6 +234,13 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             cell.backgroundColor = UIColor.systemIndigo
         case "10":
             cell.backgroundColor = UIColor.systemIndigo
+        
+        case "15":
+            cell.backgroundColor = UIColor.systemIndigo
+        case "16":
+            cell.backgroundColor = UIColor.systemIndigo
+        case "17":
+            cell.backgroundColor = UIColor.systemIndigo
         default:
             break
         }
@@ -252,6 +259,24 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     //The name of the workout is in the workout image link
     //the function filter out the name and associate it with the image
     @IBAction func WorkoutName(_ sender: Any) {
+    
+        
+        
+        
+        let workout = databaseController?.addRoutine(routineName: "")
+        let workout1 = databaseController?.addWorkout(name: "test", imageURL: "")
+        let workouts = databaseController?.addCustomWorkout(set:"1", repetition: "3")
+        let _ = databaseController?.addCustomWorkoutToRoutine(customWorkout: workouts!, routine: workout!)
+        let _ = databaseController?.addWorkoutToCustomWorkout(workout: workout1!, customWorkout: workouts!)
+        let _ = databaseController?.addRoutineToActive(routine: workout!, active: databaseController!.activeRoutine)
+        
+        databaseController?.saveDraft()
+        
+        
+        
+        
+        return
+        
         for i in workoutlist{
             print(i.imageURL!)
         }

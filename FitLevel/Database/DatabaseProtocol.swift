@@ -17,18 +17,20 @@ enum DatabaseChange {
 enum ListenerType {
     case routine
     case workout
+    case routineworkout
     case plan
     case all
 }
 
 protocol DatabaseListener: AnyObject {
     var listenerType: ListenerType {get set}
-    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Workout])
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine])
     func onWorkoutListChange(change: DatabaseChange, workouts: [Workout])
+    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout])
    
 }
 protocol DatabaseProtocol: AnyObject {
-    
+    var activeRoutine: ActiveRoutine {get}
 
     func cleanup()
     func addListener(listener: DatabaseListener)
@@ -39,16 +41,21 @@ protocol DatabaseProtocol: AnyObject {
     //Workout
     func addWorkoutToPlan(workout: Workout, plan: Plan) -> Bool
     //create routine
-    func addRoutine(routineName: String)
+    func addRoutine(routineName: String) -> Routine
     func addWorkoutToRoutine(workout: Workout, routine: Plan) -> Bool
-    
+    func addRoutineToActive(routine: Routine, active: ActiveRoutine) -> Bool
     //create plan/ saved routine
     func addPlan(planName: String) //default plan
     func addRoutineToPlan()
-   
-    
+   //create ActiveRoutine
+    func addActiveRoutine(activeroutineName: String) -> ActiveRoutine
+    //create CustomWorkout
+    func addCustomWorkout(set: String, repetition: String) -> CustomWorkout
+    func addWorkoutToCustomWorkout(workout: Workout, customWorkout: CustomWorkout)
+    func addCustomWorkoutToRoutine(customWorkout: CustomWorkout, routine: Routine)
+    func getRoutineWorkout(name: String) -> [CustomWorkout]
     //add new workout
-    func addWorkout(name: String, imageURL: String?)
+    func addWorkout(name: String, imageURL: String?) -> Workout
     //Plan
     
     //Routine

@@ -9,6 +9,14 @@
 import UIKit
 
 class WorkoutPlansTableViewController: UITableViewController, DatabaseListener {
+    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
+        
+    }
+    
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
+        
+    }
+    
     var listenerType: ListenerType = .plan
     
     @IBOutlet weak var PlanName: UILabel!
@@ -18,10 +26,7 @@ class WorkoutPlansTableViewController: UITableViewController, DatabaseListener {
     var plan = ["1","2","3"]
     var beginnercell = "beginner"
     
-    
-    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Workout]) {
-        
-    }
+ 
     
     func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
         

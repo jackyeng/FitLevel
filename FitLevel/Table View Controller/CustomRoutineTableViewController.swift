@@ -1,96 +1,85 @@
 //
-//  WorkoutRoutineTableViewController.swift
+//  CustomRoutineTableViewController.swift
 //  FitLevel
 //
-//  Created by Jacky Eng on 09/05/2020.
+//  Created by Jacky Eng on 21/05/2020.
 //  Copyright © 2020 Jacky Eng. All rights reserved.
 //
 
 import UIKit
 
-class WorkoutRoutineTableViewController: UITableViewController,WorkoutRoutineDelegate, DatabaseListener {
-    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
-        
-    }
+class CustomRoutineTableViewController: UITableViewController {
     
-    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
-        routines = routineWorkouts
-        for i in routines{
-            print(i.name!)
-        }
-        self.tableView.reloadData()
-    }
+    let section_routinename = 0
+    let section_workoutlist = 1
+    let section_addworkout = 2
+
+
+
+    let cell_routinename = "routineName"
+    let cell_workoutlist = "workoutList"
+    let cell_addworkout = "addWorkout"
     
-    
-    var listenerType: ListenerType = .routine
-     
-   
-    
-    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
-        
-    }
-    
-    
-    
-    
-    var routine = ["1","2","3"]
-    
-    var routines = [Routine]()
-    var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
-        
-        
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = UIColor.systemIndigo
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        databaseController = appDelegate.databaseController
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
+
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        for i in routines{
-            print(i.name!)
-        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+        return 3    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return routines.count
+        return 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell =
-                   tableView.dequeueReusableCell(withIdentifier: "routine", for: indexPath)
-                   as! RoutineTableViewCell
-               //let workout = plan[indexPath.row]
-        cell.RoutineNameLabel.text = routines[indexPath.row].name! //display cocktails in My Drink
-             
-               cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-               cell.textLabel?.numberOfLines = 0
-               return cell //display cocktails in My Drink
-    }
+        switch indexPath.section {
+                case section_routinename:
+                    let cell = tableView.dequeueReusableCell(withIdentifier: cell_routinename, for: indexPath)
+                    cell.textLabel?.textColor = .secondaryLabel
+                    cell.selectionStyle = .none
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        databaseController?.addListener(listener: self)
+                    return cell
         
+                case section_workoutlist:
+                    let cell =
+                    tableView.dequeueReusableCell(withIdentifier: cell_workoutlist, for: indexPath)
+                    as! WorkoutTableViewCell
+                    
+                
+                    return cell
+            
+                case section_addworkout:
+                    
+                    let cell = tableView.dequeueReusableCell(withIdentifier: cell_addworkout, for: indexPath)
+                    cell.textLabel?.textColor = .secondaryLabel
+                    cell.selectionStyle = .none
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+                    cell.textLabel?.numberOfLines = 0
+                  
+    
+                    return cell
+           
+                
+                   
+                default:
+                    let cell = tableView.dequeueReusableCell(withIdentifier: cell_routinename, for: indexPath)
+                    return cell
+                
+            }
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        databaseController?.removeListener(listener: self)
-    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -127,27 +116,14 @@ class WorkoutRoutineTableViewController: UITableViewController,WorkoutRoutineDel
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
-        
-        switch segue.identifier { //comment
-        case "routinePreview":
-            if let indexPath = tableView.indexPathForSelectedRow{
-            let destination = segue.destination as! RoutinePreviewTableViewController
-                destination.workoutDelegate = self
-               
-                destination.workouts = (databaseController?.getRoutineWorkout(name: routines[indexPath.row].name!))!
-            }
-        
-        default:
-            return
     }
-    
-    }
+    */
+
 }

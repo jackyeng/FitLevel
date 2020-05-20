@@ -11,6 +11,10 @@
 		8527AEEE2474087100080312 /* ActiveRoutine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEEC2474087100080312 /* ActiveRoutine+CoreDataProperties.swift */; };
 		8527AEF124740A4E00080312 /* CustomWorkout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEEF24740A4E00080312 /* CustomWorkout+CoreDataClass.swift */; };
 		8527AEF224740A4E00080312 /* CustomWorkout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEF024740A4E00080312 /* CustomWorkout+CoreDataProperties.swift */; };
+		8527AEF424754A9F00080312 /* WorkoutRoutineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEF324754A9F00080312 /* WorkoutRoutineDelegate.swift */; };
+		8527AEF6247581A300080312 /* CustomWorkoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEF5247581A300080312 /* CustomWorkoutDelegate.swift */; };
+		8527AEF82475A6A800080312 /* CustomRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEF72475A6A800080312 /* CustomRoutineTableViewController.swift */; };
+		8527AEFA2475B18C00080312 /* RoutinePreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEF92475B18C00080312 /* RoutinePreviewTableViewController.swift */; };
 		852BA574246BC86F00B15B7D /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852BA573246BC86F00B15B7D /* DateCollectionViewCell.swift */; };
 		857EF7EE2468288200323533 /* Plan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7E82468288200323533 /* Plan+CoreDataClass.swift */; };
 		857EF7EF2468288200323533 /* Plan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7E92468288200323533 /* Plan+CoreDataProperties.swift */; };
@@ -52,6 +56,10 @@
 		8527AEEC2474087100080312 /* ActiveRoutine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveRoutine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8527AEEF24740A4E00080312 /* CustomWorkout+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomWorkout+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8527AEF024740A4E00080312 /* CustomWorkout+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomWorkout+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8527AEF324754A9F00080312 /* WorkoutRoutineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRoutineDelegate.swift; sourceTree = "<group>"; };
+		8527AEF5247581A300080312 /* CustomWorkoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWorkoutDelegate.swift; sourceTree = "<group>"; };
+		8527AEF72475A6A800080312 /* CustomRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoutineTableViewController.swift; sourceTree = "<group>"; };
+		8527AEF92475B18C00080312 /* RoutinePreviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePreviewTableViewController.swift; sourceTree = "<group>"; };
 		852BA573246BC86F00B15B7D /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		857EF7E82468288200323533 /* Plan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataClass.swift"; sourceTree = "<group>"; };
 		857EF7E92468288200323533 /* Plan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -171,17 +179,16 @@
 			children = (
 				85FD53CE2465A038004E9AB9 /* Database */,
 				857EF7F724683FF200323533 /* View */,
-				8593EAD62472EAE100914C4D /* Table View Cell */,
-				8593EAD124715E0800914C4D /* API */,
 				85B9D8F9246BCC1A00D17F2E /* Calender */,
-				857EF804246855A200323533 /* Class */,
-				85FD53C224651C94004E9AB9 /* Assets.xcassets */,
-				85FD53C724651C95004E9AB9 /* Info.plist */,
-				85FD53DC2465A41C004E9AB9 /* Main */,
 				85FD53D32465A0E2004E9AB9 /* View Controller */,
-				85FD53D22465A0D6004E9AB9 /* Delegate */,
 				85FD53D12465A0CC004E9AB9 /* Table View Controller */,
 				85FD53D02465A0C6004E9AB9 /* DataModel */,
+				857EF804246855A200323533 /* Class */,
+				85FD53D22465A0D6004E9AB9 /* Delegate */,
+				8593EAD124715E0800914C4D /* API */,
+				8593EAD62472EAE100914C4D /* Table View Cell */,
+				85FD53C224651C94004E9AB9 /* Assets.xcassets */,
+				85FD53C724651C95004E9AB9 /* Info.plist */,
 			);
 			path = FitLevel;
 			sourceTree = "<group>";
@@ -220,6 +227,8 @@
 				85FD53DD2465C768004E9AB9 /* WorkoutPlansTableViewController.swift */,
 				85FD53DF2465C7B0004E9AB9 /* WorkoutListTableViewController.swift */,
 				85FD53E12465C7E7004E9AB9 /* WorkoutRoutineTableViewController.swift */,
+				8527AEF92475B18C00080312 /* RoutinePreviewTableViewController.swift */,
+				8527AEF72475A6A800080312 /* CustomRoutineTableViewController.swift */,
 			);
 			path = "Table View Controller";
 			sourceTree = "<group>";
@@ -229,6 +238,8 @@
 			children = (
 				85FD53B924651C93004E9AB9 /* AppDelegate.swift */,
 				85FD53BB24651C93004E9AB9 /* SceneDelegate.swift */,
+				8527AEF324754A9F00080312 /* WorkoutRoutineDelegate.swift */,
+				8527AEF5247581A300080312 /* CustomWorkoutDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -242,13 +253,6 @@
 				857EF802246845C000323533 /* WorkoutRoutineViewController.swift */,
 			);
 			path = "View Controller";
-			sourceTree = "<group>";
-		};
-		85FD53DC2465A41C004E9AB9 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,9 +354,13 @@
 				857EF7EF2468288200323533 /* Plan+CoreDataProperties.swift in Sources */,
 				85FD53EB2465E123004E9AB9 /* CoreDataController.swift in Sources */,
 				8527AEF124740A4E00080312 /* CustomWorkout+CoreDataClass.swift in Sources */,
+				8527AEF424754A9F00080312 /* WorkoutRoutineDelegate.swift in Sources */,
 				857EF7F22468288200323533 /* Workout+CoreDataClass.swift in Sources */,
 				85FD53E22465C7E7004E9AB9 /* WorkoutRoutineTableViewController.swift in Sources */,
 				85FD53DB2465A194004E9AB9 /* WorkoutStatsViewController.swift in Sources */,
+				8527AEFA2475B18C00080312 /* RoutinePreviewTableViewController.swift in Sources */,
+				8527AEF82475A6A800080312 /* CustomRoutineTableViewController.swift in Sources */,
+				8527AEF6247581A300080312 /* CustomWorkoutDelegate.swift in Sources */,
 				85FD53D92465A165004E9AB9 /* RoutinePlanViewController.swift in Sources */,
 				857EF7F32468288200323533 /* Workout+CoreDataProperties.swift in Sources */,
 				85FD53E92465E112004E9AB9 /* MulticastDelegate.swift in Sources */,

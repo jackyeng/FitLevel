@@ -8,15 +8,42 @@
 
 import UIKit
 
-class EditWorkout: UIViewController {
-
+class EditWorkout: UIViewController, UITextFieldDelegate, CustomWorkoutDelegate, DatabaseListener {
+    var listenerType: ListenerType = .workout
+    
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
+        
+    }
+    
+    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
+        
+    }
+    
+    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
+        
+    }
+    
+    
+    weak var customDelegate: CustomWorkoutDelegate?
+    var workout: Workout?
+    var databaseController: DatabaseProtocol?
+    
+    @IBOutlet weak var sets: UITextField!
+    @IBOutlet weak var reps: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        sets.delegate = self
+        reps.delegate = self
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
         // Do any additional setup after loading the view.
     }
     
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     /*
     // MARK: - Navigation
 
@@ -27,4 +54,8 @@ class EditWorkout: UIViewController {
     }
     */
 
+    @IBAction func addWorkout(_ sender: Any) {
+        let customWorkout = databaseController?.addCustomWorkout(set: sets.text!, repetition: reps.text!)
+        
+    }
 }

@@ -8,13 +8,30 @@
 
 import UIKit
 
-class WorkoutRoutineViewController: UIViewController {
+class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutRoutineDelegate {
+    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
+        workoutss = workouts
+    }
+    
+    var listenerType: ListenerType = .routineworkout
+    
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
+        
+    }
+    
+    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
+        
+    }
+    
     
     
     //https://www.youtube.com/watch?v=O3ltwjDJaMk
     let shapeLayer = CAShapeLayer()
     //WorkoutData(name:"S",sets:"s",reps"s")
     var workouts = [WorkoutClass(name:"Inclined Push-Ups",sets:"1",reps:"1"),WorkoutClass(name:"Inclined Plank",sets:"2",reps:"2"),WorkoutClass(name:"Inclined Barbell Push",sets:"3",reps:"3"),WorkoutClass(name:"Squat",sets:"4",reps:"4")]
+    
+    var workoutss = [CustomWorkout]()
+    weak var workoutDelegate: WorkoutRoutineDelegate?
     
     var workoutprogress = 0
     var workoutcount = 3
@@ -30,8 +47,10 @@ class WorkoutRoutineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(workoutss.count)
+        print(workoutss[workoutprogress].workout!)
         
-        get_image("https://wger.de/media/exercise-images/133/seated-leg-curl-large-1.png", ImageView)
+        get_image(workoutss[workoutprogress].workout!.image!, ImageView)
         //let center = view.center
         let coordinate = CGPoint(x:207,y:338)
         //create my track layer
@@ -61,9 +80,9 @@ class WorkoutRoutineViewController: UIViewController {
 
         
         //Initialize title
-        workoutName.text = workouts[workoutprogress].name
-        workoutSets.text = "Sets: " + workouts[workoutprogress].sets
-        workoutReps.text = "Reps: " + workouts[workoutprogress].reps
+        workoutName.text = workoutss[workoutprogress].workout!.name
+        workoutSets.text = "Sets: " + workoutss[workoutprogress].set!
+        workoutReps.text = "Reps: " + workoutss[workoutprogress].repetition!
         
         
         //Allignment
@@ -80,6 +99,10 @@ class WorkoutRoutineViewController: UIViewController {
         CompleteButton.layer.cornerRadius = 20
         
         self.view.bringSubviewToFront(ImageView)
+        workoutcount = workoutss.count
+        for item in workoutss{
+            print(item.workout?.name ?? "Empty")
+        }
     }
     
     
@@ -104,6 +127,8 @@ class WorkoutRoutineViewController: UIViewController {
     }
     */
     @IBAction func Complete(_ sender: Any) {
+        workoutprogress += 1
+        
         if !actionStatus  {
             return
         }
@@ -127,15 +152,15 @@ class WorkoutRoutineViewController: UIViewController {
     
     func updateWorkout(){
         
-        workoutprogress += 1
-        if workoutprogress > workoutcount{
+        
+        if workoutprogress > workoutcount-1{
             displayMessage(title: "Congratulation!", message: "You have completed your workout.")
             return
         }
-        
-        workoutName.text = workouts[workoutprogress].name
-        workoutSets.text = "Sets: " + workouts[workoutprogress].sets
-        workoutReps.text = "Reps: " + workouts[workoutprogress].reps
+        get_image(workoutss[workoutprogress].workout!.image!, ImageView)
+        workoutName.text = workoutss[workoutprogress].workout!.name
+        workoutSets.text = "Sets: " + workoutss[workoutprogress].set!
+        workoutReps.text = "Reps: " + workoutss[workoutprogress].repetition!
         
     }
     

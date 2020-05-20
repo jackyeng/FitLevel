@@ -8,12 +8,18 @@
 
 import UIKit
 
-class WorkoutListTableViewController: UITableViewController, DatabaseListener {
-    var listenerType: ListenerType = .workout
-    
-    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Workout]) {
+class WorkoutListTableViewController: UITableViewController, DatabaseListener, CustomWorkoutDelegate {
+    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
         
     }
+    
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
+        
+    }
+    
+    var listenerType: ListenerType = .workout
+    
+    
     
     func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
         workout = workouts
@@ -106,14 +112,28 @@ class WorkoutListTableViewController: UITableViewController, DatabaseListener {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        switch segue.identifier { //comment
+        case "customWorkout":
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let destination = segue.destination as! EditWorkout
+                destination.customDelegate = self
+                let custom = databaseController?.addCustomWorkout(set: "1", repetition: "2")
+                let workout = self.workout[indexPath.row]
+                let _ = databaseController?.addWorkoutToCustomWorkout(workout: workout, customWorkout: custom!)
+                databaseController?.saveDraft()
+            }
+        default:
+            return
+        }
     }
-    */
+    
 
 }
