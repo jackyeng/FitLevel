@@ -9,6 +9,14 @@
 import UIKit
 
 class WorkoutListTableViewController: UITableViewController, DatabaseListener, CustomWorkoutDelegate {
+    func addWorkout(custom: CustomWorkout) -> Bool {
+        return true
+    }
+    
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+        
+    }
+    
     func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
         
     }
@@ -25,7 +33,7 @@ class WorkoutListTableViewController: UITableViewController, DatabaseListener, C
         workout = workouts
     }
     
-    
+    weak var workoutDelegate: CustomWorkoutDelegate?
     var databaseController: DatabaseProtocol?
     var workout = [Workout]()
     
@@ -124,12 +132,13 @@ class WorkoutListTableViewController: UITableViewController, DatabaseListener, C
         case "customWorkout":
             if let indexPath = tableView.indexPathForSelectedRow{
                 let destination = segue.destination as! EditWorkout
-                destination.customDelegate = self
-                let custom = databaseController?.addCustomWorkout(set: "1", repetition: "2")
-                let workout = self.workout[indexPath.row]
-                let _ = databaseController?.addWorkoutToCustomWorkout(workout: workout, customWorkout: custom!)
+                destination.customDelegate = workoutDelegate
+                destination.workout = self.workout[indexPath.row]
+                
                 databaseController?.saveDraft()
+        
             }
+        
         default:
             return
         }

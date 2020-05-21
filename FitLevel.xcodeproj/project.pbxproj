@@ -15,6 +15,8 @@
 		8527AEF6247581A300080312 /* CustomWorkoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEF5247581A300080312 /* CustomWorkoutDelegate.swift */; };
 		8527AEF82475A6A800080312 /* CustomRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEF72475A6A800080312 /* CustomRoutineTableViewController.swift */; };
 		8527AEFA2475B18C00080312 /* RoutinePreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEF92475B18C00080312 /* RoutinePreviewTableViewController.swift */; };
+		8527AEFC24763E5700080312 /* EditRoutineNameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEFB24763E5700080312 /* EditRoutineNameDelegate.swift */; };
+		8527AEFE247684EA00080312 /* EditRoutineNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEFD247684EA00080312 /* EditRoutineNameViewController.swift */; };
 		852BA574246BC86F00B15B7D /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852BA573246BC86F00B15B7D /* DateCollectionViewCell.swift */; };
 		857EF7EE2468288200323533 /* Plan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7E82468288200323533 /* Plan+CoreDataClass.swift */; };
 		857EF7EF2468288200323533 /* Plan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7E92468288200323533 /* Plan+CoreDataProperties.swift */; };
@@ -60,6 +62,8 @@
 		8527AEF5247581A300080312 /* CustomWorkoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWorkoutDelegate.swift; sourceTree = "<group>"; };
 		8527AEF72475A6A800080312 /* CustomRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoutineTableViewController.swift; sourceTree = "<group>"; };
 		8527AEF92475B18C00080312 /* RoutinePreviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePreviewTableViewController.swift; sourceTree = "<group>"; };
+		8527AEFB24763E5700080312 /* EditRoutineNameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineNameDelegate.swift; sourceTree = "<group>"; };
+		8527AEFD247684EA00080312 /* EditRoutineNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineNameViewController.swift; sourceTree = "<group>"; };
 		852BA573246BC86F00B15B7D /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		857EF7E82468288200323533 /* Plan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataClass.swift"; sourceTree = "<group>"; };
 		857EF7E92468288200323533 /* Plan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 				85FD53BB24651C93004E9AB9 /* SceneDelegate.swift */,
 				8527AEF324754A9F00080312 /* WorkoutRoutineDelegate.swift */,
 				8527AEF5247581A300080312 /* CustomWorkoutDelegate.swift */,
+				8527AEFB24763E5700080312 /* EditRoutineNameDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				85FD53D82465A165004E9AB9 /* RoutinePlanViewController.swift */,
 				85FD53DA2465A194004E9AB9 /* WorkoutStatsViewController.swift */,
 				857EF802246845C000323533 /* WorkoutRoutineViewController.swift */,
+				8527AEFD247684EA00080312 /* EditRoutineNameViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -345,6 +351,7 @@
 				85FD53BA24651C93004E9AB9 /* AppDelegate.swift in Sources */,
 				85FD53E72465E106004E9AB9 /* DatabaseProtocol.swift in Sources */,
 				85FD53BC24651C93004E9AB9 /* SceneDelegate.swift in Sources */,
+				8527AEFE247684EA00080312 /* EditRoutineNameViewController.swift in Sources */,
 				8593EAD82472EB0800914C4D /* PlanTableViewCell.swift in Sources */,
 				8593EAD32471735C00914C4D /* VolumeData.swift in Sources */,
 				8527AEF224740A4E00080312 /* CustomWorkout+CoreDataProperties.swift in Sources */,
@@ -356,6 +363,7 @@
 				8527AEF124740A4E00080312 /* CustomWorkout+CoreDataClass.swift in Sources */,
 				8527AEF424754A9F00080312 /* WorkoutRoutineDelegate.swift in Sources */,
 				857EF7F22468288200323533 /* Workout+CoreDataClass.swift in Sources */,
+				8527AEFC24763E5700080312 /* EditRoutineNameDelegate.swift in Sources */,
 				85FD53E22465C7E7004E9AB9 /* WorkoutRoutineTableViewController.swift in Sources */,
 				85FD53DB2465A194004E9AB9 /* WorkoutStatsViewController.swift in Sources */,
 				8527AEFA2475B18C00080312 /* RoutinePreviewTableViewController.swift in Sources */,

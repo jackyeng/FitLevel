@@ -8,7 +8,11 @@
 
 import UIKit
 
-class EditWorkout: UIViewController, UITextFieldDelegate, CustomWorkoutDelegate, DatabaseListener {
+class EditWorkout: UIViewController, UITextFieldDelegate, DatabaseListener {
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+        
+    }
+    
     var listenerType: ListenerType = .workout
     
     func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
@@ -23,18 +27,20 @@ class EditWorkout: UIViewController, UITextFieldDelegate, CustomWorkoutDelegate,
         
     }
     
+    @IBOutlet weak var setLabel: UITextField!
+    
+    @IBOutlet weak var repLabel: UITextField!
     
     weak var customDelegate: CustomWorkoutDelegate?
     var workout: Workout?
     var databaseController: DatabaseProtocol?
     
-    @IBOutlet weak var sets: UITextField!
-    @IBOutlet weak var reps: UITextField!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sets.delegate = self
-        reps.delegate = self
+        setLabel.delegate = self
+        repLabel.delegate = self
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         // Do any additional setup after loading the view.
@@ -55,7 +61,44 @@ class EditWorkout: UIViewController, UITextFieldDelegate, CustomWorkoutDelegate,
     */
 
     @IBAction func addWorkout(_ sender: Any) {
-        let customWorkout = databaseController?.addCustomWorkout(set: sets.text!, repetition: reps.text!)
         
-    }
+        
+        if setLabel.text != "" && repLabel.text != ""{  //only allow save when user enter text
+                let customWorkout = databaseController?.addCustomWorkout(set: setLabel.text!, repetition: repLabel.text!)
+            let _ = databaseController?.addWorkoutToCustomWorkout(workout: workout!, customWorkout: customWorkout!)
+                let _ = customDelegate?.addWorkout(custom: customWorkout!)
+            
+                
+                
+            
+                for vc in self.navigationController!.viewControllers { //search for My Drinks View Controller and pop to it.
+                    if let myvc = vc as? CustomRoutineTableViewController{
+                        self.navigationController?.popToViewController(myvc, animated: true)
+                    }
+                }
+                return
+            }
+
+            var errorMsg = "Please ensure all fields are filled:\n"
+
+            if setLabel.text == "" {
+            errorMsg += "- Must provide a set\n"
+            }
+        
+            if repLabel.text == "" {
+            errorMsg += "- Must provide a rep\n"
+            }
+
+            displayMessage(title: "Not all fields filled", message: errorMsg)
+        }
+        
+        
+            func displayMessage(title: String, message: String) {
+                let alertController = UIAlertController(title: title, message: message,
+                                                        preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style:
+                    UIAlertAction.Style.default,handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            }
+    
 }

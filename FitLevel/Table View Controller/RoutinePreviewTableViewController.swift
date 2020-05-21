@@ -9,6 +9,10 @@
 import UIKit
 
 class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDelegate,DatabaseListener {
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+        
+    }
+    
     var listenerType: ListenerType = .routineworkout
     
     
@@ -28,6 +32,9 @@ class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDe
     
     var section_workout = 0
     var cell_workout = "workoutPreview"
+    
+    
+    
     
     var workouts = [CustomWorkout]()
     var databaseController: DatabaseProtocol?

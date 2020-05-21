@@ -43,6 +43,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return activeRoutine
     }
     
+    func removeRoutinefromActive(active: ActiveRoutine, routine: Routine) {
+        routine.removeFromActiveroutine(active)
+    }
     
     func addRoutineToActive(routine: Routine, active: ActiveRoutine) -> Bool {
         //Cocktail validation
@@ -56,15 +59,29 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                 return false
             }
         }*/
+        routine.addToActiveroutine(active)
+        //active.addToRoutine(routine)
         
-        active.addToRoutine(routine)
+        saveDraft()
+        
+        let test = fetchActiveRoutine()
+        for i in test{
+            print(i)
+        }
         
         return true
         
     }
     
-    
+    var listeners = MulticastDelegate<DatabaseListener>()
     let ACTIVE_ROUTINE_NAME = "Active Workout"
+    let PLAN_NAME = "Plan"
+    
+    func addEmptyRoutine() -> Routine {
+        let emptyroutine = NSEntityDescription.insertNewObject(forEntityName: "Routine",
+                                                               into: persistentContainer.viewContext) as! Routine
+        return emptyroutine
+    }
     
     func addWorkout(name: String, imageURL: String?) -> Workout{
         let workout = NSEntityDescription.insertNewObject(forEntityName: "Workout",
@@ -81,15 +98,17 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return routine
     }
     
-    func addPlan(planName: String) {
+    func addPlan(planName: String) -> Plan {
         let plan = NSEntityDescription.insertNewObject(forEntityName: "Plan",
                                                          into: childContext!) as! Plan
         plan.name = planName
+        return plan
     }
     
  
-    func addRoutineToPlan() {
-        
+    func addRoutineToPlan(routine: Routine, plan: Plan) -> Bool {
+        routine.addToPlan(plan)
+        return true
     }
     
     func addWorkoutToPlan(workout: Workout, plan: Plan) -> Bool {
@@ -104,7 +123,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
 
 
-    var listeners = MulticastDelegate<DatabaseListener>() // send messages when changes are made to the database
+   
     var persistentContainer: NSPersistentContainer // main link to database, containts properties and methods needed to work with core data
     var childContext: NSManagedObjectContext?
    
@@ -112,7 +131,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     var allWorkoutsFetchedResultsController: NSFetchedResultsController<Workout>?
     var customWorkoutFetchedResultsController: NSFetchedResultsController<CustomWorkout>?
     var routineWorkoutsFetchedResultsController: NSFetchedResultsController<Routine>?
-    var planWorkoutsFetchedResultsController: NSFetchedResultsController<Plan>?
+    var planWorkoutsFetchedResultsController: NSFetchedResultsController<Routine>?
+    
+    
     var workoutlist = [WorkoutData]()
     var loadstatus = false
     
@@ -143,8 +164,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
         
         //createDefaultRoutine()
-      
-    
+        //createDefaultPlans()
         
         saveDraft()
     }
@@ -170,7 +190,27 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return routines.first! //
     }()
  
+    
+    lazy var recommendedPlan: Plan = {
+        var plan = [Plan]()
 
+        let request: NSFetchRequest<Plan> = Plan.fetchRequest()
+        let predicate = NSPredicate(format: "name = %@", PLAN_NAME)
+        request.predicate = predicate
+
+        do {
+            try plan = persistentContainer.viewContext.fetch(request) //
+        } catch {
+            print("Fetch Request Failed: \(error)")
+        }
+
+        if plan.count == 0 { //
+            return addPlan(planName: PLAN_NAME)//
+        }
+
+        return plan.first! //
+    }()
+    
     func saveContext() { //has to be called to make changes to the file otherwise changes are only made to managed object
         if persistentContainer.viewContext.hasChanges { //if there are changes context , then we save
             do {
@@ -224,7 +264,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         if listener.listenerType == .routineworkout || listener.listenerType == .all {
             listener.onWorkoutListChange(change: .update, workouts: fetchAllWorkouts())
         }
-        
+        if listener.listenerType == .plan || listener.listenerType == .all {
+            listener.onPlanListChange(change: .update, recommendedPlan: fetchRecommendedPlan())
+        }
        
 
         
@@ -253,6 +295,34 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
 
     // MARK: - Core Data Fetch Requests
+    
+    func fetchRecommendedPlan() -> [Routine]{
+    if planWorkoutsFetchedResultsController == nil {
+            let fetchRequest: NSFetchRequest<Routine> = Routine.fetchRequest()
+            let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+            let predicate = NSPredicate(format: "ANY plan.name == %@", PLAN_NAME) // fix
+            fetchRequest.sortDescriptors = [nameSortDescriptor]
+            fetchRequest.predicate = predicate
+            planWorkoutsFetchedResultsController =
+                NSFetchedResultsController<Routine>(fetchRequest: fetchRequest,
+                    managedObjectContext: persistentContainer.viewContext,
+                        sectionNameKeyPath: nil, cacheName: nil)
+            planWorkoutsFetchedResultsController?.delegate = self
+
+            do {
+                try planWorkoutsFetchedResultsController?.performFetch()
+            } catch {
+                print("Fetch Request Failed: \(error)")
+            }
+        }
+
+        var routines = [Routine]()
+        if planWorkoutsFetchedResultsController?.fetchedObjects != nil {
+            routines = (planWorkoutsFetchedResultsController?.fetchedObjects)!
+        }
+
+        return routines
+    }
     
     func fetchActiveRoutine() -> [Routine]{
         if routineWorkoutsFetchedResultsController == nil {
@@ -283,11 +353,13 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
     
     func fetchRoutineWorkout(name: String) -> [CustomWorkout]{
-    if customWorkoutFetchedResultsController == nil {
+    
         let fetchRequest: NSFetchRequest<CustomWorkout> = CustomWorkout.fetchRequest()
         // Sort by name
         let nameSortDescriptor = NSSortDescriptor(key: "set", ascending: true)
+        let predicate = NSPredicate(format: "ANY routine.name == %@", name) // fix
         fetchRequest.sortDescriptors = [nameSortDescriptor]
+        fetchRequest.predicate = predicate
         // Initialize Results Controller
         customWorkoutFetchedResultsController =
             NSFetchedResultsController<CustomWorkout>(fetchRequest:
@@ -301,12 +373,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         } catch {
             print("Fetch Request Failed: \(error)")
         }
-    }
+    
 
     var workout = [CustomWorkout]()
-    if customWorkoutFetchedResultsController?.fetchedObjects != nil {
-        workout = (customWorkoutFetchedResultsController?.fetchedObjects)!
-    }
+   
+    workout = (customWorkoutFetchedResultsController?.fetchedObjects)!
+
 
     return workout
     }
@@ -446,6 +518,38 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
 
     //Add routine to plans
     func createDefaultPlans(){
+        let r1 = addRoutine(routineName: "Beginner Plan I")
+        let r2 = addRoutine(routineName: "Intermediate Plan I")
+        let r3 = addRoutine(routineName: "Advanced Plan I")
+        
+               
+        var int = 0
+        let workouts = fetchAllWorkouts()
+               
+        for item in workouts{
+            int += 1
+            let custom = addCustomWorkout( set: "3", repetition: "12")
+            let _ = addWorkoutToCustomWorkout(workout: item , customWorkout: custom)
+            let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r1)
+            let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r2)
+            let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r3)
+            saveDraft()
+            if int == 7{
+                break
+                }
+            }
+               
+               
+               
+               /*let test = fetchRoutineWorkout()
+               for item in test{
+                   print(item.workout?.name ?? "Empty" )
+               }*/
+               
+               let _ = addRoutineToPlan(routine: r1, plan: recommendedPlan)
+        
+               let _ = addRoutineToPlan(routine: r2, plan: recommendedPlan)
+               let _ = addRoutineToPlan(routine: r3, plan: recommendedPlan)
         
         
     }

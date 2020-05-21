@@ -12,6 +12,8 @@ import UIKit
 class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     weak var databaseController: DatabaseProtocol?
     
+    @IBOutlet weak var calenderFrame: UITextView!
+    
     var workoutlinks = ["https://wger.de/media/exercise-images/6/Leg-press-2-1024x670.png",
         "https://wger.de/media/exercise-images/177/Seated-leg-curl-1.png",
     "https://wger.de/media/exercise-images/26/Biceps-curl-1.png",
@@ -56,7 +58,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
            super.viewDidLoad()
-            
+            self.calenderFrame.layer.borderColor = UIColor.black.cgColor
+            self.calenderFrame.layer.borderWidth = 3
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             databaseController = appDelegate.databaseController
         
@@ -260,9 +263,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     //the function filter out the name and associate it with the image
     @IBAction func WorkoutName(_ sender: Any) {
     
-        
-        
-        
+    
         let workout = databaseController?.addRoutine(routineName: "")
         let workout1 = databaseController?.addWorkout(name: "test", imageURL: "")
         let workouts = databaseController?.addCustomWorkout(set:"1", repetition: "3")

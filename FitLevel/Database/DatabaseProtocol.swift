@@ -27,7 +27,7 @@ protocol DatabaseListener: AnyObject {
     func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine])
     func onWorkoutListChange(change: DatabaseChange, workouts: [Workout])
     func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout])
-   
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine])
 }
 protocol DatabaseProtocol: AnyObject {
     var activeRoutine: ActiveRoutine {get}
@@ -45,8 +45,8 @@ protocol DatabaseProtocol: AnyObject {
     func addWorkoutToRoutine(workout: Workout, routine: Plan) -> Bool
     func addRoutineToActive(routine: Routine, active: ActiveRoutine) -> Bool
     //create plan/ saved routine
-    func addPlan(planName: String) //default plan
-    func addRoutineToPlan()
+    func addPlan(planName: String) -> Plan //default plan
+    func addRoutineToPlan(routine: Routine, plan: Plan) -> Bool
    //create ActiveRoutine
     func addActiveRoutine(activeroutineName: String) -> ActiveRoutine
     //create CustomWorkout
@@ -56,31 +56,14 @@ protocol DatabaseProtocol: AnyObject {
     func getRoutineWorkout(name: String) -> [CustomWorkout]
     //add new workout
     func addWorkout(name: String, imageURL: String?) -> Workout
+    func addEmptyRoutine() -> Routine
     //Plan
     
+    //removal
+    func removeRoutinefromActive(active: ActiveRoutine, routine: Routine)
+    
     //Routine
-    
-    
-    /*/Drink
-    func addDrink(drinkName: String) -> Drink
-    
-    //Cocktail
-    func addEmptyCocktail() -> Cocktail
-    func addCocktail(name: String, instructions: String) -> Cocktail
-    func removeCocktailFromDrink(cocktail: Cocktail, drink: Drink)
-    func addCocktailToDrink(cocktail: Cocktail,drink:Drink) -> Bool
-    func displayCocktail(cocktail: Cocktail) -> Cocktail
-   
-    
-    //Ingredient
-    func addIngredient(name: String) -> Ingredient
-    func addNewIngredient(name: String)
-    
-    //Ingredient Measurement
-    func addIngredientMeasurement(cocktail: Cocktail, name: String, quantity: String?)
-    func deleteIngredientMeasurement(ingredientmeasurement: IngredientMeasurement)
-    func removeIngredientMeasurementFromCocktail(cocktail: Cocktail, ingredientmeasurements: IngredientMeasurement)
-    */
+
  
    
     

@@ -1,5 +1,5 @@
 //
-//  CustomWorkoutDelegate.swift
+//  EditRoutineNameDelegate.swift
 //  FitLevel
 //
 //  Created by Jacky Eng on 21/05/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-
-protocol CustomWorkoutDelegate: AnyObject {
-        func addWorkout( custom: CustomWorkout) -> Bool
+protocol EditRoutineNameDelegate: AnyObject {
+   
+    func editName( Name: String) -> Bool
 }

@@ -9,6 +9,10 @@
 import UIKit
 
 class WorkoutRoutineTableViewController: UITableViewController,WorkoutRoutineDelegate, DatabaseListener {
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+        
+    }
+    
     func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
         
     }
@@ -79,6 +83,26 @@ class WorkoutRoutineTableViewController: UITableViewController,WorkoutRoutineDel
                cell.textLabel?.numberOfLines = 0
                return cell //display cocktails in My Drink
     }
+    
+    
+    // Override to support conditional editing of the table view.
+       override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+           // Return false if you do not want the specified item to be editable.
+           if indexPath.section == 0 {
+               return true
+           }
+           return false
+       }
+
+       
+       // Override to support editing the table view.
+       override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           if editingStyle == .delete && indexPath.section == 0 {
+            self.databaseController!.removeRoutinefromActive(active: databaseController!.activeRoutine, routine: routines[indexPath.row])
+               
+       
+           }
+       }
     
     
     override func viewWillAppear(_ animated: Bool) {

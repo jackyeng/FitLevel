@@ -9,6 +9,10 @@
 import UIKit
 
 class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutRoutineDelegate {
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+        
+    }
+    
     func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
         workoutss = workouts
     }
