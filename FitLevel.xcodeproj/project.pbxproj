@@ -36,6 +36,8 @@
 		8593EADA2472EE7400914C4D /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */; };
 		8593EADC247313D600914C4D /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */; };
 		85B9D8FB246BCC2F00D17F2E /* CalenderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */; };
+		85FCF19D2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */; };
+		85FCF19E2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCF19C2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift */; };
 		85FD53BA24651C93004E9AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53B924651C93004E9AB9 /* AppDelegate.swift */; };
 		85FD53BC24651C93004E9AB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53BB24651C93004E9AB9 /* SceneDelegate.swift */; };
 		85FD53C124651C93004E9AB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85FD53BF24651C93004E9AB9 /* Main.storyboard */; };
@@ -83,6 +85,8 @@
 		8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
 		8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderInfo.swift; sourceTree = "<group>"; };
+		85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		85FCF19C2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		85FD53B624651C93004E9AB9 /* FitLevel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitLevel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FD53B924651C93004E9AB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85FD53BB24651C93004E9AB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 		85FD53D02465A0C6004E9AB9 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */,
+				85FCF19C2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift */,
 				8527AEEF24740A4E00080312 /* CustomWorkout+CoreDataClass.swift */,
 				8527AEF024740A4E00080312 /* CustomWorkout+CoreDataProperties.swift */,
 				8527AEEB2474087100080312 /* ActiveRoutine+CoreDataClass.swift */,
@@ -354,6 +360,7 @@
 				8527AEFE247684EA00080312 /* EditRoutineNameViewController.swift in Sources */,
 				8593EAD82472EB0800914C4D /* PlanTableViewCell.swift in Sources */,
 				8593EAD32471735C00914C4D /* VolumeData.swift in Sources */,
+				85FCF19E2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift in Sources */,
 				8527AEF224740A4E00080312 /* CustomWorkout+CoreDataProperties.swift in Sources */,
 				852BA574246BC86F00B15B7D /* DateCollectionViewCell.swift in Sources */,
 				85FD53E02465C7B0004E9AB9 /* WorkoutListTableViewController.swift in Sources */,
@@ -361,6 +368,7 @@
 				857EF7EF2468288200323533 /* Plan+CoreDataProperties.swift in Sources */,
 				85FD53EB2465E123004E9AB9 /* CoreDataController.swift in Sources */,
 				8527AEF124740A4E00080312 /* CustomWorkout+CoreDataClass.swift in Sources */,
+				85FCF19D2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift in Sources */,
 				8527AEF424754A9F00080312 /* WorkoutRoutineDelegate.swift in Sources */,
 				857EF7F22468288200323533 /* Workout+CoreDataClass.swift in Sources */,
 				8527AEFC24763E5700080312 /* EditRoutineNameDelegate.swift in Sources */,

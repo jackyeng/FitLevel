@@ -10,17 +10,67 @@ import UIKit
 
 class WorkoutStatsViewController: UIViewController {
 
+    var views: UIView?
+    var string: String?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor.systemIndigo
        
         
-      
-        
+        views = view
         self.navigationItem.titleView = navTitleWithImageAndText(titleText: "Workout Stats", imageName: "gamer_01_18_contour_info_infos_lines-512.png")
         // Do any additional setup after loading the view.
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       views = view
+        return 10
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "topWorkout", for: indexPath) as! DateCollectionViewCell
+        
+        cell.backgroundColor = UIColor.yellow
+        
+        
+        cell.layer.cornerRadius = 18
+        cell.layer.masksToBounds = true
+        let origin = cell.frame
+        
+        //Top Workout
+        let coordinate = CGPoint(x:207,y:338)
+        //create my track layer
+        let trackLayer = CAShapeLayer()
+        let circularPath = UIBezierPath(arcCenter: coordinate, radius: 100, startAngle: -CGFloat.pi / 2 , endAngle: 2 * CGFloat.pi, clockwise: true)
+               
+        trackLayer.path = circularPath.cgPath
+               
+        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.lineWidth = 10
+        trackLayer.fillColor = UIColor.white.cgColor
+        trackLayer.lineCap = CAShapeLayerLineCap.round
+
+        
+        
+        
+        
+        if cell.isHidden{
+            cell.isHidden = false
+        }
+        
+    
+        return cell
+    }
+    
+    func displayTopWorkout(){
+        
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -31,6 +81,7 @@ class WorkoutStatsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
     
     //https://stackoverflow.com/questions/24803178/navigation-bar-with-uiimage-for-title
     func navTitleWithImageAndText(titleText: String, imageName: String) -> UIView {
@@ -75,4 +126,4 @@ class WorkoutStatsViewController: UIViewController {
     }
     
     
-}
+

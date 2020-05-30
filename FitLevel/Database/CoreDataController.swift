@@ -9,6 +9,21 @@
 import UIKit
 import CoreData
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
+    
+    func getWorkoutDate(year: Int, month: Int) -> [WorkoutDate]{
+        return fetchWorkoutDate(year: year, month: month)
+    }
+    
+    func addWorkoutDate(year: Int, month: Int, day: Int) -> WorkoutDate {
+        let workoutDate = NSEntityDescription.insertNewObject(forEntityName: "WorkoutDate",
+                                                                into: persistentContainer.viewContext) as! WorkoutDate
+        workoutDate.year = Int64(year)
+        workoutDate.month = Int64(month)
+        workoutDate.day = Int64(day)
+        saveDraft()
+        return workoutDate
+    }
+    
     func getRoutineWorkout(name: String) -> [CustomWorkout] {
         return fetchRoutineWorkout(name: name)
     }
@@ -132,7 +147,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     var customWorkoutFetchedResultsController: NSFetchedResultsController<CustomWorkout>?
     var routineWorkoutsFetchedResultsController: NSFetchedResultsController<Routine>?
     var planWorkoutsFetchedResultsController: NSFetchedResultsController<Routine>?
-    
+    var workoutDateFetchedResultsController: NSFetchedResultsController<WorkoutDate>?
     
     var workoutlist = [WorkoutData]()
     var loadstatus = false
@@ -150,7 +165,11 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         childContext?.parent = self.persistentContainer.viewContext
         
-    
+        
+        let workoutdate = fetchWorkoutDate(year: 2020, month: 5)
+        for item in workoutdate{
+            print(item.day)
+        }
         
         if fetchAllWorkouts().count == 0 {
             requestWorkoutImage()
@@ -383,6 +402,37 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     return workout
     }
     
+    func fetchWorkoutDate(year: Int, month:Int) -> [WorkoutDate]{
+     
+         let fetchRequest: NSFetchRequest<WorkoutDate> = WorkoutDate.fetchRequest()
+         // Sort by name
+         let nameSortDescriptor = NSSortDescriptor(key: "day", ascending: true)
+         let predicate = NSPredicate(format: "year == \(year) AND month == \(month)") // fix
+         fetchRequest.sortDescriptors = [nameSortDescriptor]
+         fetchRequest.predicate = predicate
+         // Initialize Results Controller
+         workoutDateFetchedResultsController =
+             NSFetchedResultsController<WorkoutDate>(fetchRequest:
+                 fetchRequest, managedObjectContext: persistentContainer.viewContext,
+                               sectionNameKeyPath: nil, cacheName: nil)
+         // Set this class to be the results delegate
+         workoutDateFetchedResultsController?.delegate = self
+
+         do {
+             try workoutDateFetchedResultsController?.performFetch()
+         } catch {
+             print("Fetch Request Failed: \(error)")
+         }
+     
+
+     var workout = [WorkoutDate]()
+    
+     workout = (workoutDateFetchedResultsController?.fetchedObjects)!
+
+
+     return workout
+     }
+    
     func fetchAllWorkouts() -> [Workout] {
         // If results controller not currently initialized
         if allWorkoutsFetchedResultsController == nil {
@@ -603,6 +653,18 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
 
     }
     
+    func createDefaultWorkoutDate(){
+        let _ = addWorkoutDate(year: 2020, month: 3, day: 17)
+        let _ = addWorkoutDate(year: 2020, month: 5, day: 3)
+        let _ = addWorkoutDate(year: 2020, month: 5, day: 5)
+        let _ = addWorkoutDate(year: 2020, month: 5, day: 8)
+        let _ = addWorkoutDate(year: 2020, month: 5, day: 10)
+        let _ = addWorkoutDate(year: 2020, month: 5, day: 18)
+        let _ = addWorkoutDate(year: 2020, month: 6, day: 6)
+        let _ = addWorkoutDate(year: 2020, month: 6, day: 10)
+        let _ = addWorkoutDate(year: 2020, month: 6, day: 20)
+        
+    }
 
 
 }

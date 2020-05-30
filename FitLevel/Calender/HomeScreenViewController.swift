@@ -51,29 +51,32 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     var LeapYearCounter = 0
     
-    
+    var DateCheck = [Int](repeating: 0, count:32)
     
     
     
     
     override func viewDidLoad() {
-           super.viewDidLoad()
-            self.calenderFrame.layer.borderColor = UIColor.black.cgColor
-            self.calenderFrame.layer.borderWidth = 3
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            databaseController = appDelegate.databaseController
+        super.viewDidLoad()
         
-           navigationController?.navigationBar.barTintColor = UIColor.systemIndigo
-           currentMonth = Months[month]
         
-            MonthLabel.text = "\(currentMonth) \(year)"
-            MonthLabel.center = CGPoint(x: 207, y: 133)
-            MonthLabel.textAlignment = .center
+        self.calenderFrame.layer.borderColor = UIColor.black.cgColor
+        self.calenderFrame.layer.borderWidth = 3
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
+        
+        navigationController?.navigationBar.barTintColor = UIColor.systemIndigo
+        currentMonth = Months[month]
+        
+        MonthLabel.text = "\(currentMonth) \(year)"
+        MonthLabel.center = CGPoint(x: 207, y: 133)
+        MonthLabel.textAlignment = .center
         
         if weekday == 0{
             weekday = 7
         }
         GetStartDateDayPosition()
+        displayProgress(year: year, month: month + 1)
         
         TopWorkout.layer.cornerRadius = 15
         TopWorkout.layer.masksToBounds = true
@@ -95,6 +98,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             
             currentMonth = Months[month]
             MonthLabel.text = "\(currentMonth) \(year)"
+            displayProgress(year: year, month: month + 1)
             Calender.reloadData()
       
             
@@ -107,6 +111,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             month += 1
             currentMonth = Months[month]
             MonthLabel.text = "\(currentMonth) \(year)"
+            displayProgress(year: year, month: month + 1)
             Calender.reloadData()
         
             
@@ -125,6 +130,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             
             currentMonth = Months[month]
             MonthLabel.text = "\(currentMonth) \(year)"
+            displayProgress(year: year, month: month + 1)
             Calender.reloadData()
 
            
@@ -137,6 +143,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             
             currentMonth = Months[month]
             MonthLabel.text = "\(currentMonth) \(year)"
+            displayProgress(year: year, month: month + 1)
             Calender.reloadData()
      
            
@@ -230,32 +237,47 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             fatalError()
         }
         
-        switch cell.DateLabel.text{
-        case "8":
-            cell.backgroundColor = UIColor.systemIndigo
-        case "9":
-            cell.backgroundColor = UIColor.systemIndigo
-        case "10":
-            cell.backgroundColor = UIColor.systemIndigo
         
-        case "15":
+        
+        if (Int(cell.DateLabel.text!)! > 0) && DateCheck[Int(cell.DateLabel.text!)!] == 1{
             cell.backgroundColor = UIColor.systemIndigo
-        case "16":
-            cell.backgroundColor = UIColor.systemIndigo
-        case "17":
-            cell.backgroundColor = UIColor.systemIndigo
-        default:
-            break
+            
         }
-        
         if Int(cell.DateLabel.text!)! < 1 {
             cell.isHidden = true
         }
         cell.DateLabel.textAlignment = .center
+     
         return cell
     }
     
+    func displayTopWorkout(){
+        //Top Workout
+        let coordinate = CGPoint(x:207,y:338)
+        //create my track layer
+        let trackLayer = CAShapeLayer()
+        let circularPath = UIBezierPath(arcCenter: coordinate, radius: 100, startAngle: -CGFloat.pi / 2 , endAngle: 2 * CGFloat.pi, clockwise: true)
+               
+        trackLayer.path = circularPath.cgPath
+               
+        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.lineWidth = 10
+        trackLayer.fillColor = UIColor.white.cgColor
+        trackLayer.lineCap = CAShapeLayerLineCap.round
+        
+        view.layer.addSublayer(trackLayer)
+        
+    }
     
+    func displayProgress(year: Int, month: Int){
+        DateCheck = [Int](repeating: 0, count:32)
+        let workoutProgress = databaseController?.getWorkoutDate(year: year, month: month)
+        
+        for date in workoutProgress!{
+            DateCheck[Int(date.day)] = 1
+        }
+        
+    }
     
     
     //Workout image API does not have name

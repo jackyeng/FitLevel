@@ -28,11 +28,17 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="custom" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CustomWorkout" inverseName="workout" inverseEntity="CustomWorkout"/>
     </entity>
+    <entity name="WorkoutDate" representedClassName="WorkoutDate" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="month" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <elements>
+        <element name="ActiveRoutine" positionX="-54" positionY="45" width="128" height="73"/>
+        <element name="CustomWorkout" positionX="-45" positionY="45" width="128" height="103"/>
         <element name="Plan" positionX="-54" positionY="18" width="128" height="88"/>
         <element name="Routine" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="Workout" positionX="-54" positionY="-9" width="128" height="103"/>
-        <element name="ActiveRoutine" positionX="-54" positionY="45" width="128" height="73"/>
-        <element name="CustomWorkout" positionX="-45" positionY="45" width="128" height="103"/>
+        <element name="WorkoutDate" positionX="-54" positionY="54" width="128" height="88"/>
     </elements>
 </model>

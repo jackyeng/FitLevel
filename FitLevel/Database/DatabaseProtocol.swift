@@ -46,6 +46,8 @@ protocol DatabaseProtocol: AnyObject {
     func addRoutineToActive(routine: Routine, active: ActiveRoutine) -> Bool
     //create plan/ saved routine
     func addPlan(planName: String) -> Plan //default plan
+    func addWorkoutDate(year: Int, month: Int, day: Int) -> WorkoutDate
+    func getWorkoutDate(year: Int, month: Int) -> [WorkoutDate]
     func addRoutineToPlan(routine: Routine, plan: Plan) -> Bool
    //create ActiveRoutine
     func addActiveRoutine(activeroutineName: String) -> ActiveRoutine
