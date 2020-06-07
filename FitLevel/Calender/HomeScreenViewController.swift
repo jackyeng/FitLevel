@@ -24,7 +24,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     var workoutlist = [WorkoutData]()
     
     @IBOutlet weak var Calender: UICollectionView!
-    
+    @IBOutlet weak var WorkoutStats: UICollectionView!
     @IBOutlet weak var MonthLabel: UILabel!
     
     @IBOutlet weak var TopWorkout: UILabel!
@@ -59,7 +59,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        WorkoutStats.delegate = self
+        WorkoutStats.dataSource = self
         self.calenderFrame.layer.borderColor = UIColor.black.cgColor
         self.calenderFrame.layer.borderWidth = 3
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -202,6 +203,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.Calender {
         switch Direction{
         case 0:
             return DaysInMonths[month] + NumberOfEmptyBox
@@ -212,16 +214,24 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         default:
             fatalError()
         }
+        }
+        else{
+            return 3
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if collectionView == self.Calender {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Calender", for: indexPath) as! DateCollectionViewCell
+        
         
         cell.backgroundColor = UIColor.clear
         
-        
         cell.layer.cornerRadius = 18
         cell.layer.masksToBounds = true
+        
+        
         
         if cell.isHidden{
             cell.isHidden = false
@@ -247,8 +257,22 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             cell.isHidden = true
         }
         cell.DateLabel.textAlignment = .center
-     
         return cell
+        }
+        else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "topWorkout", for: indexPath) as! WorkoutStatsCollectionViewCell
+           if cell.isHidden{
+                      cell.isHidden = false
+                  }
+                 cell.levelLabel.text = "16"
+           cell.workoutNameLabel.text = "Mountain Climber"
+           cell.workoutNameLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+           cell.workoutNameLabel?.numberOfLines = 0
+                  let image : UIImage = UIImage(named:"goldcircle")!
+                  cell.WorkoutStatImage.image = image
+            return cell
+        }
+
     }
     
     func displayTopWorkout(){

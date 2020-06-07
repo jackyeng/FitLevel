@@ -97,17 +97,13 @@
                                     <action selector="Complete:" destination="EiN-M6-UGR" eventType="touchUpInside" id="BcR-Xg-App"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THB-Ps-6G3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="               Workout Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THB-Ps-6G3">
                                 <rect key="frame" x="20" y="141" width="374" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IV1-7b-JNu">
-                                <rect key="frame" x="124" y="270" width="160" height="147"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="edu-WP-2lt"/>
@@ -115,7 +111,6 @@
                     <navigationItem key="navigationItem" id="TWA-MT-DHM"/>
                     <connections>
                         <outlet property="CompleteButton" destination="6nF-VN-b9d" id="PI2-Lo-8Nz"/>
-                        <outlet property="ImageView" destination="IV1-7b-JNu" id="4jg-gG-L00"/>
                         <outlet property="workoutName" destination="THB-Ps-6G3" id="X4f-cu-ydE"/>
                         <outlet property="workoutReps" destination="vnf-6t-y2s" id="OqE-DR-RRL"/>
                         <outlet property="workoutSets" destination="j0I-eq-cPB" id="tMr-ng-5L1"/>

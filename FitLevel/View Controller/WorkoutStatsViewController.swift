@@ -8,64 +8,78 @@
 
 import UIKit
 
-class WorkoutStatsViewController: UIViewController {
+class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WorkoutStats", for: indexPath) as! WorkoutStatsCollectionViewCell
+               
+               /*
+               cell.backgroundColor = UIColor.yellow
+               
+               
+               cell.layer.cornerRadius = 18
+               cell.layer.masksToBounds = true
+               let origin = cell.frame
+               
+               //Top Workout
+               let coordinate = CGPoint(x:207,y:338)
+               //create my track layer
+               let trackLayer = CAShapeLayer()
+               let circularPath = UIBezierPath(arcCenter: coordinate, radius: 100, startAngle: -CGFloat.pi / 2 , endAngle: 2 * CGFloat.pi, clockwise: true)
+                      
+               trackLayer.path = circularPath.cgPath
+                      
+               trackLayer.strokeColor = UIColor.lightGray.cgColor
+               trackLayer.lineWidth = 10
+               trackLayer.fillColor = UIColor.white.cgColor
+               trackLayer.lineCap = CAShapeLayerLineCap.round
 
+               
+               
+               
+               */
+               
+               if cell.isHidden{
+                   cell.isHidden = false
+               }
+              cell.levelLabel.text = "16"
+        cell.workoutNameLabel.text = "Mountain Climber"
+        cell.workoutNameLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell.workoutNameLabel?.numberOfLines = 0
+               let image : UIImage = UIImage(named:"goldcircle")!
+               cell.WorkoutStatImage.image = image
+               return cell
+    }
+    
+    
+   
+    @IBOutlet weak var WorkoutStats: UICollectionView!
+    
     var views: UIView?
     var string: String?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor.systemIndigo
-       
+       WorkoutStats.dataSource = self
+       WorkoutStats.delegate = self
         
-        views = view
+        
         self.navigationItem.titleView = navTitleWithImageAndText(titleText: "Workout Stats", imageName: "gamer_01_18_contour_info_infos_lines-512.png")
         // Do any additional setup after loading the view.
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       views = view
+
         return 10
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "topWorkout", for: indexPath) as! DateCollectionViewCell
-        
-        cell.backgroundColor = UIColor.yellow
-        
-        
-        cell.layer.cornerRadius = 18
-        cell.layer.masksToBounds = true
-        let origin = cell.frame
-        
-        //Top Workout
-        let coordinate = CGPoint(x:207,y:338)
-        //create my track layer
-        let trackLayer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: coordinate, radius: 100, startAngle: -CGFloat.pi / 2 , endAngle: 2 * CGFloat.pi, clockwise: true)
-               
-        trackLayer.path = circularPath.cgPath
-               
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
-        trackLayer.lineWidth = 10
-        trackLayer.fillColor = UIColor.white.cgColor
-        trackLayer.lineCap = CAShapeLayerLineCap.round
-
-        
-        
-        
-        
-        if cell.isHidden{
-            cell.isHidden = false
-        }
-        
-    
-        return cell
-    }
+  
     
     func displayTopWorkout(){
         

@@ -9,34 +9,22 @@
 import UIKit
 
 class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutRoutineDelegate {
-    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
-        
-    }
+    
     
     func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
         workoutss = workouts
-    }
-    
-    var listenerType: ListenerType = .routineworkout
-    
-    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
-        
-    }
-    
-    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
-        
     }
     
     
     
     //https://www.youtube.com/watch?v=O3ltwjDJaMk
     let shapeLayer = CAShapeLayer()
-    //WorkoutData(name:"S",sets:"s",reps"s")
+   
     var workouts = [WorkoutClass(name:"Inclined Push-Ups",sets:"1",reps:"1"),WorkoutClass(name:"Inclined Plank",sets:"2",reps:"2"),WorkoutClass(name:"Inclined Barbell Push",sets:"3",reps:"3"),WorkoutClass(name:"Squat",sets:"4",reps:"4")]
     
     var workoutss = [CustomWorkout]()
     weak var workoutDelegate: WorkoutRoutineDelegate?
-    
+    var listenerType: ListenerType = .routineworkout
     var workoutprogress = 0
     var workoutcount = 3
     @IBOutlet weak var workoutName: UILabel!
@@ -54,31 +42,10 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         print(workoutss.count)
         print(workoutss[workoutprogress].workout!)
         
-        get_image(workoutss[workoutprogress].workout!.image!, ImageView)
-        //let center = view.center
-        let coordinate = CGPoint(x:207,y:338)
-        //create my track layer
-        let trackLayer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: coordinate, radius: 100, startAngle: -CGFloat.pi / 2 , endAngle: 2 * CGFloat.pi, clockwise: true)
+     
+        
                
-        trackLayer.path = circularPath.cgPath
-               
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
-        trackLayer.lineWidth = 10
-        trackLayer.fillColor = UIColor.white.cgColor
-        trackLayer.lineCap = CAShapeLayerLineCap.round
         
-        view.layer.addSublayer(trackLayer)
-        
-        shapeLayer.path = circularPath.cgPath
-        
-        shapeLayer.strokeColor = UIColor.systemIndigo.cgColor
-        shapeLayer.lineWidth = 10
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineCap = CAShapeLayerLineCap.round
-        
-        shapeLayer.strokeEnd = 0
-        view.layer.addSublayer(shapeLayer)
         
         //view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
 
@@ -102,11 +69,6 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         CompleteButton.layer.borderWidth = 1
         CompleteButton.layer.cornerRadius = 20
         
-        self.view.bringSubviewToFront(ImageView)
-        workoutcount = workoutss.count
-        for item in workoutss{
-            print(item.workout?.name ?? "Empty")
-        }
     }
     
     
@@ -161,7 +123,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             displayMessage(title: "Congratulation!", message: "You have completed your workout.")
             return
         }
-        get_image(workoutss[workoutprogress].workout!.image!, ImageView)
+       
         workoutName.text = workoutss[workoutprogress].workout!.name
         workoutSets.text = "Sets: " + workoutss[workoutprogress].set!
         workoutReps.text = "Reps: " + workoutss[workoutprogress].repetition!
@@ -201,5 +163,17 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             }
         })
         task.resume()
+    }
+    
+    //unused
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
+           
+       }
+       
+    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
+           
+       }
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+        
     }
 }

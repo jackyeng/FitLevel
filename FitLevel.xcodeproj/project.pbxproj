@@ -36,6 +36,7 @@
 		8593EADA2472EE7400914C4D /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */; };
 		8593EADC247313D600914C4D /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */; };
 		85B9D8FB246BCC2F00D17F2E /* CalenderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */; };
+		85F26FED2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F26FEC2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift */; };
 		85FCF19D2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */; };
 		85FCF19E2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCF19C2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift */; };
 		85FD53BA24651C93004E9AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53B924651C93004E9AB9 /* AppDelegate.swift */; };
@@ -85,6 +86,17 @@
 		8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
 		8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderInfo.swift; sourceTree = "<group>"; };
+		85F26FE2248948E900FBF776 /* Forward Lunges.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Forward Lunges.mp4"; sourceTree = "<group>"; };
+		85F26FE3248948EA00FBF776 /* Burpees.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Burpees.mp4; sourceTree = "<group>"; };
+		85F26FE4248948EA00FBF776 /* Seal Jack.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Seal Jack.mp4"; sourceTree = "<group>"; };
+		85F26FE5248948EB00FBF776 /* Planks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Planks.mp4; sourceTree = "<group>"; };
+		85F26FE6248948EB00FBF776 /* Push Ups.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Push Ups.mp4"; sourceTree = "<group>"; };
+		85F26FE7248948EC00FBF776 /* Jumping Jacks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jumping Jacks.mp4"; sourceTree = "<group>"; };
+		85F26FE8248948EC00FBF776 /* Close Body Squats.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Close Body Squats.mp4"; sourceTree = "<group>"; };
+		85F26FE9248948ED00FBF776 /* Superman.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Superman.mp4; sourceTree = "<group>"; };
+		85F26FEA248948ED00FBF776 /* Mountain Climbers.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mountain Climbers.mp4"; sourceTree = "<group>"; };
+		85F26FEB248948EE00FBF776 /* Hips Raises.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hips Raises.mp4"; sourceTree = "<group>"; };
+		85F26FEC2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStatsCollectionViewCell.swift; sourceTree = "<group>"; };
 		85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDate+CoreDataClass.swift"; sourceTree = "<group>"; };
 		85FCF19C2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		85FD53B624651C93004E9AB9 /* FitLevel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitLevel.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +178,31 @@
 			path = Calender;
 			sourceTree = "<group>";
 		};
+		85F26FCC2489316300FBF776 /* WorkoutVideos */ = {
+			isa = PBXGroup;
+			children = (
+				85F26FE3248948EA00FBF776 /* Burpees.mp4 */,
+				85F26FE8248948EC00FBF776 /* Close Body Squats.mp4 */,
+				85F26FE2248948E900FBF776 /* Forward Lunges.mp4 */,
+				85F26FEB248948EE00FBF776 /* Hips Raises.mp4 */,
+				85F26FE7248948EC00FBF776 /* Jumping Jacks.mp4 */,
+				85F26FEA248948ED00FBF776 /* Mountain Climbers.mp4 */,
+				85F26FE5248948EB00FBF776 /* Planks.mp4 */,
+				85F26FE6248948EB00FBF776 /* Push Ups.mp4 */,
+				85F26FE4248948EA00FBF776 /* Seal Jack.mp4 */,
+				85F26FE9248948ED00FBF776 /* Superman.mp4 */,
+			);
+			path = WorkoutVideos;
+			sourceTree = "<group>";
+		};
+		85F26FE1248948C000FBF776 /* Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				85F26FEC2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift */,
+			);
+			path = "Collection View";
+			sourceTree = "<group>";
+		};
 		85FD53AD24651C93004E9AB9 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +222,8 @@
 		85FD53B824651C93004E9AB9 /* FitLevel */ = {
 			isa = PBXGroup;
 			children = (
+				85F26FE1248948C000FBF776 /* Collection View */,
+				85F26FCC2489316300FBF776 /* WorkoutVideos */,
 				85FD53CE2465A038004E9AB9 /* Database */,
 				857EF7F724683FF200323533 /* View */,
 				85B9D8F9246BCC1A00D17F2E /* Calender */,
@@ -357,6 +396,7 @@
 				85FD53BA24651C93004E9AB9 /* AppDelegate.swift in Sources */,
 				85FD53E72465E106004E9AB9 /* DatabaseProtocol.swift in Sources */,
 				85FD53BC24651C93004E9AB9 /* SceneDelegate.swift in Sources */,
+				85F26FED2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift in Sources */,
 				8527AEFE247684EA00080312 /* EditRoutineNameViewController.swift in Sources */,
 				8593EAD82472EB0800914C4D /* PlanTableViewCell.swift in Sources */,
 				8593EAD32471735C00914C4D /* VolumeData.swift in Sources */,

@@ -165,27 +165,14 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         childContext?.parent = self.persistentContainer.viewContext
         
-        
-        let workoutdate = fetchWorkoutDate(year: 2020, month: 5)
-        for item in workoutdate{
-            print(item.day)
-        }
-        
-        if fetchAllWorkouts().count == 0 {
-            requestWorkoutImage()
-            while loadstatus == false {
-
-            }
-            AddWorkout()
-            //createDefaultWorkout()
-            
-            saveDraft()
-        }
-        
-        //createDefaultRoutine()
-        //createDefaultPlans()
-        
+        /*
+        createDefaultWorkout()
         saveDraft()
+        createDefaultPlans()
+        createDefaultRoutine()
+        createDefaultWorkoutDate()
+        saveDraft()
+        */
     }
 
         
@@ -565,7 +552,26 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         task.resume()
     
         }
+    
+    
+    
+    
+    
+    
+    func createDefaultWorkout(){
+        let _ = addWorkout(name: "Burpees", imageURL: "")
+        let _ = addWorkout(name: "Close Body Squats", imageURL: "")
+        let _ = addWorkout(name: "Forward Lunges", imageURL: "")
+        let _ = addWorkout(name: "Hips Raises", imageURL: "")
+        let _ = addWorkout(name: "Jumping Jacks", imageURL: "")
+        let _ = addWorkout(name: "Mountain Climbers", imageURL: "")
+        let _ = addWorkout(name: "Planks", imageURL: "")
+        let _ = addWorkout(name: "Push Ups", imageURL: "")
+        let _ = addWorkout(name: "Seal Jack", imageURL: "")
+        let _ = addWorkout(name: "Superman", imageURL: "")
 
+    }
+    
     //Add routine to plans
     func createDefaultPlans(){
         let r1 = addRoutine(routineName: "Beginner Plan I")
@@ -575,7 +581,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                
         var int = 0
         let workouts = fetchAllWorkouts()
-               
+        let workoutCount = workouts.count
         for item in workouts{
             int += 1
             let custom = addCustomWorkout( set: "3", repetition: "12")
@@ -583,8 +589,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r1)
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r2)
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r3)
-            saveDraft()
-            if int == 7{
+            if int == workoutCount{
                 break
                 }
             }
@@ -597,7 +602,6 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                }*/
                
                let _ = addRoutineToPlan(routine: r1, plan: recommendedPlan)
-        
                let _ = addRoutineToPlan(routine: r2, plan: recommendedPlan)
                let _ = addRoutineToPlan(routine: r3, plan: recommendedPlan)
         
@@ -624,7 +628,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r2)
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r3)
             saveDraft()
-            if int == 7{
+            if int == 10{
                 break
             }
         }
@@ -637,7 +641,6 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }*/
         
         let _ = addRoutineToActive(routine: r1, active: activeRoutine)
- 
         let _ = addRoutineToActive(routine: r2, active: activeRoutine)
         let _ = addRoutineToActive(routine: r3, active: activeRoutine)
         
@@ -645,13 +648,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         //link workout to the routine list
     }
     
-    func createDefaultWorkout(){
-        let _ = addWorkout(name: "Push ups", imageURL: "")
-        let _ = addWorkout(name: "Sit ups", imageURL: "")
-        let _ = addWorkout(name: "Pull ups", imageURL: "")
-        let _ = addWorkout(name: "Planks", imageURL: "")
-
-    }
+    
     
     func createDefaultWorkoutDate(){
         let _ = addWorkoutDate(year: 2020, month: 3, day: 17)
