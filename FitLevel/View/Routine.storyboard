@@ -71,15 +71,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0I-eq-cPB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0I-eq-cPB">
                                 <rect key="frame" x="97" y="454" width="158" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnf-6t-y2s">
-                                <rect key="frame" x="97" y="496" width="202" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnf-6t-y2s">
+                                <rect key="frame" x="97" y="496" width="202" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
@@ -104,6 +104,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLd-oc-jP6">
+                                <rect key="frame" x="186" y="539" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="edu-WP-2lt"/>
@@ -111,14 +118,15 @@
                     <navigationItem key="navigationItem" id="TWA-MT-DHM"/>
                     <connections>
                         <outlet property="CompleteButton" destination="6nF-VN-b9d" id="PI2-Lo-8Nz"/>
+                        <outlet property="countDownLabel" destination="uLd-oc-jP6" id="ODi-T5-R3H"/>
+                        <outlet property="workoutDuration" destination="vnf-6t-y2s" id="1B8-wJ-Gvh"/>
+                        <outlet property="workoutLevel" destination="j0I-eq-cPB" id="G4f-VC-Jkk"/>
                         <outlet property="workoutName" destination="THB-Ps-6G3" id="X4f-cu-ydE"/>
-                        <outlet property="workoutReps" destination="vnf-6t-y2s" id="OqE-DR-RRL"/>
-                        <outlet property="workoutSets" destination="j0I-eq-cPB" id="tMr-ng-5L1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9p9-8y-URc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="1589"/>
+            <point key="canvasLocation" x="3616" y="1624"/>
         </scene>
         <!--Routine Preview-->
         <scene sceneID="gkn-Dx-CF3">
@@ -146,8 +154,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DY-da-oU7">
-                                            <rect key="frame" x="25" y="40" width="26" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DY-da-oU7">
+                                            <rect key="frame" x="25" y="40" width="40" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -158,8 +166,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gs0-ct-0o0">
-                                            <rect key="frame" x="25" y="65" width="38.5" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gs0-ct-0o0">
+                                            <rect key="frame" x="25" y="65" width="66" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -178,9 +186,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="durationLabel" destination="Gs0-ct-0o0" id="PJO-de-KZ6"/>
+                                    <outlet property="levelLabel" destination="1DY-da-oU7" id="aax-KJ-hxw"/>
                                     <outlet property="nameLabel" destination="SRo-ar-ypJ" id="pnQ-Dr-jfi"/>
-                                    <outlet property="repLabel" destination="Gs0-ct-0o0" id="Vja-i5-zig"/>
-                                    <outlet property="setLabel" destination="1DY-da-oU7" id="sO0-Y3-Xzb"/>
+                                    <segue destination="EFs-0b-ufi" kind="show" id="Cv6-p5-fV0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -193,7 +202,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZl-PE-v8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="848"/>
+            <point key="canvasLocation" x="3616" y="848"/>
         </scene>
         <!--Recommended Workout Plans-->
         <scene sceneID="gwT-1w-pvZ">
@@ -346,7 +355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e73-GU-ynX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3508.6956521739135" y="-594.64285714285711"/>
+            <point key="canvasLocation" x="3616" y="-593"/>
         </scene>
         <!--Customize Routine-->
         <scene sceneID="TKo-Hf-g9j">
@@ -478,36 +487,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="821-3k-DKA">
-                                <rect key="frame" x="50" y="120" width="42" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czI-bW-L5q">
-                                <rect key="frame" x="50" y="222" width="39" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="821-3k-DKA">
+                                <rect key="frame" x="50" y="115" width="66" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f0h-xx-bsP">
-                                <rect key="frame" x="50" y="170" width="267" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fr-Zk-2dP">
-                                <rect key="frame" x="50" y="266" width="267" height="34"/>
+                                <rect key="frame" x="50" y="151" width="325" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXp-D1-6g1">
-                                <rect key="frame" x="152" y="336" width="84" height="61"/>
+                                <rect key="frame" x="165" y="209" width="84" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
+                                <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="addWorkout:" destination="EFs-0b-ufi" eventType="touchUpInside" id="RGr-pw-63Q"/>
                                 </connections>
@@ -518,13 +514,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Edit Workout" id="YJr-Ma-eVm"/>
                     <connections>
-                        <outlet property="repLabel" destination="0fr-Zk-2dP" id="QBR-YR-r5Q"/>
-                        <outlet property="setLabel" destination="f0h-xx-bsP" id="ZJw-vA-Apn"/>
+                        <outlet property="durationLabel" destination="f0h-xx-bsP" id="iio-5R-AHR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmu-oA-kqO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4477" y="124"/>
+            <point key="canvasLocation" x="4476.811594202899" y="123.88392857142857"/>
         </scene>
         <!--Routine-->
         <scene sceneID="M33-4p-hee">
@@ -552,9 +547,10 @@
         <image name="icons8-walking-50" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Cv6-p5-fV0"/>
         <segue reference="0xJ-65-BsX"/>
         <segue reference="q1z-Dd-IFe"/>
-        <segue reference="aN0-8I-SWP"/>
+        <segue reference="Dgl-yr-wru"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

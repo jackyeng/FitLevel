@@ -66,7 +66,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         
-        navigationController?.navigationBar.barTintColor = UIColor.systemIndigo
+        navigationController?.navigationBar.barTintColor = UIColor.systemIndigo //systemindigo
         currentMonth = Months[month]
         
         MonthLabel.text = "\(currentMonth) \(year)"
@@ -250,7 +250,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         
         
         if (Int(cell.DateLabel.text!)! > 0) && DateCheck[Int(cell.DateLabel.text!)!] == 1{
-            cell.backgroundColor = UIColor.systemIndigo
+            cell.backgroundColor = UIColor.systemIndigo //systemindigo
             
         }
         if Int(cell.DateLabel.text!)! < 1 {
@@ -312,7 +312,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
         let workout = databaseController?.addRoutine(routineName: "")
         let workout1 = databaseController?.addWorkout(name: "test", imageURL: "")
-        let workouts = databaseController?.addCustomWorkout(set:"1", repetition: "3")
+        let workouts = databaseController?.addCustomWorkout(set:"1", repetition: "3",duration:"30")
         let _ = databaseController?.addCustomWorkoutToRoutine(customWorkout: workouts!, routine: workout!)
         let _ = databaseController?.addWorkoutToCustomWorkout(workout: workout1!, customWorkout: workouts!)
         let _ = databaseController?.addRoutineToActive(routine: workout!, active: databaseController!.activeRoutine)

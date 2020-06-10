@@ -5,6 +5,7 @@
         <relationship name="routine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Routine" inverseName="activeroutine" inverseEntity="Routine"/>
     </entity>
     <entity name="CustomWorkout" representedClassName="CustomWorkout" syncable="YES">
+        <attribute name="duration" optional="YES" attributeType="String"/>
         <attribute name="repetition" optional="YES" attributeType="String"/>
         <attribute name="set" optional="YES" attributeType="String"/>
         <relationship name="routine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Routine" inverseName="customworkout" inverseEntity="Routine"/>
@@ -35,7 +36,7 @@
     </entity>
     <elements>
         <element name="ActiveRoutine" positionX="-54" positionY="45" width="128" height="73"/>
-        <element name="CustomWorkout" positionX="-45" positionY="45" width="128" height="103"/>
+        <element name="CustomWorkout" positionX="-45" positionY="45" width="128" height="118"/>
         <element name="Plan" positionX="-54" positionY="18" width="128" height="88"/>
         <element name="Routine" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="Workout" positionX="-54" positionY="-9" width="128" height="103"/>

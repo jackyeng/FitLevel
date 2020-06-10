@@ -11,8 +11,8 @@ import UIKit
 class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutRoutineDelegate {
     
     
-    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
-        workoutss = workouts
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
+        workouts = workout
     }
     
     
@@ -20,50 +20,63 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     //https://www.youtube.com/watch?v=O3ltwjDJaMk
     let shapeLayer = CAShapeLayer()
    
-    var workouts = [WorkoutClass(name:"Inclined Push-Ups",sets:"1",reps:"1"),WorkoutClass(name:"Inclined Plank",sets:"2",reps:"2"),WorkoutClass(name:"Inclined Barbell Push",sets:"3",reps:"3"),WorkoutClass(name:"Squat",sets:"4",reps:"4")]
-    
-    var workoutss = [CustomWorkout]()
+    var workouts = [CustomWorkout]()
     weak var workoutDelegate: WorkoutRoutineDelegate?
     var listenerType: ListenerType = .routineworkout
     var workoutprogress = 0
-    var workoutcount = 3
+    var workoutcount = 10
     @IBOutlet weak var workoutName: UILabel!
-    @IBOutlet weak var workoutSets: UILabel!
-    @IBOutlet weak var workoutReps: UILabel!
+  
+    
+    @IBOutlet weak var workoutLevel: UILabel!
+    @IBOutlet weak var workoutDuration: UILabel!
+    
+    @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var CompleteButton: UIButton!
     
     
     @IBOutlet weak var ImageView: UIImageView!
     
+    
+    var countTimer: Timer?
+    
+    var counter = 0
     var actionStatus = true
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(workoutss.count)
-        print(workoutss[workoutprogress].workout!)
         
-     
         
-               
+        counter = Int(workouts[workoutprogress].duration!)!
+        workoutcount = workouts.count
+        //https://stackoverflow.com/questions/29374553/how-can-i-make-a-countdown-with-nstimer
+        countTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UIMenuController.update), userInfo: nil, repeats: true)
         
         
         //view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
 
         
         //Initialize title
-        workoutName.text = workoutss[workoutprogress].workout!.name
-        workoutSets.text = "Sets: " + workoutss[workoutprogress].set!
-        workoutReps.text = "Reps: " + workoutss[workoutprogress].repetition!
+        workoutName.text = workouts[workoutprogress].workout!.name
+        if let level = workouts[workoutprogress].workout?.level{
+            workoutLevel.text = "Level: " + String(level)
+        }
+        else{
+            workoutLevel.text = "Level: Unknown"
+        }
+        workoutDuration.text = "Duration: " + workouts[workoutprogress].duration!
         
         
         //Allignment
         workoutName.textAlignment = .center
-        workoutSets.textAlignment = .center
-        workoutReps.textAlignment = .center
+        workoutLevel.textAlignment = .center
+        workoutDuration.textAlignment = .center
 
         workoutName.center = CGPoint(x: 207, y: 200)
-        workoutSets.center = CGPoint(x: 207, y: 480)
-        workoutReps.center = CGPoint(x: 207, y: 510)
+        workoutLevel.center = CGPoint(x: 207, y: 480)
+        workoutDuration.center = CGPoint(x: 207, y: 510)
         CompleteButton.center = CGPoint(x: 207, y: 638)
         
         CompleteButton.layer.borderWidth = 1
@@ -124,10 +137,16 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             return
         }
        
-        workoutName.text = workoutss[workoutprogress].workout!.name
-        workoutSets.text = "Sets: " + workoutss[workoutprogress].set!
-        workoutReps.text = "Reps: " + workoutss[workoutprogress].repetition!
-        
+        workoutName.text = workouts[workoutprogress].workout!.name
+    
+        if let level = workouts[workoutprogress].workout?.level{
+            workoutLevel.text = "Level: " + String(level)
+        }
+        else{
+            workoutLevel.text = "Level: Unknown"
+        }
+        workoutDuration.text = "Duration: " + workouts[workoutprogress].duration!
+        counter = Int(workouts[workoutprogress].duration!)!
     }
     
     func displayMessage(title: String, message: String) {
@@ -163,6 +182,23 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             }
         })
         task.resume()
+    }
+    
+    @objc func update() {
+        if(counter > 0) {
+            countDownLabel.text = String(counter)
+            counter -= 2
+           
+        
+        }
+        else{
+            
+            Complete((Any).self)
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.countTimer?.invalidate()
     }
     
     //unused

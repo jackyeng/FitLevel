@@ -2,7 +2,7 @@
 //  CustomWorkout+CoreDataProperties.swift
 //  FitLevel
 //
-//  Created by Jacky Eng on 19/05/2020.
+//  Created by Jacky Eng on 10/06/2020.
 //  Copyright © 2020 Jacky Eng. All rights reserved.
 //
 //
@@ -17,10 +17,11 @@ extension CustomWorkout {
         return NSFetchRequest<CustomWorkout>(entityName: "CustomWorkout")
     }
 
-    @NSManaged public var set: String?
     @NSManaged public var repetition: String?
-    @NSManaged public var workout: Workout?
+    @NSManaged public var set: String?
+    @NSManaged public var duration: String?
     @NSManaged public var routine: NSSet?
+    @NSManaged public var workout: Workout?
 
 }
 

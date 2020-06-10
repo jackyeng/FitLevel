@@ -23,13 +23,12 @@ class EditWorkout: UIViewController, UITextFieldDelegate, DatabaseListener {
         
     }
     
-    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
         
     }
     
-    @IBOutlet weak var setLabel: UITextField!
+    @IBOutlet weak var durationLabel: UITextField!
     
-    @IBOutlet weak var repLabel: UITextField!
     
     weak var customDelegate: CustomWorkoutDelegate?
     var workout: Workout?
@@ -39,8 +38,8 @@ class EditWorkout: UIViewController, UITextFieldDelegate, DatabaseListener {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLabel.delegate = self
-        repLabel.delegate = self
+        durationLabel.delegate = self
+   
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         // Do any additional setup after loading the view.
@@ -63,8 +62,8 @@ class EditWorkout: UIViewController, UITextFieldDelegate, DatabaseListener {
     @IBAction func addWorkout(_ sender: Any) {
         
         
-        if setLabel.text != "" && repLabel.text != ""{  //only allow save when user enter text
-                let customWorkout = databaseController?.addCustomWorkout(set: setLabel.text!, repetition: repLabel.text!)
+        if durationLabel.text != "" {  //only allow save when user enter text
+            let customWorkout = databaseController?.addCustomWorkout(set: "", repetition: "", duration: durationLabel.text!)
             let _ = databaseController?.addWorkoutToCustomWorkout(workout: workout!, customWorkout: customWorkout!)
                 let _ = customDelegate?.addWorkout(custom: customWorkout!)
             
@@ -81,14 +80,11 @@ class EditWorkout: UIViewController, UITextFieldDelegate, DatabaseListener {
 
             var errorMsg = "Please ensure all fields are filled:\n"
 
-            if setLabel.text == "" {
-            errorMsg += "- Must provide a set\n"
+            if durationLabel.text == "" {
+            errorMsg += "- Must provide a duration\n"
             }
         
-            if repLabel.text == "" {
-            errorMsg += "- Must provide a rep\n"
-            }
-
+        
             displayMessage(title: "Not all fields filled", message: errorMsg)
         }
         

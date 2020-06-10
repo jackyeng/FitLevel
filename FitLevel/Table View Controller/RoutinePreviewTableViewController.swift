@@ -26,7 +26,7 @@ class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDe
         
     }
     
-    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
         
     }
     
@@ -77,8 +77,15 @@ class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDe
                     tableView.dequeueReusableCell(withIdentifier: cell_workout, for: indexPath)
                     as! WorkoutTableViewCell
                 cell.nameLabel.text = workouts[indexPath.row].workout?.name!
-                cell.setLabel.text = "Set: " + workouts[indexPath.row].set!
-                cell.repLabel.text = "Repetition: " + workouts[indexPath.row].repetition!
+                
+                if let level = workouts[indexPath.row].workout?.level {
+                   cell.levelLabel.text = "Level: " + String(level)
+                }
+                else{
+                   cell.levelLabel.text = "Level: Unknown";
+                }
+               
+                cell.durationLabel.text = "Duration: " + workouts[indexPath.row].duration!
                 //drinkCell.drinkLabel.text = drink.name //display cocktails in My Drink
                 //drinkCell.instructionLabel.text = drink.instructions
                 cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -140,7 +147,7 @@ class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDe
                 let destination = segue.destination as! WorkoutRoutineViewController
                     destination.workoutDelegate = self
                    
-                    destination.workoutss = workouts
+                    destination.workouts = workouts
                 
             
             default:

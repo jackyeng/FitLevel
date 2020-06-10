@@ -13,7 +13,7 @@ class WorkoutRoutineTableViewController: UITableViewController,WorkoutRoutineDel
         
     }
     
-    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
         
     }
     
@@ -46,7 +46,7 @@ class WorkoutRoutineTableViewController: UITableViewController,WorkoutRoutineDel
         
         
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = UIColor.systemIndigo
+        navigationController?.navigationBar.barTintColor = UIColor.systemIndigo //systemindigo
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         // Uncomment the following line to preserve selection between presentations

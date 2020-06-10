@@ -41,11 +41,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
     
-    func addCustomWorkout(set: String, repetition: String) -> CustomWorkout {
+    func addCustomWorkout(set: String, repetition: String, duration: String) -> CustomWorkout {
         let customWorkout = NSEntityDescription.insertNewObject(forEntityName: "CustomWorkout",
                                                                 into: persistentContainer.viewContext) as! CustomWorkout
         customWorkout.set = set
         customWorkout.repetition = repetition
+        customWorkout.duration = duration
         saveDraft()
         return customWorkout
     }
@@ -103,6 +104,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                     into: childContext!) as! Workout
         workout.name = name
         workout.image = imageURL
+        workout.level = 1
         return workout
     }
     
@@ -584,7 +586,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         let workoutCount = workouts.count
         for item in workouts{
             int += 1
-            let custom = addCustomWorkout( set: "3", repetition: "12")
+            let custom = addCustomWorkout( set: "3", repetition: "12", duration: "30")
             let _ = addWorkoutToCustomWorkout(workout: item , customWorkout: custom)
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r1)
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r2)
@@ -622,7 +624,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         
         for item in workouts{
             int += 1
-            let custom = addCustomWorkout( set: "3", repetition: "12")
+            let custom = addCustomWorkout( set: "3", repetition: "12", duration: "30")
             let _ = addWorkoutToCustomWorkout(workout: item , customWorkout: custom)
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r1)
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r2)

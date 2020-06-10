@@ -26,7 +26,7 @@ protocol DatabaseListener: AnyObject {
     var listenerType: ListenerType {get set}
     func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine])
     func onWorkoutListChange(change: DatabaseChange, workouts: [Workout])
-    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout])
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout])
     func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine])
 }
 protocol DatabaseProtocol: AnyObject {
@@ -52,7 +52,7 @@ protocol DatabaseProtocol: AnyObject {
    //create ActiveRoutine
     func addActiveRoutine(activeroutineName: String) -> ActiveRoutine
     //create CustomWorkout
-    func addCustomWorkout(set: String, repetition: String) -> CustomWorkout
+    func addCustomWorkout(set: String, repetition: String, duration: String) -> CustomWorkout
     func addWorkoutToCustomWorkout(workout: Workout, customWorkout: CustomWorkout)
     func addCustomWorkoutToRoutine(customWorkout: CustomWorkout, routine: Routine)
     func getRoutineWorkout(name: String) -> [CustomWorkout]

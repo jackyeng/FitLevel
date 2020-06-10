@@ -14,9 +14,11 @@ class WorkoutTableViewCell: UITableViewCell {
     @IBOutlet weak var CustomWorkoutLabel: UILabel!
     
     
-    @IBOutlet weak var repLabel: UILabel!
+    @IBOutlet weak var levelLabel: UILabel!
+  
+    @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var setLabel: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

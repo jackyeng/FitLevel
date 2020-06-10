@@ -17,7 +17,7 @@ class WorkoutListTableViewController: UITableViewController, DatabaseListener, C
         
     }
     
-    func onRoutineWorkoutChange(change: DatabaseChange, workouts: [CustomWorkout]) {
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
         
     }
     
