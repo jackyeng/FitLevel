@@ -36,6 +36,16 @@
 		8593EADA2472EE7400914C4D /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */; };
 		8593EADC247313D600914C4D /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */; };
 		85A5864E2490993E00C4F1AE /* EditWorkoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5864D2490993E00C4F1AE /* EditWorkoutDelegate.swift */; };
+		85A586592490B7D700C4F1AE /* Mountain Climbers.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A5864F2490B7D400C4F1AE /* Mountain Climbers.mp4 */; };
+		85A5865A2490B7D700C4F1AE /* Burpees.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586502490B7D500C4F1AE /* Burpees.mp4 */; };
+		85A5865B2490B7D700C4F1AE /* Push Ups.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586512490B7D500C4F1AE /* Push Ups.mp4 */; };
+		85A5865C2490B7D700C4F1AE /* Close Body Squats.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586522490B7D500C4F1AE /* Close Body Squats.mp4 */; };
+		85A5865D2490B7D700C4F1AE /* Jumping Jacks.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586532490B7D600C4F1AE /* Jumping Jacks.mp4 */; };
+		85A5865E2490B7D700C4F1AE /* Hips Raises.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586542490B7D600C4F1AE /* Hips Raises.mp4 */; };
+		85A5865F2490B7D700C4F1AE /* Superman.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586552490B7D600C4F1AE /* Superman.mp4 */; };
+		85A586602490B7D700C4F1AE /* Forward Lunges.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586562490B7D600C4F1AE /* Forward Lunges.mp4 */; };
+		85A586612490B7D700C4F1AE /* Seal Jack.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586572490B7D600C4F1AE /* Seal Jack.mp4 */; };
+		85A586622490B7D700C4F1AE /* Planks.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586582490B7D700C4F1AE /* Planks.mp4 */; };
 		85B9D8FB246BCC2F00D17F2E /* CalenderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */; };
 		85F26FED2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F26FEC2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift */; };
 		85FCF19D2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */; };
@@ -87,17 +97,17 @@
 		8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
 		8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		85A5864D2490993E00C4F1AE /* EditWorkoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkoutDelegate.swift; sourceTree = "<group>"; };
+		85A5864F2490B7D400C4F1AE /* Mountain Climbers.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mountain Climbers.mp4"; path = "../../../../Workout Videos/Mountain Climbers.mp4"; sourceTree = "<group>"; };
+		85A586502490B7D500C4F1AE /* Burpees.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Burpees.mp4; path = "../../../../Workout Videos/Burpees.mp4"; sourceTree = "<group>"; };
+		85A586512490B7D500C4F1AE /* Push Ups.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Push Ups.mp4"; path = "../../../../Workout Videos/Push Ups.mp4"; sourceTree = "<group>"; };
+		85A586522490B7D500C4F1AE /* Close Body Squats.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Close Body Squats.mp4"; path = "../../../../Workout Videos/Close Body Squats.mp4"; sourceTree = "<group>"; };
+		85A586532490B7D600C4F1AE /* Jumping Jacks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Jumping Jacks.mp4"; path = "../../../../Workout Videos/Jumping Jacks.mp4"; sourceTree = "<group>"; };
+		85A586542490B7D600C4F1AE /* Hips Raises.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hips Raises.mp4"; path = "../../../../Workout Videos/Hips Raises.mp4"; sourceTree = "<group>"; };
+		85A586552490B7D600C4F1AE /* Superman.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Superman.mp4; path = "../../../../Workout Videos/Superman.mp4"; sourceTree = "<group>"; };
+		85A586562490B7D600C4F1AE /* Forward Lunges.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Forward Lunges.mp4"; path = "../../../../Workout Videos/Forward Lunges.mp4"; sourceTree = "<group>"; };
+		85A586572490B7D600C4F1AE /* Seal Jack.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Seal Jack.mp4"; path = "../../../../Workout Videos/Seal Jack.mp4"; sourceTree = "<group>"; };
+		85A586582490B7D700C4F1AE /* Planks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Planks.mp4; path = "../../../../Workout Videos/Planks.mp4"; sourceTree = "<group>"; };
 		85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderInfo.swift; sourceTree = "<group>"; };
-		85F26FE2248948E900FBF776 /* Forward Lunges.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Forward Lunges.mp4"; sourceTree = "<group>"; };
-		85F26FE3248948EA00FBF776 /* Burpees.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Burpees.mp4; sourceTree = "<group>"; };
-		85F26FE4248948EA00FBF776 /* Seal Jack.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Seal Jack.mp4"; sourceTree = "<group>"; };
-		85F26FE5248948EB00FBF776 /* Planks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Planks.mp4; sourceTree = "<group>"; };
-		85F26FE6248948EB00FBF776 /* Push Ups.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Push Ups.mp4"; sourceTree = "<group>"; };
-		85F26FE7248948EC00FBF776 /* Jumping Jacks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jumping Jacks.mp4"; sourceTree = "<group>"; };
-		85F26FE8248948EC00FBF776 /* Close Body Squats.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Close Body Squats.mp4"; sourceTree = "<group>"; };
-		85F26FE9248948ED00FBF776 /* Superman.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Superman.mp4; sourceTree = "<group>"; };
-		85F26FEA248948ED00FBF776 /* Mountain Climbers.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mountain Climbers.mp4"; sourceTree = "<group>"; };
-		85F26FEB248948EE00FBF776 /* Hips Raises.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hips Raises.mp4"; sourceTree = "<group>"; };
 		85F26FEC2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStatsCollectionViewCell.swift; sourceTree = "<group>"; };
 		85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDate+CoreDataClass.swift"; sourceTree = "<group>"; };
 		85FCF19C2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -183,16 +193,16 @@
 		85F26FCC2489316300FBF776 /* WorkoutVideos */ = {
 			isa = PBXGroup;
 			children = (
-				85F26FE3248948EA00FBF776 /* Burpees.mp4 */,
-				85F26FE8248948EC00FBF776 /* Close Body Squats.mp4 */,
-				85F26FE2248948E900FBF776 /* Forward Lunges.mp4 */,
-				85F26FEB248948EE00FBF776 /* Hips Raises.mp4 */,
-				85F26FE7248948EC00FBF776 /* Jumping Jacks.mp4 */,
-				85F26FEA248948ED00FBF776 /* Mountain Climbers.mp4 */,
-				85F26FE5248948EB00FBF776 /* Planks.mp4 */,
-				85F26FE6248948EB00FBF776 /* Push Ups.mp4 */,
-				85F26FE4248948EA00FBF776 /* Seal Jack.mp4 */,
-				85F26FE9248948ED00FBF776 /* Superman.mp4 */,
+				85A586502490B7D500C4F1AE /* Burpees.mp4 */,
+				85A586522490B7D500C4F1AE /* Close Body Squats.mp4 */,
+				85A586562490B7D600C4F1AE /* Forward Lunges.mp4 */,
+				85A586542490B7D600C4F1AE /* Hips Raises.mp4 */,
+				85A586532490B7D600C4F1AE /* Jumping Jacks.mp4 */,
+				85A5864F2490B7D400C4F1AE /* Mountain Climbers.mp4 */,
+				85A586582490B7D700C4F1AE /* Planks.mp4 */,
+				85A586512490B7D500C4F1AE /* Push Ups.mp4 */,
+				85A586572490B7D600C4F1AE /* Seal Jack.mp4 */,
+				85A586552490B7D600C4F1AE /* Superman.mp4 */,
 			);
 			path = WorkoutVideos;
 			sourceTree = "<group>";
@@ -367,8 +377,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85A586612490B7D700C4F1AE /* Seal Jack.mp4 in Resources */,
+				85A5865A2490B7D700C4F1AE /* Burpees.mp4 in Resources */,
+				85A586622490B7D700C4F1AE /* Planks.mp4 in Resources */,
+				85A5865B2490B7D700C4F1AE /* Push Ups.mp4 in Resources */,
 				85FD53C624651C94004E9AB9 /* LaunchScreen.storyboard in Resources */,
+				85A5865C2490B7D700C4F1AE /* Close Body Squats.mp4 in Resources */,
+				85A586602490B7D700C4F1AE /* Forward Lunges.mp4 in Resources */,
+				85A586592490B7D700C4F1AE /* Mountain Climbers.mp4 in Resources */,
+				85A5865F2490B7D700C4F1AE /* Superman.mp4 in Resources */,
+				85A5865E2490B7D700C4F1AE /* Hips Raises.mp4 in Resources */,
 				857EF7FF246843E400323533 /* Home.storyboard in Resources */,
+				85A5865D2490B7D700C4F1AE /* Jumping Jacks.mp4 in Resources */,
 				85FD53C324651C94004E9AB9 /* Assets.xcassets in Resources */,
 				85FD53C124651C93004E9AB9 /* Main.storyboard in Resources */,
 				857EF8012468452E00323533 /* Stat.storyboard in Resources */,
