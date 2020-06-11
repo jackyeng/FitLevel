@@ -42,9 +42,12 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     
     var countTimer: Timer?
     
+    @IBOutlet weak var warmUpLabel1: UILabel!
+    
+    @IBOutlet weak var warmUpLabel2: UILabel!
     var counter = 0
     var actionStatus = true
-    
+    var warmupStatus = true
     //Video
     let date = Date()
     let calender = Calendar.current
@@ -61,13 +64,16 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         player = AVPlayer(url: videoURL)
         playerViewController = AVPlayerViewController()
         
-       
-        counter = Int(workouts[workoutprogress].duration!)!
+        warmUpLabel1.text = "Get"
+        warmUpLabel2.text = "Ready"
+
+        counter = 5
+        
         workoutcount = workouts.count
         //https://stackoverflow.com/questions/29374553/how-can-i-make-a-countdown-with-nstimer
         countTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UIMenuController.update), userInfo: nil, repeats: true)
-        
-        handleTap()
+        countDownLabel.text = String(counter)
+        handleTap(duration: 5)
         
         
         //Timer progress
@@ -135,19 +141,17 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
                    self?.player?.seek(to: CMTime.zero)
                    self?.player?.play()
                        
-           
-                       
                }
                }
         
     }
     
     
-    @objc private func handleTap() {
+    @objc private func handleTap(duration: Int) {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         
         basicAnimation.toValue = 1
-        basicAnimation.duration = 30
+        basicAnimation.duration = CFTimeInterval(duration)
         
         basicAnimation.fillMode = CAMediaTimingFillMode.forwards
         basicAnimation.isRemovedOnCompletion = false
@@ -171,9 +175,13 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             return
         }
         actionStatus = false
-        
-        
-        //https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805
+        warmupStatus = true
+        warmUpLabel1.text = "Get"
+        warmUpLabel2.text = "Ready"
+        counter = 5
+
+        handleTap(duration: 5)
+        countDownLabel.text = String(counter) //https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
             self.updateWorkout()
             self.actionStatus = true
@@ -185,6 +193,9 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         
         
         if workoutprogress > workoutcount-1{
+            self.countTimer?.invalidate()
+            warmUpLabel1.text = ""
+            warmUpLabel2.text = ""
             displayMessage(title: "Congratulation!", message: "You have completed your workout.")
             return
         }
@@ -192,15 +203,14 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         workoutName.text = workouts[workoutprogress].workout!.name
     
         if let level = workouts[workoutprogress].workout?.level{
-            workoutLevel.text = "Level: " + String(level)
+            workoutLevel.text = "Level " + String(level)
         }
         else{
             workoutLevel.text = "Level: Unknown"
         }
         //workoutDuration.text = "Duration: " + workouts[workoutprogress].duration!
         UpdateVideo((Any).self)
-        counter = Int(workouts[workoutprogress].duration!)!
-        handleTap()
+        
     }
     
     func displayMessage(title: String, message: String) {
@@ -253,9 +263,25 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         if(counter > 0) {
             countDownLabel.text = String(counter)
             counter -= 1
+            
         }
         else{
-            Complete((Any).self)
+            if warmupStatus{
+                let duration = Int(workouts[workoutprogress].duration!)!
+                counter = duration
+                countDownLabel.text = String(counter)
+                warmUpLabel1.text = ""
+                warmUpLabel2.text = ""
+                
+                handleTap(duration: duration)
+                warmupStatus = false
+            }
+            else{
+                
+                Complete((Any).self)
+               
+            }
+            
         }
     }
     override func viewDidDisappear(_ animated: Bool) {

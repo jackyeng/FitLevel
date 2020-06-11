@@ -104,6 +104,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="warmUp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S85-tL-glD">
+                                <rect key="frame" x="93" y="539" width="85" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="warmUp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzJ-3n-lSN">
+                                <rect key="frame" x="277" y="539" width="85" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="edu-WP-2lt"/>
@@ -112,6 +126,8 @@
                     <connections>
                         <outlet property="CompleteButton" destination="6nF-VN-b9d" id="PI2-Lo-8Nz"/>
                         <outlet property="countDownLabel" destination="uLd-oc-jP6" id="ODi-T5-R3H"/>
+                        <outlet property="warmUpLabel1" destination="S85-tL-glD" id="Eo8-j6-GUP"/>
+                        <outlet property="warmUpLabel2" destination="MzJ-3n-lSN" id="IyD-Np-xLc"/>
                         <outlet property="workoutLevel" destination="j0I-eq-cPB" id="G4f-VC-Jkk"/>
                         <outlet property="workoutName" destination="THB-Ps-6G3" id="X4f-cu-ydE"/>
                     </connections>
