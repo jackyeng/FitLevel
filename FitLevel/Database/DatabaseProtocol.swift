@@ -17,6 +17,7 @@ enum DatabaseChange {
 enum ListenerType {
     case routine
     case workout
+    case workoutstats
     case routineworkout
     case plan
     case all
@@ -46,7 +47,7 @@ protocol DatabaseProtocol: AnyObject {
     func addRoutineToActive(routine: Routine, active: ActiveRoutine) -> Bool
     //create plan/ saved routine
     func addPlan(planName: String) -> Plan //default plan
-    func addWorkoutDate(year: Int, month: Int, day: Int) -> WorkoutDate
+    func addWorkoutDate(year: Int, month: Int, day: Int)
     func getWorkoutDate(year: Int, month: Int) -> [WorkoutDate]
     func addRoutineToPlan(routine: Routine, plan: Plan) -> Bool
    //create ActiveRoutine
@@ -57,7 +58,7 @@ protocol DatabaseProtocol: AnyObject {
     func addCustomWorkoutToRoutine(customWorkout: CustomWorkout, routine: Routine)
     func getRoutineWorkout(name: String) -> [CustomWorkout]
     //add new workout
-    func addWorkout(name: String, imageURL: String?) -> Workout
+    func addWorkout(name: String, imageURL: String?, level: Int) -> Workout
     func addEmptyRoutine() -> Routine
     //Plan
     

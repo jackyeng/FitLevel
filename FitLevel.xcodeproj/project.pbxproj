@@ -3,10 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8519020D249E2AA5002659F5 /* Seal Jack.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190203249E2AA2002659F5 /* Seal Jack.mp4 */; };
+		8519020E249E2AA5002659F5 /* Superman.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190204249E2AA2002659F5 /* Superman.mp4 */; };
+		8519020F249E2AA5002659F5 /* Planks.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190205249E2AA3002659F5 /* Planks.mp4 */; };
+		85190210249E2AA5002659F5 /* Push Ups.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190206249E2AA3002659F5 /* Push Ups.mp4 */; };
+		85190211249E2AA5002659F5 /* Hips Raises.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190207249E2AA3002659F5 /* Hips Raises.mp4 */; };
+		85190212249E2AA5002659F5 /* Jumping Jacks.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190208249E2AA4002659F5 /* Jumping Jacks.mp4 */; };
+		85190213249E2AA5002659F5 /* Forward Lunges.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190209249E2AA4002659F5 /* Forward Lunges.mp4 */; };
+		85190214249E2AA5002659F5 /* Burpees.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8519020A249E2AA4002659F5 /* Burpees.mp4 */; };
+		85190215249E2AA5002659F5 /* Close Body Squats.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8519020B249E2AA5002659F5 /* Close Body Squats.mp4 */; };
+		85190216249E2AA5002659F5 /* Mountain Climbers.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8519020C249E2AA5002659F5 /* Mountain Climbers.mp4 */; };
 		8527AEED2474087100080312 /* ActiveRoutine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEEB2474087100080312 /* ActiveRoutine+CoreDataClass.swift */; };
 		8527AEEE2474087100080312 /* ActiveRoutine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEEC2474087100080312 /* ActiveRoutine+CoreDataProperties.swift */; };
 		8527AEF124740A4E00080312 /* CustomWorkout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEEF24740A4E00080312 /* CustomWorkout+CoreDataClass.swift */; };
@@ -36,17 +46,11 @@
 		8593EADA2472EE7400914C4D /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */; };
 		8593EADC247313D600914C4D /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */; };
 		85A5864E2490993E00C4F1AE /* EditWorkoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5864D2490993E00C4F1AE /* EditWorkoutDelegate.swift */; };
-		85A586592490B7D700C4F1AE /* Mountain Climbers.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A5864F2490B7D400C4F1AE /* Mountain Climbers.mp4 */; };
-		85A5865A2490B7D700C4F1AE /* Burpees.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586502490B7D500C4F1AE /* Burpees.mp4 */; };
-		85A5865B2490B7D700C4F1AE /* Push Ups.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586512490B7D500C4F1AE /* Push Ups.mp4 */; };
-		85A5865C2490B7D700C4F1AE /* Close Body Squats.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586522490B7D500C4F1AE /* Close Body Squats.mp4 */; };
-		85A5865D2490B7D700C4F1AE /* Jumping Jacks.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586532490B7D600C4F1AE /* Jumping Jacks.mp4 */; };
-		85A5865E2490B7D700C4F1AE /* Hips Raises.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586542490B7D600C4F1AE /* Hips Raises.mp4 */; };
-		85A5865F2490B7D700C4F1AE /* Superman.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586552490B7D600C4F1AE /* Superman.mp4 */; };
-		85A586602490B7D700C4F1AE /* Forward Lunges.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586562490B7D600C4F1AE /* Forward Lunges.mp4 */; };
-		85A586612490B7D700C4F1AE /* Seal Jack.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586572490B7D600C4F1AE /* Seal Jack.mp4 */; };
-		85A586622490B7D700C4F1AE /* Planks.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85A586582490B7D700C4F1AE /* Planks.mp4 */; };
 		85B9D8FB246BCC2F00D17F2E /* CalenderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */; };
+		85BFE706249E8CF500031762 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE705249E8CF400031762 /* GoogleService-Info.plist */; };
+		85BFE708249E8D8E00031762 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BFE707249E8D8E00031762 /* LoginViewController.swift */; };
+		85BFE70A249E91DA00031762 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BFE709249E91DA00031762 /* MainTabBarViewController.swift */; };
+		85BFE70C249E9B6D00031762 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BFE70B249E9B6D00031762 /* SettingsViewController.swift */; };
 		85F26FED2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F26FEC2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift */; };
 		85FCF19D2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */; };
 		85FCF19E2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCF19C2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift */; };
@@ -65,9 +69,23 @@
 		85FD53E72465E106004E9AB9 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53E62465E106004E9AB9 /* DatabaseProtocol.swift */; };
 		85FD53E92465E112004E9AB9 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53E82465E112004E9AB9 /* MulticastDelegate.swift */; };
 		85FD53EB2465E123004E9AB9 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53EA2465E123004E9AB9 /* CoreDataController.swift */; };
+		E642101ECA60473EDFDA393E /* Pods_FitLevel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E17ED6CF1A08FEE7F9877BA /* Pods_FitLevel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01FA6D5AEFEB97FAC58BF177 /* Pods-FitLevel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitLevel.debug.xcconfig"; path = "Target Support Files/Pods-FitLevel/Pods-FitLevel.debug.xcconfig"; sourceTree = "<group>"; };
+		60EF21E04F3BCCB2319F001B /* Pods-FitLevel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitLevel.release.xcconfig"; path = "Target Support Files/Pods-FitLevel/Pods-FitLevel.release.xcconfig"; sourceTree = "<group>"; };
+		7E17ED6CF1A08FEE7F9877BA /* Pods_FitLevel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitLevel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85190203249E2AA2002659F5 /* Seal Jack.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Seal Jack.mp4"; sourceTree = "<group>"; };
+		85190204249E2AA2002659F5 /* Superman.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Superman.mp4; sourceTree = "<group>"; };
+		85190205249E2AA3002659F5 /* Planks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Planks.mp4; sourceTree = "<group>"; };
+		85190206249E2AA3002659F5 /* Push Ups.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Push Ups.mp4"; sourceTree = "<group>"; };
+		85190207249E2AA3002659F5 /* Hips Raises.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hips Raises.mp4"; sourceTree = "<group>"; };
+		85190208249E2AA4002659F5 /* Jumping Jacks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jumping Jacks.mp4"; sourceTree = "<group>"; };
+		85190209249E2AA4002659F5 /* Forward Lunges.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Forward Lunges.mp4"; sourceTree = "<group>"; };
+		8519020A249E2AA4002659F5 /* Burpees.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Burpees.mp4; sourceTree = "<group>"; };
+		8519020B249E2AA5002659F5 /* Close Body Squats.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Close Body Squats.mp4"; sourceTree = "<group>"; };
+		8519020C249E2AA5002659F5 /* Mountain Climbers.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mountain Climbers.mp4"; sourceTree = "<group>"; };
 		8527AEEB2474087100080312 /* ActiveRoutine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveRoutine+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8527AEEC2474087100080312 /* ActiveRoutine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveRoutine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8527AEEF24740A4E00080312 /* CustomWorkout+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomWorkout+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -97,17 +115,11 @@
 		8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
 		8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		85A5864D2490993E00C4F1AE /* EditWorkoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkoutDelegate.swift; sourceTree = "<group>"; };
-		85A5864F2490B7D400C4F1AE /* Mountain Climbers.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mountain Climbers.mp4"; path = "../../../../Workout Videos/Mountain Climbers.mp4"; sourceTree = "<group>"; };
-		85A586502490B7D500C4F1AE /* Burpees.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Burpees.mp4; path = "../../../../Workout Videos/Burpees.mp4"; sourceTree = "<group>"; };
-		85A586512490B7D500C4F1AE /* Push Ups.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Push Ups.mp4"; path = "../../../../Workout Videos/Push Ups.mp4"; sourceTree = "<group>"; };
-		85A586522490B7D500C4F1AE /* Close Body Squats.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Close Body Squats.mp4"; path = "../../../../Workout Videos/Close Body Squats.mp4"; sourceTree = "<group>"; };
-		85A586532490B7D600C4F1AE /* Jumping Jacks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Jumping Jacks.mp4"; path = "../../../../Workout Videos/Jumping Jacks.mp4"; sourceTree = "<group>"; };
-		85A586542490B7D600C4F1AE /* Hips Raises.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hips Raises.mp4"; path = "../../../../Workout Videos/Hips Raises.mp4"; sourceTree = "<group>"; };
-		85A586552490B7D600C4F1AE /* Superman.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Superman.mp4; path = "../../../../Workout Videos/Superman.mp4"; sourceTree = "<group>"; };
-		85A586562490B7D600C4F1AE /* Forward Lunges.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Forward Lunges.mp4"; path = "../../../../Workout Videos/Forward Lunges.mp4"; sourceTree = "<group>"; };
-		85A586572490B7D600C4F1AE /* Seal Jack.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Seal Jack.mp4"; path = "../../../../Workout Videos/Seal Jack.mp4"; sourceTree = "<group>"; };
-		85A586582490B7D700C4F1AE /* Planks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Planks.mp4; path = "../../../../Workout Videos/Planks.mp4"; sourceTree = "<group>"; };
 		85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderInfo.swift; sourceTree = "<group>"; };
+		85BFE705249E8CF400031762 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		85BFE707249E8D8E00031762 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		85BFE709249E91DA00031762 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		85BFE70B249E9B6D00031762 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		85F26FEC2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStatsCollectionViewCell.swift; sourceTree = "<group>"; };
 		85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDate+CoreDataClass.swift"; sourceTree = "<group>"; };
 		85FCF19C2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -135,13 +147,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E642101ECA60473EDFDA393E /* Pods_FitLevel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		857EF7F724683FF200323533 /* View */ = {
+		6A8343C34B477324DAE8C05C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01FA6D5AEFEB97FAC58BF177 /* Pods-FitLevel.debug.xcconfig */,
+				60EF21E04F3BCCB2319F001B /* Pods-FitLevel.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		85190217249E2BC5002659F5 /* Login View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				85BFE707249E8D8E00031762 /* LoginViewController.swift */,
+				85BFE70B249E9B6D00031762 /* SettingsViewController.swift */,
+			);
+			path = "Login View Controller";
+			sourceTree = "<group>";
+		};
+		857EF7F724683FF200323533 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
 				85FD53BF24651C93004E9AB9 /* Main.storyboard */,
@@ -150,7 +181,7 @@
 				857EF8002468452E00323533 /* Stat.storyboard */,
 				85FD53C424651C94004E9AB9 /* LaunchScreen.storyboard */,
 			);
-			path = View;
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		857EF804246855A200323533 /* Class */ = {
@@ -186,6 +217,7 @@
 				85B9D8FA246BCC2F00D17F2E /* CalenderInfo.swift */,
 				857F133E246AB0B300568E22 /* HomeScreenViewController.swift */,
 				852BA573246BC86F00B15B7D /* DateCollectionViewCell.swift */,
+				85BFE709249E91DA00031762 /* MainTabBarViewController.swift */,
 			);
 			path = Calender;
 			sourceTree = "<group>";
@@ -193,16 +225,16 @@
 		85F26FCC2489316300FBF776 /* WorkoutVideos */ = {
 			isa = PBXGroup;
 			children = (
-				85A586502490B7D500C4F1AE /* Burpees.mp4 */,
-				85A586522490B7D500C4F1AE /* Close Body Squats.mp4 */,
-				85A586562490B7D600C4F1AE /* Forward Lunges.mp4 */,
-				85A586542490B7D600C4F1AE /* Hips Raises.mp4 */,
-				85A586532490B7D600C4F1AE /* Jumping Jacks.mp4 */,
-				85A5864F2490B7D400C4F1AE /* Mountain Climbers.mp4 */,
-				85A586582490B7D700C4F1AE /* Planks.mp4 */,
-				85A586512490B7D500C4F1AE /* Push Ups.mp4 */,
-				85A586572490B7D600C4F1AE /* Seal Jack.mp4 */,
-				85A586552490B7D600C4F1AE /* Superman.mp4 */,
+				8519020A249E2AA4002659F5 /* Burpees.mp4 */,
+				8519020B249E2AA5002659F5 /* Close Body Squats.mp4 */,
+				85190209249E2AA4002659F5 /* Forward Lunges.mp4 */,
+				85190207249E2AA3002659F5 /* Hips Raises.mp4 */,
+				85190208249E2AA4002659F5 /* Jumping Jacks.mp4 */,
+				8519020C249E2AA5002659F5 /* Mountain Climbers.mp4 */,
+				85190205249E2AA3002659F5 /* Planks.mp4 */,
+				85190206249E2AA3002659F5 /* Push Ups.mp4 */,
+				85190203249E2AA2002659F5 /* Seal Jack.mp4 */,
+				85190204249E2AA2002659F5 /* Superman.mp4 */,
 			);
 			path = WorkoutVideos;
 			sourceTree = "<group>";
@@ -220,6 +252,8 @@
 			children = (
 				85FD53B724651C93004E9AB9 /* Products */,
 				85FD53B824651C93004E9AB9 /* FitLevel */,
+				6A8343C34B477324DAE8C05C /* Pods */,
+				CA74CC17396C9466AEE920F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,10 +268,12 @@
 		85FD53B824651C93004E9AB9 /* FitLevel */ = {
 			isa = PBXGroup;
 			children = (
+				85BFE705249E8CF400031762 /* GoogleService-Info.plist */,
+				857EF7F724683FF200323533 /* Storyboard */,
+				85190217249E2BC5002659F5 /* Login View Controller */,
 				85F26FE1248948C000FBF776 /* Collection View */,
 				85F26FCC2489316300FBF776 /* WorkoutVideos */,
 				85FD53CE2465A038004E9AB9 /* Database */,
-				857EF7F724683FF200323533 /* View */,
 				85B9D8F9246BCC1A00D17F2E /* Calender */,
 				85FD53D32465A0E2004E9AB9 /* View Controller */,
 				85FD53D12465A0CC004E9AB9 /* Table View Controller */,
@@ -319,6 +355,14 @@
 			path = "View Controller";
 			sourceTree = "<group>";
 		};
+		CA74CC17396C9466AEE920F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E17ED6CF1A08FEE7F9877BA /* Pods_FitLevel.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -326,9 +370,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85FD53CA24651C95004E9AB9 /* Build configuration list for PBXNativeTarget "FitLevel" */;
 			buildPhases = (
+				70841344F9DEE8FA5E67E0F0 /* [CP] Check Pods Manifest.lock */,
 				85FD53B224651C93004E9AB9 /* Sources */,
 				85FD53B324651C93004E9AB9 /* Frameworks */,
 				85FD53B424651C93004E9AB9 /* Resources */,
+				14ADC00A7D7D9C965FC0313D /* [CP] Embed Pods Frameworks */,
+				45327B1C95C385F841C6D7E3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -377,26 +424,86 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85A586612490B7D700C4F1AE /* Seal Jack.mp4 in Resources */,
-				85A5865A2490B7D700C4F1AE /* Burpees.mp4 in Resources */,
-				85A586622490B7D700C4F1AE /* Planks.mp4 in Resources */,
-				85A5865B2490B7D700C4F1AE /* Push Ups.mp4 in Resources */,
+				85190216249E2AA5002659F5 /* Mountain Climbers.mp4 in Resources */,
+				8519020D249E2AA5002659F5 /* Seal Jack.mp4 in Resources */,
 				85FD53C624651C94004E9AB9 /* LaunchScreen.storyboard in Resources */,
-				85A5865C2490B7D700C4F1AE /* Close Body Squats.mp4 in Resources */,
-				85A586602490B7D700C4F1AE /* Forward Lunges.mp4 in Resources */,
-				85A586592490B7D700C4F1AE /* Mountain Climbers.mp4 in Resources */,
-				85A5865F2490B7D700C4F1AE /* Superman.mp4 in Resources */,
-				85A5865E2490B7D700C4F1AE /* Hips Raises.mp4 in Resources */,
 				857EF7FF246843E400323533 /* Home.storyboard in Resources */,
-				85A5865D2490B7D700C4F1AE /* Jumping Jacks.mp4 in Resources */,
+				85190211249E2AA5002659F5 /* Hips Raises.mp4 in Resources */,
+				85190214249E2AA5002659F5 /* Burpees.mp4 in Resources */,
+				8519020F249E2AA5002659F5 /* Planks.mp4 in Resources */,
 				85FD53C324651C94004E9AB9 /* Assets.xcassets in Resources */,
+				85190212249E2AA5002659F5 /* Jumping Jacks.mp4 in Resources */,
+				85190215249E2AA5002659F5 /* Close Body Squats.mp4 in Resources */,
 				85FD53C124651C93004E9AB9 /* Main.storyboard in Resources */,
 				857EF8012468452E00323533 /* Stat.storyboard in Resources */,
+				85BFE706249E8CF500031762 /* GoogleService-Info.plist in Resources */,
+				8519020E249E2AA5002659F5 /* Superman.mp4 in Resources */,
+				85190213249E2AA5002659F5 /* Forward Lunges.mp4 in Resources */,
 				857EF7FD2468439100323533 /* Routine.storyboard in Resources */,
+				85190210249E2AA5002659F5 /* Push Ups.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14ADC00A7D7D9C965FC0313D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitLevel/Pods-FitLevel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitLevel/Pods-FitLevel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FitLevel/Pods-FitLevel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45327B1C95C385F841C6D7E3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitLevel/Pods-FitLevel-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitLevel/Pods-FitLevel-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FitLevel/Pods-FitLevel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70841344F9DEE8FA5E67E0F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FitLevel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		85FD53B224651C93004E9AB9 /* Sources */ = {
@@ -411,6 +518,7 @@
 				857EF7EE2468288200323533 /* Plan+CoreDataClass.swift in Sources */,
 				8527AEEE2474087100080312 /* ActiveRoutine+CoreDataProperties.swift in Sources */,
 				85FD53D72465A146004E9AB9 /* EditWorkout.swift in Sources */,
+				85BFE70C249E9B6D00031762 /* SettingsViewController.swift in Sources */,
 				8593EADA2472EE7400914C4D /* RoutineTableViewCell.swift in Sources */,
 				857EF7F12468288200323533 /* Routine+CoreDataProperties.swift in Sources */,
 				85B9D8FB246BCC2F00D17F2E /* CalenderInfo.swift in Sources */,
@@ -428,6 +536,7 @@
 				8527AEF224740A4E00080312 /* CustomWorkout+CoreDataProperties.swift in Sources */,
 				852BA574246BC86F00B15B7D /* DateCollectionViewCell.swift in Sources */,
 				85FD53E02465C7B0004E9AB9 /* WorkoutListTableViewController.swift in Sources */,
+				85BFE70A249E91DA00031762 /* MainTabBarViewController.swift in Sources */,
 				8593EADC247313D600914C4D /* WorkoutTableViewCell.swift in Sources */,
 				857EF7EF2468288200323533 /* Plan+CoreDataProperties.swift in Sources */,
 				85FD53EB2465E123004E9AB9 /* CoreDataController.swift in Sources */,
@@ -437,6 +546,7 @@
 				857EF7F22468288200323533 /* Workout+CoreDataClass.swift in Sources */,
 				8527AEFC24763E5700080312 /* EditRoutineNameDelegate.swift in Sources */,
 				85FD53E22465C7E7004E9AB9 /* WorkoutRoutineTableViewController.swift in Sources */,
+				85BFE708249E8D8E00031762 /* LoginViewController.swift in Sources */,
 				85FD53DB2465A194004E9AB9 /* WorkoutStatsViewController.swift in Sources */,
 				8527AEFA2475B18C00080312 /* RoutinePreviewTableViewController.swift in Sources */,
 				8527AEF82475A6A800080312 /* CustomRoutineTableViewController.swift in Sources */,
@@ -586,6 +696,7 @@
 		};
 		85FD53CB24651C95004E9AB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01FA6D5AEFEB97FAC58BF177 /* Pods-FitLevel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -605,6 +716,7 @@
 		};
 		85FD53CC24651C95004E9AB9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60EF21E04F3BCCB2319F001B /* Pods-FitLevel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

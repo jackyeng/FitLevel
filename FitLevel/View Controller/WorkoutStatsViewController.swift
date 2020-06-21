@@ -8,7 +8,26 @@
 
 import UIKit
 
-class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource{
+class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, DatabaseListener{
+    
+    var listenerType: ListenerType = .workoutstats
+    
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
+        
+    }
+    
+    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
+        self.workouts = workouts
+    }
+    
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
+        
+    }
+    
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+        
+    }
+    
     
     
     
@@ -45,8 +64,8 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
                if cell.isHidden{
                    cell.isHidden = false
                }
-              cell.levelLabel.text = "16"
-        cell.workoutNameLabel.text = "Mountain Climber"
+        cell.levelLabel.text = String(workouts[indexPath.row].level)
+        cell.workoutNameLabel.text = String(workouts[indexPath.row].name!)
         cell.workoutNameLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.workoutNameLabel?.numberOfLines = 0
                let image : UIImage = UIImage(named:"goldcircle")!
@@ -54,19 +73,34 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
                return cell
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+        
+        
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+     
+    }
    
     @IBOutlet weak var WorkoutStats: UICollectionView!
-    
+    var databaseController: DatabaseProtocol?
     var views: UIView?
     var string: String?
-        
+    var workouts = [Workout]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor.systemIndigo
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
+        
        WorkoutStats.dataSource = self
        WorkoutStats.delegate = self
-        
+     
         
         self.navigationItem.titleView = navTitleWithImageAndText(titleText: "Workout Stats", imageName: "gamer_01_18_contour_info_infos_lines-512.png")
         // Do any additional setup after loading the view.

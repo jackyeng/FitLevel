@@ -25,6 +25,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     var workouts = [CustomWorkout]()
     weak var workoutDelegate: WorkoutRoutineDelegate?
     var listenerType: ListenerType = .routineworkout
+    var databaseController: DatabaseProtocol?
     var workoutprogress = 0
     var workoutcount = 10
     @IBOutlet weak var workoutName: UILabel!
@@ -51,16 +52,23 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     //Video
     let date = Date()
     let calender = Calendar.current
+    
+    
     var  player: AVPlayer?
     var playerViewController: AVPlayerViewController?
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
         guard let videoURL = Bundle.main.url(forResource: workouts[0].workout?.name, withExtension: "mp4") else {
             print("Couldn't load video")
             return
         }
+        
+    
+        
         player = AVPlayer(url: videoURL)
         playerViewController = AVPlayerViewController()
         
@@ -197,6 +205,8 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             warmUpLabel1.text = ""
             warmUpLabel2.text = ""
             displayMessage(title: "Congratulation!", message: "You have completed your workout.")
+            let _ = databaseController?.addWorkoutDate(year: year, month: month+1, day: day)
+            //let _ = databaseController?.addWorkoutDate(year: 2020, month: 6, day: 11)
             return
         }
        

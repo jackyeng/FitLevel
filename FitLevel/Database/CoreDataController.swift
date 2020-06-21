@@ -14,14 +14,21 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return fetchWorkoutDate(year: year, month: month)
     }
     
-    func addWorkoutDate(year: Int, month: Int, day: Int) -> WorkoutDate {
-        let workoutDate = NSEntityDescription.insertNewObject(forEntityName: "WorkoutDate",
-                                                                into: persistentContainer.viewContext) as! WorkoutDate
-        workoutDate.year = Int64(year)
-        workoutDate.month = Int64(month)
-        workoutDate.day = Int64(day)
-        saveDraft()
-        return workoutDate
+    func addWorkoutDate(year: Int, month: Int, day: Int) {
+        let workoutdates = fetchWorkoutDate(year: year, month: month, day:day)
+       
+        if workoutdates == [] {
+            let workoutDate = NSEntityDescription.insertNewObject(forEntityName: "WorkoutDate",
+                                                                    into: persistentContainer.viewContext) as! WorkoutDate
+            workoutDate.year = Int64(year)
+            workoutDate.month = Int64(month)
+            workoutDate.day = Int64(day)
+        
+            saveDraft()
+        
+        }
+        
+
     }
     
     func getRoutineWorkout(name: String) -> [CustomWorkout] {
@@ -99,12 +106,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return emptyroutine
     }
     
-    func addWorkout(name: String, imageURL: String?) -> Workout{
+    func addWorkout(name: String, imageURL: String?, level: Int) -> Workout{
         let workout = NSEntityDescription.insertNewObject(forEntityName: "Workout",
                     into: childContext!) as! Workout
         workout.name = name
         workout.image = imageURL
-        workout.level = 1
+        workout.level = Int16(level)
         return workout
     }
     
@@ -166,15 +173,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         super.init()
         childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         childContext?.parent = self.persistentContainer.viewContext
+        //createDefaultContent()
         
-        /*
-        createDefaultWorkout()
-        saveDraft()
-        createDefaultPlans()
-        createDefaultRoutine()
-        createDefaultWorkoutDate()
-        saveDraft()
-        */
         
     }
 
@@ -269,6 +269,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         if listener.listenerType == .workout || listener.listenerType == .all {
             listener.onWorkoutListChange(change: .update, workouts: fetchAllWorkouts())
         }
+        if listener.listenerType == .workoutstats || listener.listenerType == .all {
+            listener.onWorkoutListChange(change: .update, workouts: fetchAllWorkouts(sort: "level", bool: false))
+        }
         
         if listener.listenerType == .routineworkout || listener.listenerType == .all {
             listener.onWorkoutListChange(change: .update, workouts: fetchAllWorkouts())
@@ -293,6 +296,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                 if listener.listenerType == .workout || listener.listenerType == .all {
                     listener.onWorkoutListChange(change: .update, workouts: fetchAllWorkouts())
                 }
+               
             }
         } else if controller == routineWorkoutsFetchedResultsController {
             listeners.invoke { (listener) in
@@ -392,14 +396,21 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     return workout
     }
     
-    func fetchWorkoutDate(year: Int, month:Int) -> [WorkoutDate]{
-     
+    func fetchWorkoutDate(year: Int, month:Int, day: Int? = -1) -> [WorkoutDate]{
+
          let fetchRequest: NSFetchRequest<WorkoutDate> = WorkoutDate.fetchRequest()
          // Sort by name
          let nameSortDescriptor = NSSortDescriptor(key: "day", ascending: true)
-         let predicate = NSPredicate(format: "year == \(year) AND month == \(month)") // fix
+        if day == -1{
+            let predicate = NSPredicate(format: "year == \(year) AND month == \(month)") // fix
+            fetchRequest.predicate = predicate
+        }
+        else{
+            let predicate = NSPredicate(format: "year == \(year) AND month == \(month) AND day == \(day ?? -1)")
+            fetchRequest.predicate = predicate
+        }
          fetchRequest.sortDescriptors = [nameSortDescriptor]
-         fetchRequest.predicate = predicate
+         
          // Initialize Results Controller
          workoutDateFetchedResultsController =
              NSFetchedResultsController<WorkoutDate>(fetchRequest:
@@ -423,12 +434,15 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
      return workout
      }
     
-    func fetchAllWorkouts() -> [Workout] {
+    
+    
+    
+    func fetchAllWorkouts(sort: String? = "name", bool: Bool? = true) -> [Workout] {
         // If results controller not currently initialized
         if allWorkoutsFetchedResultsController == nil {
             let fetchRequest: NSFetchRequest<Workout> = Workout.fetchRequest()
             // Sort by name
-            let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+            let nameSortDescriptor = NSSortDescriptor(key: sort, ascending: bool! )
             fetchRequest.sortDescriptors = [nameSortDescriptor]
             // Initialize Results Controller
             allWorkoutsFetchedResultsController =
@@ -512,7 +526,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                 }
             print(workoutname)
             
-            let _ = addWorkout(name: workoutname, imageURL: mySubstring)
+            let _ = addWorkout(name: workoutname, imageURL: mySubstring,level:1)
             
             }
             
@@ -558,20 +572,27 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     
     
+    func createDefaultContent(){
+        createDefaultWorkout()
+        saveDraft()
+        createDefaultPlans()
+        createDefaultRoutine()
+        createDefaultWorkoutDate()
+        saveDraft()
+    }
     
-    
-    
+    //https://www.youtube.com/watch?time_continue=270&v=_knIf9vF4k4&feature=emb_logo
     func createDefaultWorkout(){
-        let _ = addWorkout(name: "Burpees", imageURL: "")
-        let _ = addWorkout(name: "Close Body Squats", imageURL: "")
-        let _ = addWorkout(name: "Forward Lunges", imageURL: "")
-        let _ = addWorkout(name: "Hips Raises", imageURL: "")
-        let _ = addWorkout(name: "Jumping Jacks", imageURL: "")
-        let _ = addWorkout(name: "Mountain Climbers", imageURL: "")
-        let _ = addWorkout(name: "Planks", imageURL: "")
-        let _ = addWorkout(name: "Push Ups", imageURL: "")
-        let _ = addWorkout(name: "Seal Jack", imageURL: "")
-        let _ = addWorkout(name: "Superman", imageURL: "")
+        let _ = addWorkout(name: "Burpees", imageURL: "",level: 3)
+        let _ = addWorkout(name: "Close Body Squats", imageURL: "", level: 1)
+        let _ = addWorkout(name: "Forward Lunges", imageURL: "",level: 10)
+        let _ = addWorkout(name: "Hips Raises", imageURL: "",level:5)
+        let _ = addWorkout(name: "Jumping Jacks", imageURL: "",level:7)
+        let _ = addWorkout(name: "Mountain Climbers", imageURL: "",level:9)
+        let _ = addWorkout(name: "Planks", imageURL: "",level:4)
+        let _ = addWorkout(name: "Push Ups", imageURL: "",level:6)
+        let _ = addWorkout(name: "Seal Jack", imageURL: "",level:2)
+        let _ = addWorkout(name: "Superman", imageURL: "",level:8)
 
     }
     
@@ -615,10 +636,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     func createDefaultRoutine(){
        
     
-        let r1 = addRoutine(routineName: "Routine 1")
-        let r2 = addRoutine(routineName: "Routine 2")
-        let r3 = addRoutine(routineName: "Routine 3")
- 
+        let r1 = addRoutine(routineName: "Fat Burning Bodyweight Workout")
+        let r2 = addRoutine(routineName: "Custom Routine")
         
         var int = 0
         let workouts = fetchAllWorkouts()
@@ -628,8 +647,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             let custom = addCustomWorkout( set: "3", repetition: "12", duration: "30")
             let _ = addWorkoutToCustomWorkout(workout: item , customWorkout: custom)
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r1)
-            let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r2)
-            let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r3)
+           let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r2)
             saveDraft()
             if int == 10{
                 break
@@ -645,7 +663,6 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         
         let _ = addRoutineToActive(routine: r1, active: activeRoutine)
         let _ = addRoutineToActive(routine: r2, active: activeRoutine)
-        let _ = addRoutineToActive(routine: r3, active: activeRoutine)
         
         //routine name
         //link workout to the routine list
@@ -660,9 +677,10 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         let _ = addWorkoutDate(year: 2020, month: 5, day: 8)
         let _ = addWorkoutDate(year: 2020, month: 5, day: 10)
         let _ = addWorkoutDate(year: 2020, month: 5, day: 18)
+        let _ = addWorkoutDate(year: 2020, month: 6, day: 2)
         let _ = addWorkoutDate(year: 2020, month: 6, day: 6)
         let _ = addWorkoutDate(year: 2020, month: 6, day: 10)
-        let _ = addWorkoutDate(year: 2020, month: 6, day: 20)
+      
         
     }
 

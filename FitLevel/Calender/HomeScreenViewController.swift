@@ -9,7 +9,26 @@
 import UIKit
 
 //https://www.youtube.com/watch?v=0o06EIPY0JI by Asterios R.
-class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,DatabaseListener {
+    
+    var listenerType: ListenerType = .workoutstats
+    
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
+        
+    }
+    
+    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
+        self.workouts = workouts
+    }
+    
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
+        
+    }
+    
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+        
+    }
+    
     weak var databaseController: DatabaseProtocol?
     
     @IBOutlet weak var calenderFrame: UITextView!
@@ -22,6 +41,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     "https://wger.de/media/exercise-images/244/Close-grip-front-lat-pull-down-2.png"]
     
     var workoutlist = [WorkoutData]()
+    var workouts = [Workout]()
     
     @IBOutlet weak var Calender: UICollectionView!
     @IBOutlet weak var WorkoutStats: UICollectionView!
@@ -54,7 +74,20 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     var DateCheck = [Int](repeating: 0, count:32)
     
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+        displayProgress(year: year, month: month + 1)
+        Calender.reloadData()
+        
+        
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+     
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -264,8 +297,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
            if cell.isHidden{
                       cell.isHidden = false
                   }
-                 cell.levelLabel.text = "16"
-           cell.workoutNameLabel.text = "Mountain Climber"
+            cell.levelLabel.text = String(workouts[indexPath.row].level)
+            cell.workoutNameLabel.text = workouts[indexPath.row].name
            cell.workoutNameLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
            cell.workoutNameLabel?.numberOfLines = 0
                   let image : UIImage = UIImage(named:"goldcircle")!
@@ -311,7 +344,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     
         let workout = databaseController?.addRoutine(routineName: "")
-        let workout1 = databaseController?.addWorkout(name: "test", imageURL: "")
+        let workout1 = databaseController?.addWorkout(name: "test", imageURL: "",level: 1)
         let workouts = databaseController?.addCustomWorkout(set:"1", repetition: "3",duration:"30")
         let _ = databaseController?.addCustomWorkoutToRoutine(customWorkout: workouts!, routine: workout!)
         let _ = databaseController?.addWorkoutToCustomWorkout(workout: workout1!, customWorkout: workouts!)
@@ -324,46 +357,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         
         return
         
-        for i in workoutlist{
-            print(i.imageURL!)
-        }
         
-        for i in workoutlinks{
-            let mySubstring = i
-            var startindex = 0
-            var endindex = -1
-            for (index,char) in mySubstring.enumerated(){
-             
-                if char.isUppercase{
-                   startindex = index
-                }
-                if char.isNumber{
-                    if (startindex != 0 && endindex == -1){
-                        endindex = index
-                    }
-                    
-                }
-            
-            }
-            endindex -= (mySubstring.count + 1)
-            let start = i.index(i.startIndex, offsetBy: startindex)
-            let end = i.index(i.endIndex, offsetBy: endindex)
-            let range = start..<end
-            let finalstring = String(mySubstring[range])
-            print(finalstring)
-            
-            var workoutname = ""
-            for char in finalstring{
-                if char == "-"{
-                    workoutname += " "
-                    
-                }
-                else{
-                 workoutname += String(char)
-            }
-                }
-            print(workoutname)
-            }
             
             
         }
