@@ -44,7 +44,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     var counter = 0
     var actionStatus = true
     var warmupStatus = true
-    
+    var isPaused = false
     
     //Video
     let date = Date()
@@ -123,6 +123,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         self.view.bringSubviewToFront(countDownLabel)
         //view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
 
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(videoHandler)))
         
         //Initialize title
         workoutName.text = workouts[workoutprogress].workout!.name
@@ -177,6 +178,36 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         shapeLayer.add(basicAnimation, forKey: "urSoBasic")
     }
     
+    
+    //https://stackoverflow.com/questions/34735707/swift-pause-cabasicanimation-for-calayer
+    @objc private func videoHandler(){
+        if isPaused {
+            player?.play()
+            countTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UIMenuController.update), userInfo: nil, repeats: true)
+            
+            //Resume CAShapeLayer Animation
+            let pausedTime = shapeLayer.timeOffset
+            shapeLayer.speed = 1.0
+            shapeLayer.timeOffset = 0.0
+            shapeLayer.beginTime = 0.0
+            let timeSincePause = shapeLayer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+            shapeLayer.beginTime = timeSincePause
+            
+            isPaused = false
+        }
+        else{
+            player?.pause()
+            self.countTimer?.invalidate()
+            //Pause CAShapeLayer Animation
+            let pausedTime : CFTimeInterval = shapeLayer.convertTime(CACurrentMediaTime(), from: nil)
+            shapeLayer.speed = 0.0
+            shapeLayer.timeOffset = pausedTime
+            
+            isPaused = true
+        }
+        
+        
+    }
     /*
     // MARK: - Navigation
 
