@@ -358,7 +358,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Bg4-nY-UTP"/>
                     <connections>
-                        <outlet property="nameLabel" destination="JYF-6n-MnK" id="2bI-cN-pTn"/>
+                        <outlet property="nameLabel" destination="JYF-6n-MnK" id="Rrr-el-5jU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e73-GU-ynX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

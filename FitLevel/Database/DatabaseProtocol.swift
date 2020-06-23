@@ -62,7 +62,7 @@ protocol DatabaseProtocol: AnyObject {
     func addEmptyRoutine() -> Routine
     //Plan
     
-    //removal
+    //Removal
     func removeRoutinefromActive(active: ActiveRoutine, routine: Routine)
     
     //Routine

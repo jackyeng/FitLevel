@@ -9,25 +9,17 @@
 import UIKit
 
 class WorkoutPlansTableViewController: UITableViewController, DatabaseListener, WorkoutRoutineDelegate {
+    
+    
     func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
         routines = recommendedPlan
-        for i in routines{
-            print(i)
-        }
+    
     }
     
-    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
-        
-    }
-    
-    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
-        
-    }
-    
-    var listenerType: ListenerType = .plan
-    
+
     @IBOutlet weak var PlanName: UILabel!
     
+    var listenerType: ListenerType = .plan
     var routines = [Routine]()
     var databaseController: DatabaseProtocol?
     
@@ -35,12 +27,6 @@ class WorkoutPlansTableViewController: UITableViewController, DatabaseListener, 
     var beginnercell = "beginner"
     
  
-    
-    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
-        
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -149,7 +135,20 @@ class WorkoutPlansTableViewController: UITableViewController, DatabaseListener, 
         
         default:
             return
+        }
+    
     }
     
-}
+    //Unused
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
+        
+    }
+    
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
+        
+    }
+    
+    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
+           
+    }
 }

@@ -1,34 +1,39 @@
 //
-//  WorkoutListTableViewController.swift
+//  AboutTableViewController.swift
 //  FitLevel
 //
-//  Created by Jacky Eng on 09/05/2020.
+//  Created by Jacky Eng on 23/06/2020.
 //  Copyright © 2020 Jacky Eng. All rights reserved.
 //
 
 import UIKit
 
-class WorkoutListTableViewController: UITableViewController, DatabaseListener, CustomWorkoutDelegate {
+class AboutTableViewController: UITableViewController {
     
-    func addWorkout(custom: CustomWorkout) -> Bool {
-        return true
-    }
     
-    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
-        workout = workouts
-    }
+    
+    var section_thirdparty = 0
+    var section_resources = 1
+    var section_youtubelinks = 2
    
     
-    var listenerType: ListenerType = .workout
-    weak var workoutDelegate: CustomWorkoutDelegate?
-    var databaseController: DatabaseProtocol?
-    var workout = [Workout]()
+    var cell_thirdparty = "ThirdParty"
+    var cell_youtubelinks = "YoutubeResources"
+    var cell_resources = "Resources"
     
+    //IMAGE ASSETS LINK
+    
+    var ThirdParty = ["Firebase"]
+    
+    var YoutubeLinks = ["1","2","3"]
+    
+    var Resources = ["1"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        databaseController = appDelegate.databaseController
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -37,34 +42,58 @@ class WorkoutListTableViewController: UITableViewController, DatabaseListener, C
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        // #warning Incomplete implementation, return the number of sections
+        
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workout.count
+        // #warning Incomplete implementation, return the number of rows
+        switch section{
+        case section_thirdparty:
+            return ThirdParty.count
+        case section_resources:
+            return Resources.count
+        case section_youtubelinks:
+            return YoutubeLinks.count
+        default:
+            return 0
+            
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "workout", for: indexPath) as! WorkoutTableViewCell
-          //let workout = plan[indexPath.row]
-          cell.WorkoutNameLabel.text = workout[indexPath.row].name
         
-          cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-          cell.textLabel?.numberOfLines = 0
-          return cell //display cocktails in My Drink
+
+        // Configure the cell...
+        
+        switch indexPath.section{
+        case section_thirdparty:
+            let thirdpartycell = tableView.dequeueReusableCell(withIdentifier: "ThirdParty", for: indexPath) as! AboutTableViewCell
+            
+            let thirdpartyname = ThirdParty[indexPath.row]
+            thirdpartycell.referenceLabel.text = thirdpartyname
+            
+            return thirdpartycell
+        case section_resources:
+            let resourcescell = tableView.dequeueReusableCell(withIdentifier: "Resources", for: indexPath) as! AboutTableViewCell
+            let resourcesname = Resources[indexPath.row]
+            resourcescell.referenceLabel.text = resourcesname
+            
+            return resourcescell
+        case section_youtubelinks:
+            let youtubelinkcell = tableView.dequeueReusableCell(withIdentifier: "YoutubeResources", for: indexPath) as! AboutTableViewCell
+            youtubelinkcell.referenceLabel.text = YoutubeLinks[indexPath.row]
+            return youtubelinkcell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! AboutTableViewCell
+            return cell
+            
+        }
+      
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
-         databaseController?.addListener(listener: self)
-     
-    }
-
-     override func viewWillDisappear(_ animated: Bool) {
-         super.viewWillDisappear(animated)
-         databaseController?.removeListener(listener: self)
-    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -101,42 +130,14 @@ class WorkoutListTableViewController: UITableViewController, DatabaseListener, C
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
-        switch segue.identifier { //comment
-        case "customWorkout":
-            if let indexPath = tableView.indexPathForSelectedRow{
-                let destination = segue.destination as! EditWorkout
-                destination.customDelegate = workoutDelegate
-                destination.workout = self.workout[indexPath.row]
-                
-                databaseController?.saveDraft()
-        
-            }
-        
-        default:
-            return
-        }
     }
-    
-    
-    //Unused
-    
-    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
-           
-       }
-       
-    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
-           
-       }
-       
-    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
-           
-       }
+    */
+
 }

@@ -12,84 +12,15 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
     
     var listenerType: ListenerType = .workoutstats
     
-    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
-        
-    }
-    
+
     func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
         self.workouts = workouts
     }
     
-    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
-        
-    }
     
-    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
-        
-    }
-    
-    
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WorkoutStats", for: indexPath) as! WorkoutStatsCollectionViewCell
-               
-               /*
-               cell.backgroundColor = UIColor.yellow
-               
-               
-               cell.layer.cornerRadius = 18
-               cell.layer.masksToBounds = true
-               let origin = cell.frame
-               
-               //Top Workout
-               let coordinate = CGPoint(x:207,y:338)
-               //create my track layer
-               let trackLayer = CAShapeLayer()
-               let circularPath = UIBezierPath(arcCenter: coordinate, radius: 100, startAngle: -CGFloat.pi / 2 , endAngle: 2 * CGFloat.pi, clockwise: true)
-                      
-               trackLayer.path = circularPath.cgPath
-                      
-               trackLayer.strokeColor = UIColor.lightGray.cgColor
-               trackLayer.lineWidth = 10
-               trackLayer.fillColor = UIColor.white.cgColor
-               trackLayer.lineCap = CAShapeLayerLineCap.round
-
-               
-               
-               
-               */
-               
-               if cell.isHidden{
-                   cell.isHidden = false
-               }
-        cell.levelLabel.text = String(workouts[indexPath.row].level)
-        cell.workoutNameLabel.text = String(workouts[indexPath.row].name!)
-        cell.workoutNameLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        cell.workoutNameLabel?.numberOfLines = 0
-               let image : UIImage = UIImage(named:"goldcircle")!
-               cell.WorkoutStatImage.image = image
-               return cell
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        databaseController?.addListener(listener: self)
-        
-        
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        databaseController?.removeListener(listener: self)
-     
-    }
-   
     @IBOutlet weak var WorkoutStats: UICollectionView!
     var databaseController: DatabaseProtocol?
-    var views: UIView?
-    var string: String?
+
     var workouts = [Workout]()
     
     override func viewDidLoad() {
@@ -98,39 +29,69 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         
-       WorkoutStats.dataSource = self
-       WorkoutStats.delegate = self
+        WorkoutStats.dataSource = self
+        WorkoutStats.delegate = self
      
-        
         self.navigationItem.titleView = navTitleWithImageAndText(titleText: "Workout Stats", imageName: "gamer_01_18_contour_info_infos_lines-512.png")
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+        
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+     
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         return 10
         }
-    }
     
-  
     
-    func displayTopWorkout(){
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WorkoutStats", for: indexPath) as! WorkoutStatsCollectionViewCell
+               
+        if cell.isHidden{
+            cell.isHidden = false
+        }
         
+        cell.levelLabel.text = String(workouts[indexPath.row].level)
         
+        cell.workoutNameLabel.text = String(workouts[indexPath.row].name!)
+        cell.workoutNameLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell.workoutNameLabel?.numberOfLines = 0
+        
+        //Sets the workout rank circle
+        let image : UIImage = UIImage(named:"goldcircle")!
+        cell.WorkoutStatImage.image = image
+        
+        return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     
+    //Unused
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
+           
+       }
+       
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+           
+       }
+       
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
+           
+       }
+    
+    }
+    
+
+
     //https://stackoverflow.com/questions/24803178/navigation-bar-with-uiimage-for-title
     func navTitleWithImageAndText(titleText: String, imageName: String) -> UIView {
 
@@ -174,4 +135,3 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
     }
     
     
-

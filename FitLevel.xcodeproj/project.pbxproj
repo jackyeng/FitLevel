@@ -51,6 +51,18 @@
 		85BFE708249E8D8E00031762 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BFE707249E8D8E00031762 /* LoginViewController.swift */; };
 		85BFE70A249E91DA00031762 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BFE709249E91DA00031762 /* MainTabBarViewController.swift */; };
 		85BFE70C249E9B6D00031762 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BFE70B249E9B6D00031762 /* SettingsViewController.swift */; };
+		85BFE72F24A07A6900031762 /* Jumping Jacks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72524A07A6600031762 /* Jumping Jacks.mp3 */; };
+		85BFE73024A07A6900031762 /* Seal Jack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72624A07A6600031762 /* Seal Jack.mp3 */; };
+		85BFE73124A07A6900031762 /* Close Body Squats.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72724A07A6600031762 /* Close Body Squats.mp3 */; };
+		85BFE73224A07A6900031762 /* Burpees.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72824A07A6700031762 /* Burpees.mp3 */; };
+		85BFE73324A07A6900031762 /* Hips Raises.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72924A07A6700031762 /* Hips Raises.mp3 */; };
+		85BFE73424A07A6900031762 /* Planks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72A24A07A6700031762 /* Planks.mp3 */; };
+		85BFE73524A07A6900031762 /* Push Ups.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72B24A07A6700031762 /* Push Ups.mp3 */; };
+		85BFE73624A07A6900031762 /* Superman.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72C24A07A6800031762 /* Superman.mp3 */; };
+		85BFE73724A07A6900031762 /* Mountain Climbers.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72D24A07A6800031762 /* Mountain Climbers.mp3 */; };
+		85BFE73824A07A6900031762 /* Forward Lunges.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72E24A07A6900031762 /* Forward Lunges.mp3 */; };
+		85CABF2F24A11800006FE274 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CABF2E24A11800006FE274 /* AboutTableViewController.swift */; };
+		85CABF3124A123F0006FE274 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CABF3024A123F0006FE274 /* AboutTableViewCell.swift */; };
 		85F26FED2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F26FEC2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift */; };
 		85FCF19D2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */; };
 		85FCF19E2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCF19C2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift */; };
@@ -120,6 +132,18 @@
 		85BFE707249E8D8E00031762 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		85BFE709249E91DA00031762 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		85BFE70B249E9B6D00031762 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		85BFE72524A07A6600031762 /* Jumping Jacks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jumping Jacks.mp3"; sourceTree = "<group>"; };
+		85BFE72624A07A6600031762 /* Seal Jack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Seal Jack.mp3"; sourceTree = "<group>"; };
+		85BFE72724A07A6600031762 /* Close Body Squats.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Close Body Squats.mp3"; sourceTree = "<group>"; };
+		85BFE72824A07A6700031762 /* Burpees.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Burpees.mp3; sourceTree = "<group>"; };
+		85BFE72924A07A6700031762 /* Hips Raises.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Hips Raises.mp3"; sourceTree = "<group>"; };
+		85BFE72A24A07A6700031762 /* Planks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Planks.mp3; sourceTree = "<group>"; };
+		85BFE72B24A07A6700031762 /* Push Ups.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Push Ups.mp3"; sourceTree = "<group>"; };
+		85BFE72C24A07A6800031762 /* Superman.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Superman.mp3; sourceTree = "<group>"; };
+		85BFE72D24A07A6800031762 /* Mountain Climbers.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mountain Climbers.mp3"; sourceTree = "<group>"; };
+		85BFE72E24A07A6900031762 /* Forward Lunges.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Forward Lunges.mp3"; sourceTree = "<group>"; };
+		85CABF2E24A11800006FE274 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		85CABF3024A123F0006FE274 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		85F26FEC2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStatsCollectionViewCell.swift; sourceTree = "<group>"; };
 		85FCF19B2481506600AB58A6 /* WorkoutDate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDate+CoreDataClass.swift"; sourceTree = "<group>"; };
 		85FCF19C2481506600AB58A6 /* WorkoutDate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -168,6 +192,7 @@
 			children = (
 				85BFE707249E8D8E00031762 /* LoginViewController.swift */,
 				85BFE70B249E9B6D00031762 /* SettingsViewController.swift */,
+				85CABF2E24A11800006FE274 /* AboutTableViewController.swift */,
 			);
 			path = "Login View Controller";
 			sourceTree = "<group>";
@@ -204,6 +229,7 @@
 		8593EAD62472EAE100914C4D /* Table View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				85CABF3024A123F0006FE274 /* AboutTableViewCell.swift */,
 				8593EAD72472EB0800914C4D /* PlanTableViewCell.swift */,
 				8593EAD92472EE7400914C4D /* RoutineTableViewCell.swift */,
 				8593EADB247313D600914C4D /* WorkoutTableViewCell.swift */,
@@ -220,6 +246,23 @@
 				85BFE709249E91DA00031762 /* MainTabBarViewController.swift */,
 			);
 			path = Calender;
+			sourceTree = "<group>";
+		};
+		85BFE72424A07A4900031762 /* WorkoutAudios */ = {
+			isa = PBXGroup;
+			children = (
+				85BFE72824A07A6700031762 /* Burpees.mp3 */,
+				85BFE72724A07A6600031762 /* Close Body Squats.mp3 */,
+				85BFE72E24A07A6900031762 /* Forward Lunges.mp3 */,
+				85BFE72924A07A6700031762 /* Hips Raises.mp3 */,
+				85BFE72524A07A6600031762 /* Jumping Jacks.mp3 */,
+				85BFE72D24A07A6800031762 /* Mountain Climbers.mp3 */,
+				85BFE72A24A07A6700031762 /* Planks.mp3 */,
+				85BFE72B24A07A6700031762 /* Push Ups.mp3 */,
+				85BFE72624A07A6600031762 /* Seal Jack.mp3 */,
+				85BFE72C24A07A6800031762 /* Superman.mp3 */,
+			);
+			path = WorkoutAudios;
 			sourceTree = "<group>";
 		};
 		85F26FCC2489316300FBF776 /* WorkoutVideos */ = {
@@ -268,21 +311,22 @@
 		85FD53B824651C93004E9AB9 /* FitLevel */ = {
 			isa = PBXGroup;
 			children = (
-				85BFE705249E8CF400031762 /* GoogleService-Info.plist */,
 				857EF7F724683FF200323533 /* Storyboard */,
-				85190217249E2BC5002659F5 /* Login View Controller */,
-				85F26FE1248948C000FBF776 /* Collection View */,
-				85F26FCC2489316300FBF776 /* WorkoutVideos */,
-				85FD53CE2465A038004E9AB9 /* Database */,
 				85B9D8F9246BCC1A00D17F2E /* Calender */,
+				85190217249E2BC5002659F5 /* Login View Controller */,
 				85FD53D32465A0E2004E9AB9 /* View Controller */,
 				85FD53D12465A0CC004E9AB9 /* Table View Controller */,
-				85FD53D02465A0C6004E9AB9 /* DataModel */,
-				857EF804246855A200323533 /* Class */,
-				85FD53D22465A0D6004E9AB9 /* Delegate */,
-				8593EAD124715E0800914C4D /* API */,
+				85F26FE1248948C000FBF776 /* Collection View */,
 				8593EAD62472EAE100914C4D /* Table View Cell */,
+				85FD53CE2465A038004E9AB9 /* Database */,
+				85FD53D02465A0C6004E9AB9 /* DataModel */,
+				85FD53D22465A0D6004E9AB9 /* Delegate */,
+				85F26FCC2489316300FBF776 /* WorkoutVideos */,
+				85BFE72424A07A4900031762 /* WorkoutAudios */,
+				8593EAD124715E0800914C4D /* API */,
+				857EF804246855A200323533 /* Class */,
 				85FD53C224651C94004E9AB9 /* Assets.xcassets */,
+				85BFE705249E8CF400031762 /* GoogleService-Info.plist */,
 				85FD53C724651C95004E9AB9 /* Info.plist */,
 			);
 			path = FitLevel;
@@ -347,10 +391,10 @@
 			isa = PBXGroup;
 			children = (
 				85FD53D62465A146004E9AB9 /* EditWorkout.swift */,
-				85FD53D82465A165004E9AB9 /* RoutinePlanViewController.swift */,
+				8527AEFD247684EA00080312 /* EditRoutineNameViewController.swift */,
 				85FD53DA2465A194004E9AB9 /* WorkoutStatsViewController.swift */,
 				857EF802246845C000323533 /* WorkoutRoutineViewController.swift */,
-				8527AEFD247684EA00080312 /* EditRoutineNameViewController.swift */,
+				85FD53D82465A165004E9AB9 /* RoutinePlanViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -424,23 +468,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85BFE73124A07A6900031762 /* Close Body Squats.mp3 in Resources */,
 				85190216249E2AA5002659F5 /* Mountain Climbers.mp4 in Resources */,
+				85BFE73524A07A6900031762 /* Push Ups.mp3 in Resources */,
 				8519020D249E2AA5002659F5 /* Seal Jack.mp4 in Resources */,
 				85FD53C624651C94004E9AB9 /* LaunchScreen.storyboard in Resources */,
 				857EF7FF246843E400323533 /* Home.storyboard in Resources */,
 				85190211249E2AA5002659F5 /* Hips Raises.mp4 in Resources */,
 				85190214249E2AA5002659F5 /* Burpees.mp4 in Resources */,
 				8519020F249E2AA5002659F5 /* Planks.mp4 in Resources */,
+				85BFE73024A07A6900031762 /* Seal Jack.mp3 in Resources */,
 				85FD53C324651C94004E9AB9 /* Assets.xcassets in Resources */,
 				85190212249E2AA5002659F5 /* Jumping Jacks.mp4 in Resources */,
+				85BFE73824A07A6900031762 /* Forward Lunges.mp3 in Resources */,
 				85190215249E2AA5002659F5 /* Close Body Squats.mp4 in Resources */,
 				85FD53C124651C93004E9AB9 /* Main.storyboard in Resources */,
+				85BFE73224A07A6900031762 /* Burpees.mp3 in Resources */,
+				85BFE73324A07A6900031762 /* Hips Raises.mp3 in Resources */,
+				85BFE73624A07A6900031762 /* Superman.mp3 in Resources */,
 				857EF8012468452E00323533 /* Stat.storyboard in Resources */,
 				85BFE706249E8CF500031762 /* GoogleService-Info.plist in Resources */,
 				8519020E249E2AA5002659F5 /* Superman.mp4 in Resources */,
 				85190213249E2AA5002659F5 /* Forward Lunges.mp4 in Resources */,
+				85BFE73724A07A6900031762 /* Mountain Climbers.mp3 in Resources */,
+				85BFE72F24A07A6900031762 /* Jumping Jacks.mp3 in Resources */,
 				857EF7FD2468439100323533 /* Routine.storyboard in Resources */,
 				85190210249E2AA5002659F5 /* Push Ups.mp4 in Resources */,
+				85BFE73424A07A6900031762 /* Planks.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +580,7 @@
 				8593EAD5247173B700914C4D /* WorkoutData.swift in Sources */,
 				85FD53BA24651C93004E9AB9 /* AppDelegate.swift in Sources */,
 				85FD53E72465E106004E9AB9 /* DatabaseProtocol.swift in Sources */,
+				85CABF3124A123F0006FE274 /* AboutTableViewCell.swift in Sources */,
 				85FD53BC24651C93004E9AB9 /* SceneDelegate.swift in Sources */,
 				85A5864E2490993E00C4F1AE /* EditWorkoutDelegate.swift in Sources */,
 				85F26FED2489493600FBF776 /* WorkoutStatsCollectionViewCell.swift in Sources */,
@@ -545,6 +600,7 @@
 				8527AEF424754A9F00080312 /* WorkoutRoutineDelegate.swift in Sources */,
 				857EF7F22468288200323533 /* Workout+CoreDataClass.swift in Sources */,
 				8527AEFC24763E5700080312 /* EditRoutineNameDelegate.swift in Sources */,
+				85CABF2F24A11800006FE274 /* AboutTableViewController.swift in Sources */,
 				85FD53E22465C7E7004E9AB9 /* WorkoutRoutineTableViewController.swift in Sources */,
 				85BFE708249E8D8E00031762 /* LoginViewController.swift in Sources */,
 				85FD53DB2465A194004E9AB9 /* WorkoutStatsViewController.swift in Sources */,

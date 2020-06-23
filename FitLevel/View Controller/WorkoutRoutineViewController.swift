@@ -17,70 +17,83 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         workouts = workout
     }
     
-    
-    
     //https://www.youtube.com/watch?v=O3ltwjDJaMk
     let shapeLayer = CAShapeLayer()
    
-    var workouts = [CustomWorkout]()
     weak var workoutDelegate: WorkoutRoutineDelegate?
     var listenerType: ListenerType = .routineworkout
     var databaseController: DatabaseProtocol?
-    var workoutprogress = 0
-    var workoutcount = 10
-    @IBOutlet weak var workoutName: UILabel!
-  
     
+    
+    
+    @IBOutlet weak var workoutName: UILabel!
     @IBOutlet weak var workoutLevel: UILabel!
     @IBOutlet weak var workoutDuration: UILabel!
-    
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var CompleteButton: UIButton!
-    
-    
     @IBOutlet weak var ImageView: UIImageView!
-    
     
     var countTimer: Timer?
     
     @IBOutlet weak var warmUpLabel1: UILabel!
-    
     @IBOutlet weak var warmUpLabel2: UILabel!
+    
+    var workouts = [CustomWorkout]()
+    var workoutprogress = 0
+    var workoutcount = 10
     var counter = 0
     var actionStatus = true
     var warmupStatus = true
+    
+    
     //Video
     let date = Date()
     let calender = Calendar.current
-    
-    
-    var  player: AVPlayer?
+    var player: AVPlayer?
     var playerViewController: AVPlayerViewController?
-
+    
+    //Audio
+    var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
-        guard let videoURL = Bundle.main.url(forResource: workouts[0].workout?.name, withExtension: "mp4") else {
+        
+        
+        //Audio initialisation
+        playWorkoutAudio()
+        
+        
+        //Video initialisation
+        guard let videoURL = Bundle.main.url(forResource: workouts[workoutprogress].workout?.name, withExtension: "mp4") else {
             print("Couldn't load video")
             return
         }
         
-    
-        
         player = AVPlayer(url: videoURL)
         playerViewController = AVPlayerViewController()
         
+        
+        
+        //Workout Initialisation
+        
+        //Warm up message and counter initalisation
         warmUpLabel1.text = "Get"
         warmUpLabel2.text = "Ready"
-
         counter = 5
         
         workoutcount = workouts.count
+        
+        
+       
+        
         //https://stackoverflow.com/questions/29374553/how-can-i-make-a-countdown-with-nstimer
+        //countdown timer initialisation
         countTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UIMenuController.update), userInfo: nil, repeats: true)
         countDownLabel.text = String(counter)
+        
+        
         handleTap(duration: 5)
         
         
@@ -120,8 +133,6 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             workoutLevel.text = "Level: Unknown"
         }
       
-        
-        
         //Allignment
         workoutName.textAlignment = .center
         workoutLevel.textAlignment = .center
@@ -131,39 +142,38 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         workoutLevel.center = CGPoint(x: 207, y: 480)
        
         CompleteButton.center = CGPoint(x: 207, y: 638)
-        
         CompleteButton.layer.borderWidth = 1
         CompleteButton.layer.cornerRadius = 20
+        
+        //
         if let playerViewController = playerViewController {
-                   playerViewController.player = player
+                playerViewController.player = player
                    
-                   playerViewController.view.frame = CGRect(x: 35, y: 220, width: 350, height: 198)
-                   view.addSubview(playerViewController.view)
-                       addChild(playerViewController)
+                playerViewController.view.frame = CGRect(x: 35, y: 220, width: 350, height: 198)
+                view.addSubview(playerViewController.view)
+                addChild(playerViewController)
                    
-                   playerViewController.showsPlaybackControls = false
-               // Do any additional setup after loading the view.
-                   //https://stackoverflow.com/questions/27808266/how-do-you-loop-avplayer-in-swift/27808482
-                   playerViewController.player!.play()
-                   NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem, queue: .main) { [weak self] _ in
-                   self?.player?.seek(to: CMTime.zero)
-                   self?.player?.play()
+                playerViewController.showsPlaybackControls = false
+            
+                // Do any additional setup after loading the view.
+                //https://stackoverflow.com/questions/27808266/how-do-you-loop-avplayer-in-swift/27808482
+                playerViewController.player!.play()
+                NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem, queue: .main) { [weak self] _ in
+                self?.player?.seek(to: CMTime.zero)
+                self?.player?.play()
                        
                }
-               }
+            }
         
     }
     
-    
+    //This function gets the timer progress bar moving when the countdown starts to provide user with an aesthetic visualisation
     @objc private func handleTap(duration: Int) {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        
         basicAnimation.toValue = 1
         basicAnimation.duration = CFTimeInterval(duration)
-        
         basicAnimation.fillMode = CAMediaTimingFillMode.forwards
         basicAnimation.isRemovedOnCompletion = false
-        
         shapeLayer.add(basicAnimation, forKey: "urSoBasic")
     }
     
@@ -182,14 +192,15 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         if !actionStatus  {
             return
         }
+        
         actionStatus = false
         warmupStatus = true
+        
         warmUpLabel1.text = "Get"
         warmUpLabel2.text = "Ready"
         counter = 5
-
         handleTap(duration: 5)
-        countDownLabel.text = String(counter) //https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805
+        countDownLabel.text = String(counter)//https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
             self.updateWorkout()
             self.actionStatus = true
@@ -197,9 +208,8 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         
     }
     
+    //
     func updateWorkout(){
-        
-        
         if workoutprogress > workoutcount-1{
             self.countTimer?.invalidate()
             warmUpLabel1.text = ""
@@ -209,7 +219,8 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             //let _ = databaseController?.addWorkoutDate(year: 2020, month: 6, day: 11)
             return
         }
-       
+        
+        playWorkoutAudio()
         workoutName.text = workouts[workoutprogress].workout!.name
     
         if let level = workouts[workoutprogress].workout?.level{
@@ -223,6 +234,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         
     }
     
+    //
     func displayMessage(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message,
             preferredStyle: UIAlertController.Style.alert)
@@ -232,30 +244,9 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         self.present(alertController, animated: true, completion: nil)
     }
     
+    //
     func popViewController(){
         self.navigationController?.popViewController(animated: false)
-    }
-    
-    
-    
-    //https://www.youtube.com/watch?time_continue=128&v=Z6D68MMx2pw&feature=emb_logo
-    func get_image(_ url_str:String, _ ImageView:UIImageView){
-        let url:URL = URL(string: url_str)!
-        let session = URLSession.shared
-        let task = session.dataTask(with: url, completionHandler: {
-            (data, response, error) in
-            if data != nil {
-                let image = UIImage(data: data!)
-                if(image != nil)
-                {
-                    DispatchQueue.main.async(execute: {
-                        ImageView.image = image
-                
-                    })
-                }
-            }
-        })
-        task.resume()
     }
     
     
@@ -267,13 +258,18 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         player = AVPlayer(url: videoURL)
         playerViewController!.player = player
         playerViewController!.player!.play()
+        playerViewController!.player!.isMuted = true
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem, queue: .main) { [weak self] _ in
+        self?.player?.seek(to: CMTime.zero)
+        self?.player?.play()
+        
+        }
     }
     
     @objc func update() {
         if(counter > 0) {
             countDownLabel.text = String(counter)
             counter -= 1
-            
         }
         else{
             if warmupStatus{
@@ -294,12 +290,31 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             
         }
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        self.countTimer?.invalidate()
+    
+    
+    func playWorkoutAudio(){
+        if let url = Bundle.main.url(forResource: workouts[workoutprogress].workout?.name, withExtension: "mp3") {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.play()
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
     }
     
-    //unused
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.countTimer?.invalidate() //Stops timer when workout ends
+    }
+    
+    
+    
+    
+    
+    //Unused
     func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
            
        }

@@ -9,42 +9,19 @@
 import UIKit
 
 class WorkoutRoutineTableViewController: UITableViewController,WorkoutRoutineDelegate, DatabaseListener {
-    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
-        
-    }
     
-    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
-        
-    }
     
     func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
         routines = routineWorkouts
-        for i in routines{
-            print(i.name!)
-        }
         self.tableView.reloadData()
     }
     
+    var routines = [Routine]()
     
     var listenerType: ListenerType = .routine
-     
-   
-    
-    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
-        
-    }
-    
-    
-    
-    
-    var routine = ["1","2","3"]
-    
-    var routines = [Routine]()
     var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
-        
-        
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor.systemIndigo //systemindigo
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -54,9 +31,7 @@ class WorkoutRoutineTableViewController: UITableViewController,WorkoutRoutineDel
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        for i in routines{
-            print(i.name!)
-        }
+    
     }
 
     // MARK: - Table view data source
@@ -171,7 +146,20 @@ class WorkoutRoutineTableViewController: UITableViewController,WorkoutRoutineDel
         
         default:
             return
-    }
+        }
     
     }
+    
+    //Unused
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+        
+    }
+    
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
+        
+    }
+    
+    func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
+           
+       }
 }

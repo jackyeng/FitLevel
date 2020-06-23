@@ -10,145 +10,12 @@ import UIKit
 import CoreData
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
     
-    func getWorkoutDate(year: Int, month: Int) -> [WorkoutDate]{
-        return fetchWorkoutDate(year: year, month: month)
-    }
-    
-    func addWorkoutDate(year: Int, month: Int, day: Int) {
-        let workoutdates = fetchWorkoutDate(year: year, month: month, day:day)
-       
-        if workoutdates == [] {
-            let workoutDate = NSEntityDescription.insertNewObject(forEntityName: "WorkoutDate",
-                                                                    into: persistentContainer.viewContext) as! WorkoutDate
-            workoutDate.year = Int64(year)
-            workoutDate.month = Int64(month)
-            workoutDate.day = Int64(day)
-        
-            saveDraft()
-        
-        }
-        
-
-    }
-    
-    func getRoutineWorkout(name: String) -> [CustomWorkout] {
-        return fetchRoutineWorkout(name: name)
-    }
-    
-    func addCustomWorkoutToRoutine(customWorkout:CustomWorkout,routine: Routine){
-        routine.addToCustomworkout(customWorkout)
-        print(routine.customworkout!)
-        
-    }
-    func addWorkoutToCustomWorkout(workout: Workout, customWorkout: CustomWorkout) {
-        workout.addToCustom(customWorkout)
-        print(customWorkout.workout!)
-        
-        
-    }
-    
-    
-    func addCustomWorkout(set: String, repetition: String, duration: String) -> CustomWorkout {
-        let customWorkout = NSEntityDescription.insertNewObject(forEntityName: "CustomWorkout",
-                                                                into: persistentContainer.viewContext) as! CustomWorkout
-        customWorkout.set = set
-        customWorkout.repetition = repetition
-        customWorkout.duration = duration
-        saveDraft()
-        return customWorkout
-    }
-    
-    
-    func addActiveRoutine(activeroutineName: String) -> ActiveRoutine {
-        let activeRoutine = NSEntityDescription.insertNewObject(forEntityName: "ActiveRoutine",
-                    into: persistentContainer.viewContext) as! ActiveRoutine
-        activeRoutine.name = activeroutineName
-        return activeRoutine
-    }
-    
-    func removeRoutinefromActive(active: ActiveRoutine, routine: Routine) {
-        routine.removeFromActiveroutine(active)
-    }
-    
-    func addRoutineToActive(routine: Routine, active: ActiveRoutine) -> Bool {
-        //Cocktail validation
-        /*
-        let routines = activeRoutine.routine!
-        
-        for item in routines{
-            let activeRoutine = item as! Routine
-            if activeRoutine.name! == routine.name! { //compare name of cocktails in My Drink to name of cocktail to be added, if cocktail name already exists, then return false
-                //if it's the same object then return true.
-                return false
-            }
-        }*/
-        routine.addToActiveroutine(active)
-        //active.addToRoutine(routine)
-        
-        saveDraft()
-        
-        let test = fetchActiveRoutine()
-        for i in test{
-            print(i)
-        }
-        
-        return true
-        
-    }
     
     var listeners = MulticastDelegate<DatabaseListener>()
     let ACTIVE_ROUTINE_NAME = "Active Workout"
     let PLAN_NAME = "Plan"
-    
-    func addEmptyRoutine() -> Routine {
-        let emptyroutine = NSEntityDescription.insertNewObject(forEntityName: "Routine",
-                                                               into: persistentContainer.viewContext) as! Routine
-        return emptyroutine
-    }
-    
-    func addWorkout(name: String, imageURL: String?, level: Int) -> Workout{
-        let workout = NSEntityDescription.insertNewObject(forEntityName: "Workout",
-                    into: childContext!) as! Workout
-        workout.name = name
-        workout.image = imageURL
-        workout.level = Int16(level)
-        return workout
-    }
-    
-    func addRoutine(routineName: String) -> Routine {
-        let routine = NSEntityDescription.insertNewObject(forEntityName: "Routine",
-                    into:  persistentContainer.viewContext) as! Routine
-        routine.name = routineName
-        return routine
-    }
-    
-    func addPlan(planName: String) -> Plan {
-        let plan = NSEntityDescription.insertNewObject(forEntityName: "Plan",
-                                                         into: childContext!) as! Plan
-        plan.name = planName
-        return plan
-    }
-    
- 
-    func addRoutineToPlan(routine: Routine, plan: Plan) -> Bool {
-        routine.addToPlan(plan)
-        return true
-    }
-    
-    func addWorkoutToPlan(workout: Workout, plan: Plan) -> Bool {
-        return true
-    }
-    
-    func addWorkoutToRoutine(workout: Workout, routine: Plan) -> Bool {
-        return true
-    }
-    
-    
-    
 
-
-   
-    var persistentContainer: NSPersistentContainer // main link to database, containts properties and methods needed to work with core data
+    var persistentContainer: NSPersistentContainer
     var childContext: NSManagedObjectContext?
    
     // Fetched Results Controllers
@@ -179,6 +46,119 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
 
         
+    //Protocols
+    
+    func getWorkoutDate(year: Int, month: Int) -> [WorkoutDate]{
+           return fetchWorkoutDate(year: year, month: month)
+       }
+       
+    func addWorkoutDate(year: Int, month: Int, day: Int) {
+           let workoutdates = fetchWorkoutDate(year: year, month: month, day:day)
+          
+           if workoutdates == [] {
+               let workoutDate = NSEntityDescription.insertNewObject(forEntityName: "WorkoutDate",
+                                                                       into: persistentContainer.viewContext) as! WorkoutDate
+               workoutDate.year = Int64(year)
+               workoutDate.month = Int64(month)
+               workoutDate.day = Int64(day)
+           
+               saveDraft()
+           }
+       }
+       
+    func getRoutineWorkout(name: String) -> [CustomWorkout] {
+           return fetchRoutineWorkout(name: name)
+       }
+       
+    func addCustomWorkoutToRoutine(customWorkout:CustomWorkout,routine: Routine){
+           routine.addToCustomworkout(customWorkout)
+           print(routine.customworkout!)
+           
+       }
+    func addWorkoutToCustomWorkout(workout: Workout, customWorkout: CustomWorkout) {
+           workout.addToCustom(customWorkout)
+           print(customWorkout.workout!)
+           
+           
+       }
+       
+       
+    func addCustomWorkout(set: String, repetition: String, duration: String) -> CustomWorkout {
+           let customWorkout = NSEntityDescription.insertNewObject(forEntityName: "CustomWorkout",
+                                                                   into: persistentContainer.viewContext) as! CustomWorkout
+           customWorkout.set = set
+           customWorkout.repetition = repetition
+           customWorkout.duration = duration
+           saveDraft()
+           return customWorkout
+       }
+       
+       
+    func addActiveRoutine(activeroutineName: String) -> ActiveRoutine {
+           let activeRoutine = NSEntityDescription.insertNewObject(forEntityName: "ActiveRoutine",
+                       into: persistentContainer.viewContext) as! ActiveRoutine
+           activeRoutine.name = activeroutineName
+           return activeRoutine
+       }
+       
+    func removeRoutinefromActive(active: ActiveRoutine, routine: Routine) {
+           routine.removeFromActiveroutine(active)
+       }
+       
+    func addRoutineToActive(routine: Routine, active: ActiveRoutine) -> Bool {
+           //Cocktail validation
+           /*
+           let routines = activeRoutine.routine!
+           
+           for item in routines{
+               let activeRoutine = item as! Routine
+               if activeRoutine.name! == routine.name! { //compare name of cocktails in My Drink to name of cocktail to be added, if cocktail name already exists, then return false
+                   //if it's the same object then return true.
+                   return false
+               }
+           }*/
+           routine.addToActiveroutine(active)
+           //active.addToRoutine(routine)
+           saveDraft()
+           return true
+       }
+       
+    func addEmptyRoutine() -> Routine {
+           let emptyroutine = NSEntityDescription.insertNewObject(forEntityName: "Routine",
+                                                                  into: persistentContainer.viewContext) as! Routine
+           return emptyroutine
+       }
+       
+    func addWorkout(name: String, imageURL: String?, level: Int) -> Workout{
+           let workout = NSEntityDescription.insertNewObject(forEntityName: "Workout",
+                       into: childContext!) as! Workout
+           workout.name = name
+           workout.image = imageURL
+           workout.level = Int16(level)
+           return workout
+       }
+       
+    func addRoutine(routineName: String) -> Routine {
+           let routine = NSEntityDescription.insertNewObject(forEntityName: "Routine",
+                       into:  persistentContainer.viewContext) as! Routine
+           routine.name = routineName
+           return routine
+       }
+       
+    func addPlan(planName: String) -> Plan {
+           let plan = NSEntityDescription.insertNewObject(forEntityName: "Plan",
+                                                            into: childContext!) as! Plan
+           plan.name = planName
+           return plan
+       }
+       
+    
+    func addRoutineToPlan(routine: Routine, plan: Plan) -> Bool {
+           routine.addToPlan(plan)
+           return true
+       }
+    
+    
     lazy var activeRoutine: ActiveRoutine = {
         var routines = [ActiveRoutine]()
 
@@ -220,6 +200,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return plan.first! //
     }()
     
+    
+    
     func saveContext() { //has to be called to make changes to the file otherwise changes are only made to managed object
         if persistentContainer.viewContext.hasChanges { //if there are changes context , then we save
             do {
@@ -244,44 +226,36 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                        fatalError("Failed to save to CoreData: \(error)")
                    }
                }
-        
-        
     }
     
     func discardDraft() {
         childContext?.rollback()
     }
+    
     // MARK: - Database Protocol Functions
     func cleanup() {
         saveContext()
     }
     
-    
-
-  
 
     func addListener(listener: DatabaseListener) {
         listeners.addDelegate(listener)
         if listener.listenerType == .routine || listener.listenerType == .all {
             listener.onRoutineChange(change: .update, routineWorkouts: fetchActiveRoutine())
         }
-
         if listener.listenerType == .workout || listener.listenerType == .all {
             listener.onWorkoutListChange(change: .update, workouts: fetchAllWorkouts())
         }
         if listener.listenerType == .workoutstats || listener.listenerType == .all {
             listener.onWorkoutListChange(change: .update, workouts: fetchAllWorkouts(sort: "level", bool: false))
         }
-        
         if listener.listenerType == .routineworkout || listener.listenerType == .all {
             listener.onWorkoutListChange(change: .update, workouts: fetchAllWorkouts())
         }
         if listener.listenerType == .plan || listener.listenerType == .all {
             listener.onPlanListChange(change: .update, recommendedPlan: fetchRecommendedPlan())
         }
-       
-
-        
+    
     }
 
     func removeListener(listener: DatabaseListener) {
@@ -388,19 +362,18 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
     
 
-    var workout = [CustomWorkout]()
+        var workout = [CustomWorkout]()
    
-    workout = (customWorkoutFetchedResultsController?.fetchedObjects)!
-
-
-    return workout
+        workout = (customWorkoutFetchedResultsController?.fetchedObjects)!
+        return workout
+        
     }
     
     func fetchWorkoutDate(year: Int, month:Int, day: Int? = -1) -> [WorkoutDate]{
 
-         let fetchRequest: NSFetchRequest<WorkoutDate> = WorkoutDate.fetchRequest()
-         // Sort by name
-         let nameSortDescriptor = NSSortDescriptor(key: "day", ascending: true)
+        let fetchRequest: NSFetchRequest<WorkoutDate> = WorkoutDate.fetchRequest()
+        // Sort by name
+        let nameSortDescriptor = NSSortDescriptor(key: "day", ascending: true)
         if day == -1{
             let predicate = NSPredicate(format: "year == \(year) AND month == \(month)") // fix
             fetchRequest.predicate = predicate
@@ -426,12 +399,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
          }
      
 
-     var workout = [WorkoutDate]()
+        var workout = [WorkoutDate]()
     
-     workout = (workoutDateFetchedResultsController?.fetchedObjects)!
+        workout = (workoutDateFetchedResultsController?.fetchedObjects)!
 
 
-     return workout
+        return workout
      }
     
     
@@ -469,109 +442,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     
     
-    
-    
-
-    func AddWorkout(){
-        filterName()
-        
-    }
-    
-    
-    func filterName() {
-       
-        for i in workoutlist{
-            let mySubstring = String(i.imageURL!)
-            var startindex = 0
-            var endindex = -1
-            var count = 0
-            print(mySubstring)
-            for (index,char) in mySubstring.enumerated(){
-                print(index,char)
-                if count == 6 && startindex == 0{
-                   startindex = index
-                }
-                if char == "/"{
-                    count += 1
-                }
-                
-                if char.isNumber{
-                    if (startindex != 0 && endindex == -1){
-                        endindex = index
-                    }
-                    
-                }
-            
-            }
-            
-            endindex -= (mySubstring.count + 1)
-            print(startindex)
-            print(endindex)
-            let start = mySubstring.index(mySubstring.startIndex, offsetBy: startindex)
-            
-            let end = mySubstring.index(mySubstring.endIndex, offsetBy: endindex)
-            let range = start..<end
-            let finalstring = String(mySubstring[range])
-            print(finalstring)
-            
-            var workoutname = ""
-            for char in finalstring{
-                if char == "-"{
-                    workoutname += " "
-                    
-                }
-                else{
-                 workoutname += String(char)
-            }
-                }
-            print(workoutname)
-            
-            let _ = addWorkout(name: workoutname, imageURL: mySubstring,level:1)
-            
-            }
-            
-    
-    }
-    
-    func requestWorkoutImage() {
-        let searchString = "https://wger.de/api/v2/exerciseimage.json/?is_main=True&language=2&page=9"
-        let jsonURL =
-            URL(string: searchString.addingPercentEncoding(withAllowedCharacters:
-            .urlQueryAllowed)!)
-
-        let task = URLSession.shared.dataTask(with: jsonURL!) {
-        (data, response, error) in
-        // Regardless of response end the loading icon from the main thread
-        DispatchQueue.main.async {
-            
-        }
-
-        if let error = error {
-            print(error)
-            return
-        }
-
-        do {
-            let decoder = JSONDecoder()
-            let volumeData = try decoder.decode(VolumeData.self, from: data!)
-            if let workouts = volumeData.Workout { //change
-                self.workoutlist.append(contentsOf: workouts) //change
-                self.loadstatus = true
-
-                DispatchQueue.main.async {
-                                    }
-            }
-        } catch let err {
-            print(err)
-        }
-        }
-
-        task.resume()
-    
-        }
-    
-    
-    
+    //Default Content Initialization
     func createDefaultContent(){
         createDefaultWorkout()
         saveDraft()
@@ -591,7 +462,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         let _ = addWorkout(name: "Mountain Climbers", imageURL: "",level:9)
         let _ = addWorkout(name: "Planks", imageURL: "",level:4)
         let _ = addWorkout(name: "Push Ups", imageURL: "",level:6)
-        let _ = addWorkout(name: "Seal Jack", imageURL: "",level:2)
+        let _ = addWorkout(name: "Seal Jacks", imageURL: "",level:2)
         let _ = addWorkout(name: "Superman", imageURL: "",level:8)
 
     }
@@ -654,18 +525,10 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             }
         }
         
-        
-        
-        /*let test = fetchRoutineWorkout()
-        for item in test{
-            print(item.workout?.name ?? "Empty" )
-        }*/
-        
         let _ = addRoutineToActive(routine: r1, active: activeRoutine)
         let _ = addRoutineToActive(routine: r2, active: activeRoutine)
         
-        //routine name
-        //link workout to the routine list
+    
     }
     
     
@@ -683,7 +546,17 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
       
         
     }
-
+    
+    
+    //Unused
+    
+    func addWorkoutToPlan(workout: Workout, plan: Plan) -> Bool {
+        return true
+    }
+    
+    func addWorkoutToRoutine(workout: Workout, routine: Plan) -> Bool {
+        return true
+    }
 
 }
 
