@@ -71,7 +71,7 @@
 		85FD53C124651C93004E9AB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85FD53BF24651C93004E9AB9 /* Main.storyboard */; };
 		85FD53C324651C94004E9AB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85FD53C224651C94004E9AB9 /* Assets.xcassets */; };
 		85FD53C624651C94004E9AB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85FD53C424651C94004E9AB9 /* LaunchScreen.storyboard */; };
-		85FD53D72465A146004E9AB9 /* EditWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53D62465A146004E9AB9 /* EditWorkout.swift */; };
+		85FD53D72465A146004E9AB9 /* EditWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53D62465A146004E9AB9 /* EditWorkoutViewController.swift */; };
 		85FD53D92465A165004E9AB9 /* RoutinePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53D82465A165004E9AB9 /* RoutinePlanViewController.swift */; };
 		85FD53DB2465A194004E9AB9 /* WorkoutStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53DA2465A194004E9AB9 /* WorkoutStatsViewController.swift */; };
 		85FD53DE2465C768004E9AB9 /* WorkoutPlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FD53DD2465C768004E9AB9 /* WorkoutPlansTableViewController.swift */; };
@@ -154,7 +154,7 @@
 		85FD53C224651C94004E9AB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85FD53C524651C94004E9AB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85FD53C724651C95004E9AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		85FD53D62465A146004E9AB9 /* EditWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkout.swift; sourceTree = "<group>"; };
+		85FD53D62465A146004E9AB9 /* EditWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkoutViewController.swift; sourceTree = "<group>"; };
 		85FD53D82465A165004E9AB9 /* RoutinePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePlanViewController.swift; sourceTree = "<group>"; };
 		85FD53DA2465A194004E9AB9 /* WorkoutStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStatsViewController.swift; sourceTree = "<group>"; };
 		85FD53DD2465C768004E9AB9 /* WorkoutPlansTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlansTableViewController.swift; sourceTree = "<group>"; };
@@ -312,13 +312,13 @@
 			isa = PBXGroup;
 			children = (
 				857EF7F724683FF200323533 /* Storyboard */,
+				85FD53CE2465A038004E9AB9 /* Database */,
 				85B9D8F9246BCC1A00D17F2E /* Calender */,
 				85190217249E2BC5002659F5 /* Login View Controller */,
 				85FD53D32465A0E2004E9AB9 /* View Controller */,
 				85FD53D12465A0CC004E9AB9 /* Table View Controller */,
 				85F26FE1248948C000FBF776 /* Collection View */,
 				8593EAD62472EAE100914C4D /* Table View Cell */,
-				85FD53CE2465A038004E9AB9 /* Database */,
 				85FD53D02465A0C6004E9AB9 /* DataModel */,
 				85FD53D22465A0D6004E9AB9 /* Delegate */,
 				85F26FCC2489316300FBF776 /* WorkoutVideos */,
@@ -390,7 +390,7 @@
 		85FD53D32465A0E2004E9AB9 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				85FD53D62465A146004E9AB9 /* EditWorkout.swift */,
+				85FD53D62465A146004E9AB9 /* EditWorkoutViewController.swift */,
 				8527AEFD247684EA00080312 /* EditRoutineNameViewController.swift */,
 				85FD53DA2465A194004E9AB9 /* WorkoutStatsViewController.swift */,
 				857EF802246845C000323533 /* WorkoutRoutineViewController.swift */,
@@ -571,7 +571,7 @@
 				857F133F246AB0B300568E22 /* HomeScreenViewController.swift in Sources */,
 				857EF7EE2468288200323533 /* Plan+CoreDataClass.swift in Sources */,
 				8527AEEE2474087100080312 /* ActiveRoutine+CoreDataProperties.swift in Sources */,
-				85FD53D72465A146004E9AB9 /* EditWorkout.swift in Sources */,
+				85FD53D72465A146004E9AB9 /* EditWorkoutViewController.swift in Sources */,
 				85BFE70C249E9B6D00031762 /* SettingsViewController.swift in Sources */,
 				8593EADA2472EE7400914C4D /* RoutineTableViewCell.swift in Sources */,
 				857EF7F12468288200323533 /* Routine+CoreDataProperties.swift in Sources */,

@@ -103,6 +103,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
        
     func removeRoutinefromActive(active: ActiveRoutine, routine: Routine) {
            routine.removeFromActiveroutine(active)
+           saveDraft()
        }
        
     func addRoutineToActive(routine: Routine, active: ActiveRoutine) -> Bool {

@@ -290,6 +290,8 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         playerViewController!.player = player
         playerViewController!.player!.play()
         playerViewController!.player!.isMuted = true
+        playerViewController!.player!.automaticallyWaitsToMinimizeStalling = false
+        playerViewController!.player!.playImmediately(atRate: 1.0)
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem, queue: .main) { [weak self] _ in
         self?.player?.seek(to: CMTime.zero)
         self?.player?.play()

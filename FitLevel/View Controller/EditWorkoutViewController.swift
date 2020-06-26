@@ -1,5 +1,5 @@
 //
-//  EditWorkout.swift
+//  EditWorkoutViewController.swift
 //  FitLevel
 //
 //  Created by Jacky Eng on 09/05/2020.
@@ -8,12 +8,17 @@
 
 import UIKit
 
-class EditWorkout: UIViewController, UITextFieldDelegate, DatabaseListener {
+class EditWorkoutViewController: UIViewController, UITextFieldDelegate, DatabaseListener {
     
     var databaseController: DatabaseProtocol?
     var listenerType: ListenerType = .workout
     weak var customDelegate: CustomWorkoutDelegate?
     var workout: Workout?
+    var customworkout: CustomWorkout?
+    var isEdit = false
+    var isPreview = false
+    var indexpath: IndexPath?
+    
     
     @IBOutlet weak var durationLabel: UITextField!
   
@@ -25,6 +30,7 @@ class EditWorkout: UIViewController, UITextFieldDelegate, DatabaseListener {
         databaseController = appDelegate.databaseController
         // Do any additional setup after loading the view.
         durationLabel.delegate = self
+        print(isEdit)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -46,11 +52,26 @@ class EditWorkout: UIViewController, UITextFieldDelegate, DatabaseListener {
     @IBAction func addWorkout(_ sender: Any) {
         
         if durationLabel.text != "" && durationLabel.text!.isInt {  //only allow save when user enter text
+            
+            if isEdit{
+                customworkout?.duration = durationLabel.text!
+                let _ = customDelegate?.editWorkout(updatedWorkout: customworkout!, index_info: indexpath!)
+                
+            }
+            else{
+            
             let customWorkout = databaseController?.addCustomWorkout(set: "", repetition: "", duration: durationLabel.text!)
             let _ = databaseController?.addWorkoutToCustomWorkout(workout: workout!, customWorkout: customWorkout!)
+            
             let _ = customDelegate?.addWorkout(custom: customWorkout!)
             
-
+            }
+            
+            if isPreview{
+                navigationController?.popViewController(animated: true)
+                return
+            }
+            
                 //search through the view controllers for CustomRoutineTableViewController to pop it
             for vc in self.navigationController!.viewControllers {
                 if let myvc = vc as? CustomRoutineTableViewController{

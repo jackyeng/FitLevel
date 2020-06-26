@@ -9,6 +9,15 @@
 import UIKit
 
 class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDelegate,CustomWorkoutDelegate{
+    func editWorkout(updatedWorkout: CustomWorkout, index_info: IndexPath) -> Bool {
+        workouts[index_info.row] = updatedWorkout
+        tableView.performBatchUpdates({
+            tableView.reloadSections([section_workoutlist], with: .automatic) //READ THIS
+        }, completion: nil)
+        return true
+      
+    }
+    
     
     func addWorkout(custom: CustomWorkout) -> Bool {
         workouts.append(custom)
@@ -36,10 +45,27 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
     let cell_workoutlist = "workoutList"
     let cell_addworkout = "addWorkout"
     
+    
+    var routine: Routine?
     var routinename = ""
     var workouts = [CustomWorkout]()
     
     @IBOutlet weak var workoutLabel: UILabel!
+    
+    
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.discardDraft()
+    }
     
     
     override func viewDidLoad() {
@@ -96,6 +122,7 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
             let cell = tableView.dequeueReusableCell(withIdentifier: cell_workoutlist, for: indexPath) as! WorkoutTableViewCell
             let workout = workouts[indexPath.row]
             cell.CustomWorkoutLabel.text = workout.workout?.name!
+            cell.durationLabel.text = workout.duration
                 
             return cell
             
@@ -116,12 +143,34 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
             }
     }
     
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        if indexPath.section == 1 {
+            return true
+        }
+        return false
+    }
+
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete && indexPath.section == 1 {
+            workouts.remove(at: indexPath.row)
+            self.tableView.reloadData()
+            //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
+            
+    
+        }
+    }
+    
 
 
     @IBAction func CreateRoutine(_ sender: Any) {
         
         if routinename != "" && workouts.count != 0  { //validate that informations for the routine are filled
-            let routine = databaseController?.addRoutine(routineName: routinename)
+            routine = databaseController?.addRoutine(routineName: routinename)
             let _ = databaseController?.addRoutineToActive(routine: routine!, active: databaseController!.activeRoutine)
     
             for workout in workouts{
@@ -168,6 +217,15 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
         case "addWorkout":
             let destination = segue.destination as! WorkoutListTableViewController
             destination.workoutDelegate = self
+        case "editWorkout":
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let destination = segue.destination as! EditWorkoutViewController
+                destination.indexpath = indexPath
+                destination.customDelegate = self
+                destination.customworkout = workouts[indexPath.row]
+                destination.isEdit = true
+            }
+            
         default:
             return
         }

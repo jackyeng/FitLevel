@@ -78,6 +78,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
         displayProgress(year: year, month: month + 1)
+        calenderFrame.isUserInteractionEnabled = false
         Calender.reloadData()
         
         

@@ -9,6 +9,10 @@
 import UIKit
 
 class WorkoutListTableViewController: UITableViewController, DatabaseListener, CustomWorkoutDelegate {
+    func editWorkout(updatedWorkout: CustomWorkout, index_info: IndexPath) -> Bool {
+        return true
+    }
+    
     
     func addWorkout(custom: CustomWorkout) -> Bool {
         return true
@@ -112,7 +116,7 @@ class WorkoutListTableViewController: UITableViewController, DatabaseListener, C
         switch segue.identifier { //comment
         case "customWorkout":
             if let indexPath = tableView.indexPathForSelectedRow{
-                let destination = segue.destination as! EditWorkout
+                let destination = segue.destination as! EditWorkoutViewController
                 destination.customDelegate = workoutDelegate
                 destination.workout = self.workout[indexPath.row]
                 

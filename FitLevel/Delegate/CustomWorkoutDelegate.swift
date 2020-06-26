@@ -11,4 +11,5 @@ import Foundation
 
 protocol CustomWorkoutDelegate: AnyObject {
         func addWorkout( custom: CustomWorkout) -> Bool
+        func editWorkout(updatedWorkout: CustomWorkout, index_info: IndexPath ) -> Bool
 }

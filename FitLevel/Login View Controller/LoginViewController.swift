@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     //https://www.youtube.com/watch?v=brpt9Thi6GU
     //https://stackoverflow.com/questions/37536499/how-to-maintain-user-session-after-exiting-app-in-firebase
     override func viewDidLoad() {
+        
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
             // User is signed in.

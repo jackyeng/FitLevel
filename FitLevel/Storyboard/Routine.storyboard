@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9p9-8y-URc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3615.9420289855075" y="1623.8839285714284"/>
+            <point key="canvasLocation" x="2532" y="1598"/>
         </scene>
         <!--Routine Preview-->
         <scene sceneID="gkn-Dx-CF3">
@@ -197,7 +197,7 @@
                                     <outlet property="durationLabel" destination="Gs0-ct-0o0" id="PJO-de-KZ6"/>
                                     <outlet property="levelLabel" destination="1DY-da-oU7" id="aax-KJ-hxw"/>
                                     <outlet property="nameLabel" destination="SRo-ar-ypJ" id="pnQ-Dr-jfi"/>
-                                    <segue destination="EFs-0b-ufi" kind="show" id="Cv6-p5-fV0"/>
+                                    <segue destination="EFs-0b-ufi" kind="show" identifier="editWorkout" id="Cv6-p5-fV0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -210,7 +210,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZl-PE-v8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3616" y="848"/>
+            <point key="canvasLocation" x="2532" y="848"/>
         </scene>
         <!--Recommended Workout Plans-->
         <scene sceneID="gwT-1w-pvZ">
@@ -281,7 +281,7 @@
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mzC-A6-R7S">
                             <rect key="frame" x="0.0" y="117" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Add">
+                            <state key="normal" title="Add Routine">
                                 <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
@@ -331,29 +331,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JYF-6n-MnK">
-                                <rect key="frame" x="34" y="153" width="308" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JYF-6n-MnK">
+                                <rect key="frame" x="20" y="149" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcQ-Ug-28Z">
-                                <rect key="frame" x="171" y="221" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcQ-Ug-28Z">
+                                <rect key="frame" x="20" y="203" width="374" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="editName:" destination="FSn-X8-mNh" eventType="touchUpInside" id="fCg-MD-ndf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Routine Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8O-nt-5Lx">
-                                <rect key="frame" x="34" y="114" width="198" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Routine Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8O-nt-5Lx">
+                                <rect key="frame" x="20" y="108" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WXe-qf-g2Q" firstAttribute="trailing" secondItem="p8O-nt-5Lx" secondAttribute="trailing" constant="20" id="JK0-xY-FP5"/>
+                            <constraint firstItem="WXe-qf-g2Q" firstAttribute="trailing" secondItem="JYF-6n-MnK" secondAttribute="trailing" constant="20" id="KU7-J2-MDY"/>
+                            <constraint firstItem="hcQ-Ug-28Z" firstAttribute="leading" secondItem="WXe-qf-g2Q" secondAttribute="leading" constant="20" id="RB4-iA-p6q"/>
+                            <constraint firstItem="hcQ-Ug-28Z" firstAttribute="top" secondItem="JYF-6n-MnK" secondAttribute="bottom" constant="20" id="TcO-mS-dAU"/>
+                            <constraint firstItem="JYF-6n-MnK" firstAttribute="leading" secondItem="WXe-qf-g2Q" secondAttribute="leading" constant="20" id="auZ-gR-pl0"/>
+                            <constraint firstItem="p8O-nt-5Lx" firstAttribute="leading" secondItem="WXe-qf-g2Q" secondAttribute="leading" constant="20" id="fpN-jD-lg8"/>
+                            <constraint firstItem="WXe-qf-g2Q" firstAttribute="trailing" secondItem="hcQ-Ug-28Z" secondAttribute="trailing" constant="20" id="niy-jc-lKC"/>
+                            <constraint firstItem="JYF-6n-MnK" firstAttribute="top" secondItem="p8O-nt-5Lx" secondAttribute="bottom" constant="20" id="t2T-UT-fz4"/>
+                            <constraint firstItem="p8O-nt-5Lx" firstAttribute="top" secondItem="WXe-qf-g2Q" secondAttribute="top" constant="20" id="uOR-Lb-Fii"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="WXe-qf-g2Q"/>
                     </view>
                     <navigationItem key="navigationItem" id="Bg4-nY-UTP"/>
@@ -363,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e73-GU-ynX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3616" y="-593"/>
+            <point key="canvasLocation" x="3616" y="-652"/>
         </scene>
         <!--Customize Routine-->
         <scene sceneID="TKo-Hf-g9j">
@@ -399,10 +408,19 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMD-yg-r1p">
+                                            <rect key="frame" x="193" y="11" width="66" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="CustomWorkoutLabel" destination="d3g-iS-NM7" id="pey-MC-dtI"/>
+                                    <outlet property="durationLabel" destination="UMD-yg-r1p" id="VdV-cI-zAE"/>
+                                    <segue destination="EFs-0b-ufi" kind="show" identifier="editWorkout" id="LDL-81-vVV"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addWorkout" id="vWy-ud-ZPs">
@@ -429,10 +447,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="myTableView" destination="3vo-fE-SGO" id="8RK-lN-QoM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4iN-Xg-VRm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702.898550724638" y="112.5"/>
+            <point key="canvasLocation" x="2530.434782608696" y="-652.23214285714278"/>
         </scene>
         <!--Workout List-->
         <scene sceneID="Cdl-gv-DgM">
@@ -474,32 +495,30 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6a8-dL-cT9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3617" y="124"/>
+            <point key="canvasLocation" x="2533" y="113"/>
         </scene>
         <!--Edit Workout-->
         <scene sceneID="Fq3-rs-sKs">
             <objects>
-                <viewController title="Edit Workout" id="EFs-0b-ufi" customClass="EditWorkout" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit Workout" id="EFs-0b-ufi" customClass="EditWorkoutViewController" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Q8-k8-THb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="821-3k-DKA">
-                                <rect key="frame" x="50" y="115" width="66" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="821-3k-DKA">
+                                <rect key="frame" x="20" y="108" width="374" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f0h-xx-bsP">
-                                <rect key="frame" x="50" y="151" width="325" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f0h-xx-bsP">
+                                <rect key="frame" x="20" y="148.5" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXp-D1-6g1">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXp-D1-6g1">
                                 <rect key="frame" x="165" y="209" width="84" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="addWorkout:" destination="EFs-0b-ufi" eventType="touchUpInside" id="RGr-pw-63Q"/>
@@ -507,6 +526,17 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="821-3k-DKA" firstAttribute="top" secondItem="6k0-Jk-X76" secondAttribute="top" constant="20" id="1bb-Eg-RrE"/>
+                            <constraint firstItem="f0h-xx-bsP" firstAttribute="top" secondItem="821-3k-DKA" secondAttribute="bottom" constant="20" id="CE3-ao-IM6"/>
+                            <constraint firstItem="821-3k-DKA" firstAttribute="leading" secondItem="6k0-Jk-X76" secondAttribute="leading" constant="20" id="CoK-1C-v4N"/>
+                            <constraint firstItem="6k0-Jk-X76" firstAttribute="trailing" secondItem="821-3k-DKA" secondAttribute="trailing" constant="20" id="Kru-5b-XkZ"/>
+                            <constraint firstItem="6k0-Jk-X76" firstAttribute="trailing" secondItem="f0h-xx-bsP" secondAttribute="trailing" constant="20" id="OV4-zV-CS8"/>
+                            <constraint firstItem="6k0-Jk-X76" firstAttribute="trailing" secondItem="eXp-D1-6g1" secondAttribute="trailing" constant="20" id="Ux1-J0-U2C"/>
+                            <constraint firstItem="eXp-D1-6g1" firstAttribute="leading" secondItem="6k0-Jk-X76" secondAttribute="leading" constant="20" id="bYa-WQ-ipr"/>
+                            <constraint firstItem="eXp-D1-6g1" firstAttribute="top" secondItem="f0h-xx-bsP" secondAttribute="bottom" constant="20" id="tWe-CP-1g9"/>
+                            <constraint firstItem="f0h-xx-bsP" firstAttribute="leading" secondItem="6k0-Jk-X76" secondAttribute="leading" constant="20" id="xAA-tQ-3z4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6k0-Jk-X76"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Workout" id="YJr-Ma-eVm"/>
@@ -516,7 +546,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmu-oA-kqO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4476.811594202899" y="123.88392857142857"/>
+            <point key="canvasLocation" x="3616" y="133"/>
         </scene>
         <!--Routine-->
         <scene sceneID="M33-4p-hee">
@@ -544,10 +574,10 @@
         <image name="icons8-walking-50" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cv6-p5-fV0"/>
-        <segue reference="0xJ-65-BsX"/>
-        <segue reference="q1z-Dd-IFe"/>
-        <segue reference="Dgl-yr-wru"/>
+        <segue reference="LDL-81-vVV"/>
+        <segue reference="P52-Dr-KAS"/>
+        <segue reference="TLT-IP-P6o"/>
+        <segue reference="aN0-8I-SWP"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

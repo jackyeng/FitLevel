@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wSe-Sw-OC2">
-                                <rect key="frame" x="28" y="109" width="358" height="734"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wSe-Sw-OC2">
+                                <rect key="frame" x="25" y="98" width="364" height="754"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="28" id="16r-OO-vDl">
                                     <size key="itemSize" width="100" height="150"/>
@@ -62,7 +61,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ao2-JL-8ez">
-                                        <rect key="frame" x="124" y="0.0" width="100" height="150"/>
+                                        <rect key="frame" x="127" y="0.0" width="100" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Dm0-2S-Jcl">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
@@ -70,7 +69,7 @@
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="T3r-ZQ-6Jq">
-                                        <rect key="frame" x="258" y="0.0" width="100" height="150"/>
+                                        <rect key="frame" x="264" y="0.0" width="100" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JQp-v4-PAE">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
@@ -105,6 +104,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yoJ-KN-rSO" firstAttribute="trailing" secondItem="wSe-Sw-OC2" secondAttribute="trailing" constant="25" id="2n3-bv-QpB"/>
+                            <constraint firstItem="wSe-Sw-OC2" firstAttribute="leading" secondItem="yoJ-KN-rSO" secondAttribute="leading" constant="25" id="5db-Zz-eVJ"/>
+                            <constraint firstItem="yoJ-KN-rSO" firstAttribute="bottom" secondItem="wSe-Sw-OC2" secondAttribute="bottom" constant="10" id="TmG-gi-evY"/>
+                            <constraint firstItem="wSe-Sw-OC2" firstAttribute="top" secondItem="yoJ-KN-rSO" secondAttribute="top" constant="10" id="t91-ft-C0d"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yoJ-KN-rSO"/>
                     </view>
                     <navigationItem key="navigationItem" title="Workout Stats" id="f0b-Xl-cNL"/>

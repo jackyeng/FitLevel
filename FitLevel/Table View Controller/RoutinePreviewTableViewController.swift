@@ -8,7 +8,20 @@
 
 import UIKit
 
-class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDelegate,DatabaseListener {
+class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDelegate,CustomWorkoutDelegate, DatabaseListener {
+    func addWorkout(custom: CustomWorkout) -> Bool {
+        return true
+    }
+    
+    func editWorkout(updatedWorkout: CustomWorkout, index_info: IndexPath) -> Bool {
+        workouts[index_info.row] = updatedWorkout
+        tableView.performBatchUpdates({
+            tableView.reloadSections([section_workout], with: .automatic) //READ THIS
+        }, completion: nil)
+        return true
+   
+    }
+    
     
     var workouts = [CustomWorkout]()
     var section_workout = 0
@@ -76,6 +89,16 @@ class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDe
                 let destination = segue.destination as! WorkoutRoutineViewController
                     destination.workoutDelegate = self
                     destination.workouts = workouts
+            case "editWorkout":
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let destination = segue.destination as! EditWorkoutViewController
+                destination.indexpath = indexPath
+                destination.customDelegate = self
+                destination.customworkout = workouts[indexPath.row]
+                destination.isEdit = true
+                destination.isPreview = true
+            }
+            
             default:
                 return
         }
