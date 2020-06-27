@@ -31,7 +31,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="48-512"/>
                                 <connections>
-                                    <segue destination="HQr-3J-BOj" kind="show" id="0xJ-65-BsX"/>
+                                    <segue destination="K1i-7H-vnK" kind="show" id="XB9-uM-rOY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZ5-kO-4hb">
@@ -49,9 +49,6 @@
                                 <state key="normal" title="Custom">
                                     <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="HQr-3J-BOj" kind="show" id="P52-Dr-KAS"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -197,7 +194,7 @@
                                     <outlet property="durationLabel" destination="Gs0-ct-0o0" id="PJO-de-KZ6"/>
                                     <outlet property="levelLabel" destination="1DY-da-oU7" id="aax-KJ-hxw"/>
                                     <outlet property="nameLabel" destination="SRo-ar-ypJ" id="pnQ-Dr-jfi"/>
-                                    <segue destination="EFs-0b-ufi" kind="show" identifier="editWorkout" id="Cv6-p5-fV0"/>
+                                    <segue destination="EFs-0b-ufi" kind="show" identifier="editWorkout" id="hzN-e2-Xrd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -372,88 +369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e73-GU-ynX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3616" y="-652"/>
-        </scene>
-        <!--Customize Routine-->
-        <scene sceneID="TKo-Hf-g9j">
-            <objects>
-                <tableViewController id="HQr-3J-BOj" customClass="CustomRoutineTableViewController" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="3vo-fE-SGO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="routineName" id="Ita-SG-eKW">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ita-SG-eKW" id="2Xz-d2-fuD">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="FSn-X8-mNh" kind="show" identifier="editName" id="K5t-40-goz"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutList" id="LAI-D9-srz" customClass="WorkoutTableViewCell" customModule="FitLevel" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LAI-D9-srz" id="c3y-w2-hig">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-iS-NM7">
-                                            <rect key="frame" x="20" y="11" width="252" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMD-yg-r1p">
-                                            <rect key="frame" x="193" y="11" width="66" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="CustomWorkoutLabel" destination="d3g-iS-NM7" id="pey-MC-dtI"/>
-                                    <outlet property="durationLabel" destination="UMD-yg-r1p" id="VdV-cI-zAE"/>
-                                    <segue destination="EFs-0b-ufi" kind="show" identifier="editWorkout" id="LDL-81-vVV"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addWorkout" id="vWy-ud-ZPs">
-                                <rect key="frame" x="0.0" y="142.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vWy-ud-ZPs" id="ZLd-ri-Fpr">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="gDC-nZ-JOi" kind="show" identifier="addWorkout" id="Gwg-bY-WuY"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="HQr-3J-BOj" id="q4Q-EG-qY1"/>
-                            <outlet property="delegate" destination="HQr-3J-BOj" id="zvV-YL-EAT"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Customize Routine" id="6as-1T-AOe">
-                        <barButtonItem key="rightBarButtonItem" title="Create" id="JnY-7T-RDL">
-                            <connections>
-                                <action selector="CreateRoutine:" destination="HQr-3J-BOj" id="pRy-Ao-iGt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="myTableView" destination="3vo-fE-SGO" id="8RK-lN-QoM"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4iN-Xg-VRm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2530.434782608696" y="-652.23214285714278"/>
+            <point key="canvasLocation" x="2567" y="113"/>
         </scene>
         <!--Workout List-->
         <scene sceneID="Cdl-gv-DgM">
@@ -482,7 +398,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="WorkoutNameLabel" destination="cO4-9u-UNk" id="Gac-H7-eLb"/>
-                                    <segue destination="EFs-0b-ufi" kind="show" identifier="customWorkout" id="nKR-68-4MC"/>
+                                    <segue destination="EFs-0b-ufi" kind="show" identifier="customWorkout" id="z1M-fx-QqM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -495,7 +411,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6a8-dL-cT9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2533" y="113"/>
+            <point key="canvasLocation" x="3396" y="-652"/>
         </scene>
         <!--Edit Workout-->
         <scene sceneID="Fq3-rs-sKs">
@@ -546,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmu-oA-kqO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3616" y="133"/>
+            <point key="canvasLocation" x="3432" y="113"/>
         </scene>
         <!--Routine-->
         <scene sceneID="M33-4p-hee">
@@ -567,6 +483,84 @@
             </objects>
             <point key="canvasLocation" x="-80" y="113"/>
         </scene>
+        <!--Customize Routine-->
+        <scene sceneID="8S8-s7-gA3">
+            <objects>
+                <tableViewController id="K1i-7H-vnK" customClass="CustomRoutineTableViewController" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="IOw-EL-w9C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="routineName" id="Ho6-WI-b6N">
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ho6-WI-b6N" id="UA2-Qn-4BH">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="FSn-X8-mNh" kind="show" identifier="editName" id="8Ba-Gq-2cW"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutList" id="Tsx-lc-zk6" customClass="WorkoutTableViewCell" customModule="FitLevel" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tsx-lc-zk6" id="VNo-id-bQb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdZ-Pe-KSu">
+                                            <rect key="frame" x="20" y="11" width="252" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOk-kG-sCg">
+                                            <rect key="frame" x="321" y="11" width="66" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="CustomWorkoutLabel" destination="fdZ-Pe-KSu" id="1vq-6p-iQP"/>
+                                    <outlet property="durationLabel" destination="hOk-kG-sCg" id="Hj0-8n-LmA"/>
+                                    <segue destination="EFs-0b-ufi" kind="show" identifier="editWorkout" id="Tss-ED-ijE"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addWorkout" id="Nba-UG-lV7">
+                                <rect key="frame" x="0.0" y="142.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nba-UG-lV7" id="Z1D-h8-box">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="gDC-nZ-JOi" kind="show" identifier="addWorkout" id="pOA-vP-m2B"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="K1i-7H-vnK" id="Bu6-54-qPn"/>
+                            <outlet property="delegate" destination="K1i-7H-vnK" id="XL8-fl-dk1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Customize Routine" id="6jB-pG-SBi">
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="EYf-sT-hzq">
+                            <connections>
+                                <action selector="CreateRoutine:" destination="K1i-7H-vnK" id="M8Q-Yf-P6A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="60T-PM-y38" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2604" y="-652"/>
+        </scene>
     </scenes>
     <resources>
         <image name="33-512" width="512" height="512"/>
@@ -574,9 +568,8 @@
         <image name="icons8-walking-50" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LDL-81-vVV"/>
-        <segue reference="P52-Dr-KAS"/>
-        <segue reference="TLT-IP-P6o"/>
+        <segue reference="z1M-fx-QqM"/>
+        <segue reference="q1z-Dd-IFe"/>
         <segue reference="aN0-8I-SWP"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>

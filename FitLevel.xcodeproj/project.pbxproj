@@ -28,6 +28,8 @@
 		8527AEFC24763E5700080312 /* EditRoutineNameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEFB24763E5700080312 /* EditRoutineNameDelegate.swift */; };
 		8527AEFE247684EA00080312 /* EditRoutineNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527AEFD247684EA00080312 /* EditRoutineNameViewController.swift */; };
 		852BA574246BC86F00B15B7D /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852BA573246BC86F00B15B7D /* DateCollectionViewCell.swift */; };
+		8575455024A7470E00524D30 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8575454F24A7470E00524D30 /* README.md */; };
+		8575455924A78A1800524D30 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8575455824A78A1800524D30 /* OnboardingViewController.swift */; };
 		857EF7EE2468288200323533 /* Plan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7E82468288200323533 /* Plan+CoreDataClass.swift */; };
 		857EF7EF2468288200323533 /* Plan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7E92468288200323533 /* Plan+CoreDataProperties.swift */; };
 		857EF7F02468288200323533 /* Routine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF7EA2468288200323533 /* Routine+CoreDataClass.swift */; };
@@ -109,6 +111,8 @@
 		8527AEFB24763E5700080312 /* EditRoutineNameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineNameDelegate.swift; sourceTree = "<group>"; };
 		8527AEFD247684EA00080312 /* EditRoutineNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineNameViewController.swift; sourceTree = "<group>"; };
 		852BA573246BC86F00B15B7D /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		8575454F24A7470E00524D30 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8575455824A78A1800524D30 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		857EF7E82468288200323533 /* Plan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataClass.swift"; sourceTree = "<group>"; };
 		857EF7E92468288200323533 /* Plan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		857EF7EA2468288200323533 /* Routine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routine+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -195,6 +199,14 @@
 				85CABF2E24A11800006FE274 /* AboutTableViewController.swift */,
 			);
 			path = "Login View Controller";
+			sourceTree = "<group>";
+		};
+		8575455724A78A0500524D30 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				8575455824A78A1800524D30 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		857EF7F724683FF200323533 /* Storyboard */ = {
@@ -293,6 +305,7 @@
 		85FD53AD24651C93004E9AB9 = {
 			isa = PBXGroup;
 			children = (
+				8575454F24A7470E00524D30 /* README.md */,
 				85FD53B724651C93004E9AB9 /* Products */,
 				85FD53B824651C93004E9AB9 /* FitLevel */,
 				6A8343C34B477324DAE8C05C /* Pods */,
@@ -311,6 +324,7 @@
 		85FD53B824651C93004E9AB9 /* FitLevel */ = {
 			isa = PBXGroup;
 			children = (
+				8575455724A78A0500524D30 /* Onboarding */,
 				857EF7F724683FF200323533 /* Storyboard */,
 				85FD53CE2465A038004E9AB9 /* Database */,
 				85B9D8F9246BCC1A00D17F2E /* Calender */,
@@ -478,6 +492,7 @@
 				85190214249E2AA5002659F5 /* Burpees.mp4 in Resources */,
 				8519020F249E2AA5002659F5 /* Planks.mp4 in Resources */,
 				85BFE73024A07A6900031762 /* Seal Jack.mp3 in Resources */,
+				8575455024A7470E00524D30 /* README.md in Resources */,
 				85FD53C324651C94004E9AB9 /* Assets.xcassets in Resources */,
 				85190212249E2AA5002659F5 /* Jumping Jacks.mp4 in Resources */,
 				85BFE73824A07A6900031762 /* Forward Lunges.mp3 in Resources */,
@@ -607,6 +622,7 @@
 				8527AEFA2475B18C00080312 /* RoutinePreviewTableViewController.swift in Sources */,
 				8527AEF82475A6A800080312 /* CustomRoutineTableViewController.swift in Sources */,
 				8527AEF6247581A300080312 /* CustomWorkoutDelegate.swift in Sources */,
+				8575455924A78A1800524D30 /* OnboardingViewController.swift in Sources */,
 				85FD53D92465A165004E9AB9 /* RoutinePlanViewController.swift in Sources */,
 				857EF7F32468288200323533 /* Workout+CoreDataProperties.swift in Sources */,
 				85FD53E92465E112004E9AB9 /* MulticastDelegate.swift in Sources */,

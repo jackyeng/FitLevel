@@ -9,16 +9,17 @@
 import UIKit
 
 class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDelegate,CustomWorkoutDelegate{
+   
+    //Update workout that has been edited
     func editWorkout(updatedWorkout: CustomWorkout, index_info: IndexPath) -> Bool {
         workouts[index_info.row] = updatedWorkout
         tableView.performBatchUpdates({
             tableView.reloadSections([section_workoutlist], with: .automatic) //READ THIS
         }, completion: nil)
         return true
-      
     }
     
-    
+
     func addWorkout(custom: CustomWorkout) -> Bool {
         workouts.append(custom)
         tableView.reloadData()
@@ -27,7 +28,7 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
     
     
     func editName(Name: String) -> Bool {
-        routinename = Name //update cocktail name when returning from edit instruction screen
+        routinename = Name //update routine name when returning from edit routine name screen
         tableView.reloadData()
         return true
     }
@@ -49,24 +50,7 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
     var routine: Routine?
     var routinename = ""
     var workouts = [CustomWorkout]()
-    
-    @IBOutlet weak var workoutLabel: UILabel!
-    
-    
-    
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        databaseController?.discardDraft()
-    }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,17 +62,20 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+           super.viewWillDisappear(animated)
+           databaseController?.discardDraft()
+       }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 3    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if section == section_workoutlist{
-            return workouts.count //comment
+            return workouts.count
         }
         return 1
     }
@@ -128,7 +115,7 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
             
         case section_addworkout:
             let cell = tableView.dequeueReusableCell(withIdentifier: cell_addworkout, for: indexPath)
-            cell.textLabel?.textColor = .secondaryLabel //secondaryLabel
+            cell.textLabel?.textColor = .secondaryLabel
             cell.selectionStyle = .none
             cell.textLabel?.text = "Add Workout"
             cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -146,7 +133,6 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         if indexPath.section == 1 {
             return true
         }
@@ -160,6 +146,11 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
             workouts.remove(at: indexPath.row)
             self.tableView.reloadData()
             //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
+            //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
+            //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
+            //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
+            //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
+            
             
     
         }
@@ -214,13 +205,15 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
         case "editName":
             let destination = segue.destination as! EditRoutineNameViewController
             destination.nameDelegate = self
+            
         case "addWorkout":
             let destination = segue.destination as! WorkoutListTableViewController
             destination.workoutDelegate = self
-        case "editWorkout":
+
+        case "editWorkout": //When workout are selected to be edited
             if let indexPath = tableView.indexPathForSelectedRow{
                 let destination = segue.destination as! EditWorkoutViewController
-                destination.indexpath = indexPath
+                destination.indexpath = indexPath //Pass indexPath to keep track of workout that was selected
                 destination.customDelegate = self
                 destination.customworkout = workouts[indexPath.row]
                 destination.isEdit = true

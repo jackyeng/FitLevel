@@ -89,7 +89,7 @@ class AboutTableViewController: UITableViewController {
                       cell_intcheck]
         
         reference_list =
-        ["Firebase",
+        ["Firebase / Firebase.google.com",
         "https://www.youtube.com/watch?time_continue=270&v=_knIf9vF4k4&feature=emb_logo",
         "Icons8",
         "https://www.youtube.com/watch?v=0o06EIPY0JI",
@@ -106,11 +106,7 @@ class AboutTableViewController: UITableViewController {
     "https://stackoverflow.com/questions/48799481/how-to-switch-to-other-view-controller-programmatically-in-swift-4/48805442",
         "https://stackoverflow.com/questions/24803178/navigation-bar-with-uiimage-for-title ",
         "https://stackoverflow.com/questions/38159397/how-to-check-if-a-string-is-an-int-in-swift"]
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    
     }
 
     // MARK: - Table view data source
@@ -178,157 +174,9 @@ class AboutTableViewController: UITableViewController {
         cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.textLabel?.numberOfLines = 0
         return cell
-        // Configure the cell...
-        /*
-        switch indexPath.section{
-        case section_cocoapods:
-            let thirdpartycell = tableView.dequeueReusableCell(withIdentifier: cell_cocoapods, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-            cell.referenceLAbel?.numberOfLines = 0
-            thirdpartycell.referenceLabel.text = "test"
-            return thirdpartycell
-            
-        case section_workoutresources:
-            let resourcescell = tableView.dequeueReusableCell(withIdentifier: cell_workoutresources, for: indexPath) as! AboutTableViewCell
-            resourcescell.referenceLabel.text = "test"
-            return resourcescell
-            
-        case section_assetresources:
-            let youtubelinkcell = tableView.dequeueReusableCell(withIdentifier: cell_assetresources, for: indexPath) as! AboutTableViewCell
-            youtubelinkcell.referenceLabel.text = "test"
-            return youtubelinkcell
-            
-        case section_calender:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_calender, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-            cell.referenceLabel?.numberOfLines = 0
-            cell.referenceLabel.text = "https://www.youtube.com/watch?v=0o06EIPY0JI"
-            return cell
-            
-        case section_login:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_login, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-            cell.referenceLabel?.numberOfLines = 0
-            cell.referenceLabel.text = "https://www.youtube.com/watch?v=brpt9Thi6GU"
-            return cell
-            
-        case section_usersession:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_usersession, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-            cell.referenceLabel?.numberOfLines = 0
-            cell.referenceLabel.text = "https://stackoverflow.com/questions/37536499/how-to-maintain-user-session-after-exiting-app-in-firebase"
-            return cell
-            
-        case section_progressbar:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_progressbar, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-            cell.referenceLAbel?.numberOfLines = 0
-            cell.referenceLabel.text = "https://www.youtube.com/watch?v=O3ltwjDJaMk"
-            return cell
-            
-        case section_tabbar:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_tabbar, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = "https://www.youtube.com/watch?v=n7NNAdaIDKQ"
-            return cell
-            
-        case section_nstimer:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_nstimer, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = "https://stackoverflow.com/questions/29374553/how-can-i-make-a-countdown-with-nstimer"
-            return cell
-            
-        case section_avplayerloop:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_avplayerloop, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = "https://stackoverflow.com/questions/27808266/how-do-you-loop-avplayer-in-swift/27808482"
-            return cell
-            
-        case section_pauseanimation:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_pauseanimation, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = "https://stackoverflow.com/questions/34735707/swift-pause-cabasicanimation-for-calayer"
-            return cell
-            
-        case section_delayfunction:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_delayfunction, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = "https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805"
-            return cell
-            
-        case section_coredata:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_coredata, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = "https://code-craftsman.fr/2015/08/04/saving-core-data-objects/"
-            return cell
-            
-        case section_seguefullscreen:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_seguefullscreen, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = "https://stackoverflow.com/questions/58507034/how-to-create-segue-which-make-view-controller-fullscreen-in-xcode-11-1"
-            return cell
-            
-        case section_switchvc:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_switchvc, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = "https://stackoverflow.com/questions/48799481/how-to-switch-to-other-view-controller-programmatically-in-swift-4/48805442"
-            return cell
         
-        case section_titleimage:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_titleimage, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = "https://stackoverflow.com/questions/24803178/navigation-bar-with-uiimage-for-title "
-            return cell
-            
-        case section_intcheck:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_intcheck, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = "https://stackoverflow.com/questions/38159397/how-to-check-if-a-string-is-an-int-in-swift"
-            return cell
-        
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cell_intcheck, for: indexPath) as! AboutTableViewCell
-            cell.referenceLabel.text = ""
-            return cell
-            
-        }
-      */
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

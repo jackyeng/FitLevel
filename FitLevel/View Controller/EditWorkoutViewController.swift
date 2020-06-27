@@ -30,7 +30,7 @@ class EditWorkoutViewController: UIViewController, UITextFieldDelegate, Database
         databaseController = appDelegate.databaseController
         // Do any additional setup after loading the view.
         durationLabel.delegate = self
-        print(isEdit)
+    
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -38,26 +38,19 @@ class EditWorkoutViewController: UIViewController, UITextFieldDelegate, Database
         return true
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     //Allows user to save their workout once a duration is set
     @IBAction func addWorkout(_ sender: Any) {
         
         if durationLabel.text != "" && durationLabel.text!.isInt {  //only allow save when user enter text
             
+            //If in Edit Mode, then only make changes to the CustomWorkout Object passed into this class and pop view ontroller.
             if isEdit{
                 customworkout?.duration = durationLabel.text!
                 let _ = customDelegate?.editWorkout(updatedWorkout: customworkout!, index_info: indexpath!)
                 
             }
+            //If not in Edit Mode, then add new CustomWorkout object to the Persistent Storage and give it a duration.
             else{
             
             let customWorkout = databaseController?.addCustomWorkout(set: "", repetition: "", duration: durationLabel.text!)
@@ -67,12 +60,13 @@ class EditWorkoutViewController: UIViewController, UITextFieldDelegate, Database
             
             }
             
+            //Pop view controller to return to Preview screen.
             if isPreview{
                 navigationController?.popViewController(animated: true)
                 return
             }
             
-                //search through the view controllers for CustomRoutineTableViewController to pop it
+            //search through the view controllers for CustomRoutineTableViewController to pop to it
             for vc in self.navigationController!.viewControllers {
                 if let myvc = vc as? CustomRoutineTableViewController{
                     self.navigationController?.popToViewController(myvc, animated: true)

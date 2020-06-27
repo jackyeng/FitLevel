@@ -16,12 +16,12 @@ class EditRoutineNameViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    
     }
     
     
     @IBAction func editName(_ sender: Any) {
-        if nameLabel.text != "" {  //only allow save when user enter text
+        if nameLabel.text != "" {  //only allow save when user enter name
             let name = nameLabel.text!
             let _ = nameDelegate?.editName( Name: name)
             navigationController?.popViewController(animated: true)
@@ -31,7 +31,7 @@ class EditRoutineNameViewController: UIViewController{
         var errorMsg = "Please ensure all fields are filled:\n"
 
         if nameLabel.text == "" {
-        errorMsg += "- Must provide a name\n"
+            errorMsg += "- Must provide a name\n"
         }
 
         displayMessage(title: "Not all fields filled", message: errorMsg)

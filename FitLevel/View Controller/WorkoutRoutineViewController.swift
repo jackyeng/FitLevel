@@ -24,8 +24,6 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     var listenerType: ListenerType = .routineworkout
     var databaseController: DatabaseProtocol?
     
-    
-    
     @IBOutlet weak var workoutName: UILabel!
     @IBOutlet weak var workoutLevel: UILabel!
     @IBOutlet weak var workoutDuration: UILabel!
@@ -60,23 +58,19 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         
-        
         //Audio initialisation
         playWorkoutAudio()
-        
         
         //Video initialisation
         guard let videoURL = Bundle.main.url(forResource: workouts[workoutprogress].workout?.name, withExtension: "mp4") else {
             print("Couldn't load video")
             return
         }
-        
         player = AVPlayer(url: videoURL)
         playerViewController = AVPlayerViewController()
         
         
-        
-        //Workout Initialisation
+        //WORKOUT INITIALISATION
         
         //Warm up message and counter initalisation
         warmUpLabel1.text = "Get"
@@ -86,19 +80,16 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         workoutcount = workouts.count
         
         
-       
-        
         //https://stackoverflow.com/questions/29374553/how-can-i-make-a-countdown-with-nstimer
         //countdown timer initialisation
         countTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UIMenuController.update), userInfo: nil, repeats: true)
         countDownLabel.text = String(counter)
         
-        
+        //Start warmup timer
         handleTap(duration: 5)
         
         
-        //Timer progress
-        
+        //TIMER PROGRESS BAR
         //let center = view.center
         let coordinate = CGPoint(x:207,y:550)
         //create my track layer
@@ -146,7 +137,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         CompleteButton.layer.borderWidth = 1
         CompleteButton.layer.cornerRadius = 20
         
-        //
+        
         if let playerViewController = playerViewController {
                 playerViewController.player = player
                    
@@ -156,7 +147,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
                    
                 playerViewController.showsPlaybackControls = false
             
-                // Do any additional setup after loading the view.
+                //Loop AVPlayer
                 //https://stackoverflow.com/questions/27808266/how-do-you-loop-avplayer-in-swift/27808482
                 playerViewController.player!.play()
                 NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem, queue: .main) { [weak self] _ in
@@ -231,7 +222,9 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         warmUpLabel2.text = "Ready"
         counter = 5
         handleTap(duration: 5)
-        countDownLabel.text = String(counter)//https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805
+        countDownLabel.text = String(counter)
+        
+        //https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
             self.updateWorkout()
             self.actionStatus = true
@@ -241,26 +234,28 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     
     //
     func updateWorkout(){
+        //Ends routine when the last workout is completed
         if workoutprogress > workoutcount-1{
             self.countTimer?.invalidate()
             warmUpLabel1.text = ""
             warmUpLabel2.text = ""
             displayMessage(title: "Congratulation!", message: "You have completed your workout.")
+            //Mark Calender with current date once completed workout
             let _ = databaseController?.addWorkoutDate(year: year, month: month+1, day: day)
-            //let _ = databaseController?.addWorkoutDate(year: 2020, month: 6, day: 11)
             return
         }
         
         playWorkoutAudio()
         workoutName.text = workouts[workoutprogress].workout!.name
-    
+        
+        //Display current workout level
         if let level = workouts[workoutprogress].workout?.level{
             workoutLevel.text = "Level " + String(level)
         }
         else{
             workoutLevel.text = "Level: Unknown"
         }
-        //workoutDuration.text = "Duration: " + workouts[workoutprogress].duration!
+       
         UpdateVideo((Any).self)
         
     }
@@ -292,6 +287,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         playerViewController!.player!.isMuted = true
         playerViewController!.player!.automaticallyWaitsToMinimizeStalling = false
         playerViewController!.player!.playImmediately(atRate: 1.0)
+        //Loop AVPlayer
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem, queue: .main) { [weak self] _ in
         self?.player?.seek(to: CMTime.zero)
         self?.player?.play()
@@ -299,12 +295,16 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         }
     }
     
+    
+    
     @objc func update() {
+        //ensure that counter doesnt go below zero
         if(counter > 0) {
             countDownLabel.text = String(counter)
             counter -= 1
         }
         else{
+            //if it is currently in warm-up state, then start the workout
             if warmupStatus{
                 let duration = Int(workouts[workoutprogress].duration!)!
                 counter = duration
@@ -315,6 +315,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
                 handleTap(duration: duration)
                 warmupStatus = false
             }
+            //if it workout is in session, then skip to the next workout
             else{
                 
                 Complete((Any).self)
@@ -324,7 +325,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         }
     }
     
-    
+    //Play audio notification when the next workout starts
     func playWorkoutAudio(){
         if let url = Bundle.main.url(forResource: workouts[workoutprogress].workout?.name, withExtension: "mp3") {
             do {

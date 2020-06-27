@@ -18,23 +18,14 @@ class SettingsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    //This function removes user session from the app and pops back to login page
     @IBAction func tappedLogout(_ sender: UIButton) {
         
         do
             {
                 try Auth.auth().signOut()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                //let sampleStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 let homeView  = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
                 homeView.modalPresentationStyle = .fullScreen
                 self.present(homeView, animated: true, completion: nil)

@@ -13,6 +13,7 @@ class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDe
         return true
     }
     
+    //Update workout that has been edited
     func editWorkout(updatedWorkout: CustomWorkout, index_info: IndexPath) -> Bool {
         workouts[index_info.row] = updatedWorkout
         tableView.performBatchUpdates({
@@ -37,7 +38,7 @@ class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDe
         databaseController = appDelegate.databaseController
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+       
     }
 
     // MARK: - Table view data source
@@ -60,6 +61,7 @@ class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDe
                 let cell = tableView.dequeueReusableCell(withIdentifier: cell_workout, for: indexPath) as! WorkoutTableViewCell
                 cell.nameLabel.text = workouts[indexPath.row].workout?.name!
                 
+                //Display current workout level
                 if let level = workouts[indexPath.row].workout?.level {
                    cell.levelLabel.text = "Level: " + String(level)
                 }
@@ -90,13 +92,13 @@ class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDe
                     destination.workoutDelegate = self
                     destination.workouts = workouts
             case "editWorkout":
-            if let indexPath = tableView.indexPathForSelectedRow{
-                let destination = segue.destination as! EditWorkoutViewController
-                destination.indexpath = indexPath
-                destination.customDelegate = self
-                destination.customworkout = workouts[indexPath.row]
-                destination.isEdit = true
-                destination.isPreview = true
+                if let indexPath = tableView.indexPathForSelectedRow{
+                    let destination = segue.destination as! EditWorkoutViewController
+                    destination.indexpath = indexPath
+                    destination.customDelegate = self
+                    destination.customworkout = workouts[indexPath.row]
+                    destination.isEdit = true
+                    destination.isPreview = true //Inform destination view controller that it is being accessed from previewtableviewcontroller.
             }
             
             default:

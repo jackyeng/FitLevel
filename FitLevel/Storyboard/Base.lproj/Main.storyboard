@@ -7,6 +7,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Onboarding View Controller-->
+        <scene sceneID="k4P-wA-q1V">
+            <objects>
+                <viewController id="Xgr-SE-YXe" customClass="OnboardingViewController" customModule="FitLevel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4VZ-8a-hgj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="170-R2-FjK">
+                                <rect key="frame" x="32" y="729" width="350" height="30"/>
+                                <state key="normal" title="Get Started">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8Xe-9y-sha" kind="show" id="zwa-vl-4u8"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="2u5-vN-QeN">
+                                <rect key="frame" x="0.0" y="664" width="414" height="37"/>
+                                <color key="pageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="currentPageIndicatorTintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KJk-bx-OHO">
+                                <rect key="frame" x="0.0" y="88" width="414" height="568"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="eIy-8d-8qf"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="J5r-BC-Geg"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="170-R2-FjK" firstAttribute="leading" secondItem="SDK-so-MzE" secondAttribute="leading" constant="32" id="0ah-q6-egc"/>
+                            <constraint firstItem="KJk-bx-OHO" firstAttribute="top" secondItem="SDK-so-MzE" secondAttribute="top" id="1a2-U5-Fap"/>
+                            <constraint firstItem="SDK-so-MzE" firstAttribute="bottom" secondItem="170-R2-FjK" secondAttribute="bottom" constant="103" id="34J-WH-jl1"/>
+                            <constraint firstItem="KJk-bx-OHO" firstAttribute="leading" secondItem="2u5-vN-QeN" secondAttribute="leading" id="4eg-WV-n9x"/>
+                            <constraint firstItem="KJk-bx-OHO" firstAttribute="leading" secondItem="SDK-so-MzE" secondAttribute="leading" id="Dtp-zL-Xdv"/>
+                            <constraint firstItem="2u5-vN-QeN" firstAttribute="centerX" secondItem="170-R2-FjK" secondAttribute="centerX" id="J0y-Lm-8rE"/>
+                            <constraint firstItem="2u5-vN-QeN" firstAttribute="top" secondItem="KJk-bx-OHO" secondAttribute="bottom" constant="8" id="Vat-vI-2OG"/>
+                            <constraint firstItem="KJk-bx-OHO" firstAttribute="trailing" secondItem="2u5-vN-QeN" secondAttribute="trailing" id="f1A-EL-fZ2"/>
+                            <constraint firstItem="170-R2-FjK" firstAttribute="top" secondItem="2u5-vN-QeN" secondAttribute="bottom" constant="28" id="i4O-X4-YpD"/>
+                            <constraint firstItem="KJk-bx-OHO" firstAttribute="centerX" secondItem="4VZ-8a-hgj" secondAttribute="centerX" id="vm3-Bq-fhy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SDK-so-MzE"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Agu-yD-ph7"/>
+                    <connections>
+                        <outlet property="btnGetStarted" destination="170-R2-FjK" id="pa7-VR-bdF"/>
+                        <outlet property="pageControl" destination="2u5-vN-QeN" id="pB0-v6-vyO"/>
+                        <outlet property="scrollView" destination="KJk-bx-OHO" id="fS7-Vj-YNC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RXO-6j-MNJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1727.536231884058" y="101.78571428571428"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="HJW-x6-p9Q">
             <objects>
@@ -109,7 +163,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jy8-eQ-H41"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="2Rk-Dv-jmm"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="2Rk-Dv-jmm"/>
                     <navigationItem key="navigationItem" id="qIw-z8-epl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eqd-1d-6Ae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -603,18 +657,19 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="8Xe-9y-sha" kind="relationship" relationship="rootViewController" id="2gR-5b-hG1"/>
+                        <segue destination="Xgr-SE-YXe" kind="relationship" relationship="rootViewController" id="NiD-3b-x8t"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iaa-yK-xg8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1833.3333333333335" y="106.47321428571428"/>
+            <point key="canvasLocation" x="-2528" y="106"/>
         </scene>
     </scenes>
     <resources>
         <image name="icons8-bar-chart-50" width="25" height="25"/>
         <image name="icons8-lotus-64" width="32" height="32"/>
         <image name="icons8-walking-50" width="25" height="25"/>
+        <image name="settings" width="25" height="25"/>
     </resources>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

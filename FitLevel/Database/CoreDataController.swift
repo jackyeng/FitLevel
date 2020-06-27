@@ -40,7 +40,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         super.init()
         childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         childContext?.parent = self.persistentContainer.viewContext
-        //createDefaultContent()
+        
+        
+        if fetchAllWorkouts().count == 0 {
+            createDefaultContent()
+        }
+      
         
         
     }
@@ -72,14 +77,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
        
     func addCustomWorkoutToRoutine(customWorkout:CustomWorkout,routine: Routine){
            routine.addToCustomworkout(customWorkout)
-           print(routine.customworkout!)
+     
            
        }
     func addWorkoutToCustomWorkout(workout: Workout, customWorkout: CustomWorkout) {
            workout.addToCustom(customWorkout)
-           print(customWorkout.workout!)
-           
-           
+
        }
        
        

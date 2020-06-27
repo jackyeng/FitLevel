@@ -13,33 +13,17 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     var listenerType: ListenerType = .workoutstats
     
-    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
-        
-    }
-    
+   
     func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
         self.workouts = workouts
     }
     
-    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
-        
-    }
     
-    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
-        
-    }
     
     weak var databaseController: DatabaseProtocol?
     
     @IBOutlet weak var calenderFrame: UITextView!
-    
-    var workoutlinks = ["https://wger.de/media/exercise-images/6/Leg-press-2-1024x670.png",
-        "https://wger.de/media/exercise-images/177/Seated-leg-curl-1.png",
-    "https://wger.de/media/exercise-images/26/Biceps-curl-1.png",
-    "https://wger.de/media/exercise-images/82/Tricep-dips-2-2.png",
-
-    "https://wger.de/media/exercise-images/244/Close-grip-front-lat-pull-down-2.png"]
-    
+   
     var workoutlist = [WorkoutData]()
     var workouts = [Workout]()
     
@@ -117,8 +101,6 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         TopWorkout.layer.masksToBounds = true
         
         
-        requestWorkoutImage()
-        
        }
        
     
@@ -135,13 +117,11 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             MonthLabel.text = "\(currentMonth) \(year)"
             displayProgress(year: year, month: month + 1)
             Calender.reloadData()
-      
-            
-            
+
         default:
             
             Direction = 1
-            
+    
             GetStartDateDayPosition()
             month += 1
             currentMonth = Months[month]
@@ -203,20 +183,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             if NumberOfEmptyBox == 7 {
                 NumberOfEmptyBox = 0
             }
-            /*switch day{
-            case 1...7:
-                NumberOfEmptyBox = weekday - day
-            case 8...14:
-                NumberOfEmptyBox = weekday - day - 7
-            case 15...21:
-                NumberOfEmptyBox = weekday - day - 14
-            case 22...28:
-                NumberOfEmptyBox = weekday - day - 21
-            case 29...31:
-                NumberOfEmptyBox = weekday - day - 28
-            default:
-                break
-            }*/
+            
             PositionIndex = NumberOfEmptyBox
         case 1...:
             NextNumberOfEmptyBox = (PositionIndex + DaysInMonths[month])%7
@@ -257,75 +224,64 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == self.Calender {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Calender", for: indexPath) as! DateCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Calender", for: indexPath) as! DateCollectionViewCell
         
+            cell.backgroundColor = UIColor.clear
+            cell.layer.cornerRadius = 18
+            cell.layer.masksToBounds = true
         
-        cell.backgroundColor = UIColor.clear
-        
-        cell.layer.cornerRadius = 18
-        cell.layer.masksToBounds = true
-        
-        
-        
-        if cell.isHidden{
-            cell.isHidden = false
-        }
-        switch Direction{
-        case 0:
-            cell.DateLabel.text = "\(indexPath.row + 1 - NumberOfEmptyBox)"
-        case 1...:
-            cell.DateLabel.text = "\(indexPath.row + 1 - NextNumberOfEmptyBox)"
-        case -1:
-            cell.DateLabel.text = "\(indexPath.row + 1 - PreviousNumberOfEmptyBox)"
-        default:
-            fatalError()
-        }
-        
-        
-        
-        if (Int(cell.DateLabel.text!)! > 0) && DateCheck[Int(cell.DateLabel.text!)!] == 1{
-            cell.backgroundColor = UIColor.systemIndigo //systemindigo
+            //Show cell background to mark calender
+            if cell.isHidden{
+                cell.isHidden = false
+            }
             
+            switch Direction{
+            case 0:
+                cell.DateLabel.text = "\(indexPath.row + 1 - NumberOfEmptyBox)"
+            case 1...:
+                cell.DateLabel.text = "\(indexPath.row + 1 - NextNumberOfEmptyBox)"
+            case -1:
+                cell.DateLabel.text = "\(indexPath.row + 1 - PreviousNumberOfEmptyBox)"
+            default:
+                fatalError()
+            }
+        
+        
+        
+            if (Int(cell.DateLabel.text!)! > 0) && DateCheck[Int(cell.DateLabel.text!)!] == 1{
+                cell.backgroundColor = UIColor.systemIndigo //systemindigo
+            
+            }
+            if Int(cell.DateLabel.text!)! < 1 {
+                cell.isHidden = true
+            }
+            cell.DateLabel.textAlignment = .center
+            return cell
         }
-        if Int(cell.DateLabel.text!)! < 1 {
-            cell.isHidden = true
-        }
-        cell.DateLabel.textAlignment = .center
-        return cell
-        }
+            
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "topWorkout", for: indexPath) as! WorkoutStatsCollectionViewCell
-           if cell.isHidden{
+            if cell.isHidden{
                       cell.isHidden = false
                   }
-            cell.levelLabel.text = String(workouts[indexPath.row].level)
-            cell.workoutNameLabel.text = workouts[indexPath.row].name
+            if workouts.count != 0{
+                cell.levelLabel.text = String(workouts[indexPath.row].level)
+                cell.workoutNameLabel.text = workouts[indexPath.row].name
+            }
+            else{
+                cell.levelLabel.text = "?"
+                cell.workoutNameLabel.text = "???"
+            }
            cell.workoutNameLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
            cell.workoutNameLabel?.numberOfLines = 0
-                  let image : UIImage = UIImage(named:"goldcircle")!
-                  cell.WorkoutStatImage.image = image
-            return cell
+           let image : UIImage = UIImage(named:"goldcircle")!
+           cell.WorkoutStatImage.image = image
+           return cell
         }
 
     }
     
-    func displayTopWorkout(){
-        //Top Workout
-        let coordinate = CGPoint(x:207,y:338)
-        //create my track layer
-        let trackLayer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: coordinate, radius: 100, startAngle: -CGFloat.pi / 2 , endAngle: 2 * CGFloat.pi, clockwise: true)
-               
-        trackLayer.path = circularPath.cgPath
-               
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
-        trackLayer.lineWidth = 10
-        trackLayer.fillColor = UIColor.white.cgColor
-        trackLayer.lineCap = CAShapeLayerLineCap.round
-        
-        view.layer.addSublayer(trackLayer)
-        
-    }
+   
     
     func displayProgress(year: Int, month: Int){
         DateCheck = [Int](repeating: 0, count:32)
@@ -338,68 +294,19 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     
-    //Workout image API does not have name
-    //The name of the workout is in the workout image link
-    //the function filter out the name and associate it with the image
-    @IBAction func WorkoutName(_ sender: Any) {
-    
-    
-        let workout = databaseController?.addRoutine(routineName: "")
-        let workout1 = databaseController?.addWorkout(name: "test", imageURL: "",level: 1)
-        let workouts = databaseController?.addCustomWorkout(set:"1", repetition: "3",duration:"30")
-        let _ = databaseController?.addCustomWorkoutToRoutine(customWorkout: workouts!, routine: workout!)
-        let _ = databaseController?.addWorkoutToCustomWorkout(workout: workout1!, customWorkout: workouts!)
-        let _ = databaseController?.addRoutineToActive(routine: workout!, active: databaseController!.activeRoutine)
-        
-        databaseController?.saveDraft()
-        
-        
-        
-        
-        return
-        
-        
-            
-            
-        }
-    
-    
-    func requestWorkoutImage() {
-        let searchString = "https://wger.de/api/v2/exerciseimage.json/?is_main=True&language=2&page=9"
-        let jsonURL =
-            URL(string: searchString.addingPercentEncoding(withAllowedCharacters:
-            .urlQueryAllowed)!)
+   //UNUSED
+    func onRoutineChange(change: DatabaseChange, routineWorkouts: [Routine]) {
+           
+       }
+       
+    func onRoutineWorkoutChange(change: DatabaseChange, workout: [CustomWorkout]) {
+           
+       }
+       
+    func onPlanListChange(change: DatabaseChange, recommendedPlan: [Routine]) {
+           
+       }
 
-        let task = URLSession.shared.dataTask(with: jsonURL!) {
-        (data, response, error) in
-        // Regardless of response end the loading icon from the main thread
-        DispatchQueue.main.async {
-            
-        }
-
-        if let error = error {
-            print(error)
-            return
-        }
-
-        do {
-            let decoder = JSONDecoder()
-            let volumeData = try decoder.decode(VolumeData.self, from: data!)
-            if let workouts = volumeData.Workout { //change
-                self.workoutlist.append(contentsOf: workouts) //change
-             
-                DispatchQueue.main.async {
-                    
-                }
-            }
-        } catch let err {
-            print(err)
-        }
-        }
-
-        task.resume()
-    
-        }
     }
     
 

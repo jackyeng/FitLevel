@@ -31,8 +31,9 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
         
         WorkoutStats.dataSource = self
         WorkoutStats.delegate = self
-     
-        self.navigationItem.titleView = navTitleWithImageAndText(titleText: "Workout Stats", imageName: "gamer_01_18_contour_info_infos_lines-512.png")
+        
+        //set image in title
+        self.navigationItem.titleView = navTitleWithImageAndText(titleText: "Workout Stats", imageName: "titleicon.png")
         // Do any additional setup after loading the view.
     }
     
@@ -50,13 +51,14 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return workouts.count
         }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WorkoutStats", for: indexPath) as! WorkoutStatsCollectionViewCell
-               
+        
+        //show cell background color to mark calender
         if cell.isHidden{
             cell.isHidden = false
         }
@@ -68,7 +70,7 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
         cell.workoutNameLabel?.numberOfLines = 0
         
         //Sets the workout rank circle
-        let image : UIImage = UIImage(named:"goldcircle")!
+        let image : UIImage = UIImage(named:"bronze")!
         cell.WorkoutStatImage.image = image
         
         return cell
