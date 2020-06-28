@@ -165,6 +165,23 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         
     }
   
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            self.tabBarController?.tabBar.isHidden = true
+            
+        }
+        
+        override func viewWillDisappear(_ animated: Bool){
+            super.viewWillDisappear(animated)
+            self.tabBarController?.tabBar.isHidden = false
+    }
+        
+        override func viewDidDisappear(_ animated: Bool) {
+            super.viewDidDisappear(animated)
+            self.countTimer?.invalidate() //Stops timer when workout ends
+
+        }
+        
     
     //This function gets the timer progress bar moving when the countdown starts to provide user with an aesthetic visualisation
     @objc private func animateProgressBar(duration: Int) {
@@ -206,17 +223,27 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
     @IBAction func Complete(_ sender: Any) {
         workoutprogress += 1
+        
+        //Ends routine when the last workout is completed
+        if workoutprogress > workoutcount-1{
+            player?.pause()
+            //Pause CAShapeLayer Animation
+            let pausedTime : CFTimeInterval = shapeLayer.convertTime(CACurrentMediaTime(), from: nil)
+            shapeLayer.speed = 0.0
+            shapeLayer.timeOffset = pausedTime
+            //Remove NSTimer
+            self.countTimer?.invalidate()
+            //Hide warm up message
+            warmUpLabel1.text = ""
+            warmUpLabel2.text = ""
+            //Mark Calender with current date once completed workout
+            let _ = databaseController?.addWorkoutDate(year: year, month: month+1, day: day)
+            displayMessage(title: "Congratulation!", message: "You have completed your workout.")
+            return
+        }
         
         if !actionStatus  {
             return
@@ -240,75 +267,6 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         })
         
     }
-    
-    //
-    func updateWorkout(){
-        //Ends routine when the last workout is completed
-        if workoutprogress > workoutcount-1{
-            
-            //Remove NSTimer
-            self.countTimer?.invalidate()
-            //Hide warm up message
-            warmUpLabel1.text = ""
-            warmUpLabel2.text = ""
-            //Mark Calender with current date once completed workout
-            let _ = databaseController?.addWorkoutDate(year: year, month: month+1, day: day)
-            displayMessage(title: "Congratulation!", message: "You have completed your workout.")
-            return
-        }
-        
-        //Play Audio notification for warm up
-        playWorkoutAudio()
-        //Display workout name
-        workoutName.text = workouts[workoutprogress].workout!.name
-        
-        //Display current workout level
-        if let level = workouts[workoutprogress].workout?.level{
-            workoutLevel.text = "Level " + String(level)
-        }
-        else{
-            workoutLevel.text = "Level: Unknown"
-        }
-    
-        UpdateVideo((Any).self)
-        
-    }
-    
-    //
-    func displayMessage(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message,
-            preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Done",
-                                                style: UIAlertAction.Style.default,
-                                                handler: {(alert: UIAlertAction!) in self.popViewController()}))
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    //
-    func popViewController(){
-        self.navigationController?.popViewController(animated: false)
-    }
-    
-    
-    @IBAction func UpdateVideo(_ sender: Any) {
-        guard let videoURL = Bundle.main.url(forResource: workouts[workoutprogress].workout!.name, withExtension: "mp4") else {
-            print("Couldn't load video")
-            return
-        }
-        player = AVPlayer(url: videoURL)
-        playerViewController!.player = player
-        playerViewController!.player!.play()
-        playerViewController!.player!.isMuted = true
-        playerViewController!.player!.automaticallyWaitsToMinimizeStalling = false
-        playerViewController!.player!.playImmediately(atRate: 1.0)
-        //Loop AVPlayer
-        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem, queue: .main) { [weak self] _ in
-        self?.player?.seek(to: CMTime.zero)
-        self?.player?.play()
-        
-        }
-    }
-    
     
     //Update Counter
     @objc func update() {
@@ -342,6 +300,70 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         }
     }
     
+    
+    //
+    func updateWorkout(){
+        //Ends routine when the last workout is completed
+        if workoutprogress > workoutcount-1{
+            player?.pause()
+            //Pause CAShapeLayer Animation
+            let pausedTime : CFTimeInterval = shapeLayer.convertTime(CACurrentMediaTime(), from: nil)
+            shapeLayer.speed = 0.0
+            shapeLayer.timeOffset = pausedTime
+            //Remove NSTimer
+            self.countTimer?.invalidate()
+            //Hide warm up message
+            warmUpLabel1.text = ""
+            warmUpLabel2.text = ""
+            //Mark Calender with current date once completed workout
+            let _ = databaseController?.addWorkoutDate(year: year, month: month+1, day: day)
+            displayMessage(title: "Congratulation!", message: "You have completed your workout.")
+            return
+        }
+        
+        //Play Audio notification for warm up
+        playWorkoutAudio()
+        //Display workout name
+        workoutName.text = workouts[workoutprogress].workout!.name
+        
+        //Display current workout level
+        if let level = workouts[workoutprogress].workout?.level{
+            workoutLevel.text = "Level " + String(level)
+        }
+        else{
+            workoutLevel.text = "Level: Unknown"
+        }
+    
+        UpdateVideo((Any).self)
+        
+    }
+    
+    //
+    
+    
+    
+    @IBAction func UpdateVideo(_ sender: Any) {
+        guard let videoURL = Bundle.main.url(forResource: workouts[workoutprogress].workout!.name, withExtension: "mp4") else {
+            print("Couldn't load video")
+            return
+        }
+        player = AVPlayer(url: videoURL)
+        playerViewController!.player = player
+        playerViewController!.player!.play()
+        playerViewController!.player!.isMuted = true
+        playerViewController!.player!.automaticallyWaitsToMinimizeStalling = false
+        playerViewController!.player!.playImmediately(atRate: 1.0)
+        //Loop AVPlayer
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem, queue: .main) { [weak self] _ in
+        self?.player?.seek(to: CMTime.zero)
+        self?.player?.play()
+        
+        }
+    }
+    
+    
+    
+    
     //Play audio notification when the next workout starts
     func playWorkoutAudio(){
         if let url = Bundle.main.url(forResource: workouts[workoutprogress].workout?.name, withExtension: "mp3") {
@@ -356,22 +378,20 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
-        
+    func displayMessage(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message,
+            preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Done",
+                                                style: UIAlertAction.Style.default,
+                                                handler: {(alert: UIAlertAction!) in self.popViewController()}))
+        self.present(alertController, animated: true, completion: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool){
-        super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.isHidden = false
-}
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        self.countTimer?.invalidate() //Stops timer when workout ends
-
+    //
+    func popViewController(){
+        self.navigationController?.popViewController(animated: false)
     }
+    
     
     
     

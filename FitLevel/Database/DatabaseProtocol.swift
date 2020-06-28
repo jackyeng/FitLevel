@@ -60,8 +60,6 @@ protocol DatabaseProtocol: AnyObject {
     //add new workout
     func addWorkout(name: String, imageURL: String?, level: Int) -> Workout
     func addEmptyRoutine() -> Routine
-    //Plan
-    
     //Removal
     func removeRoutinefromActive(active: ActiveRoutine, routine: Routine)
     

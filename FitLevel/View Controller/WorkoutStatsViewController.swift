@@ -73,10 +73,10 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
         
         //Sets the workout rank circle
         switch workouts[indexPath.row].level{
-        case 1..<4:
+        case 1..<10:
             let image : UIImage = UIImage(named:"bronze")!
             cell.WorkoutStatImage.image = image
-        case 4..<8:
+        case 10..<20:
             let image : UIImage = UIImage(named:"silver")!
             cell.WorkoutStatImage.image = image
         default:

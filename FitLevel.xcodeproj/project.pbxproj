@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8519020D249E2AA5002659F5 /* Seal Jack.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190203249E2AA2002659F5 /* Seal Jack.mp4 */; };
+		8519020D249E2AA5002659F5 /* Seal Jacks.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190203249E2AA2002659F5 /* Seal Jacks.mp4 */; };
 		8519020E249E2AA5002659F5 /* Superman.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190204249E2AA2002659F5 /* Superman.mp4 */; };
 		8519020F249E2AA5002659F5 /* Planks.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190205249E2AA3002659F5 /* Planks.mp4 */; };
 		85190210249E2AA5002659F5 /* Push Ups.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85190206249E2AA3002659F5 /* Push Ups.mp4 */; };
@@ -55,7 +55,7 @@
 		85BFE70A249E91DA00031762 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BFE709249E91DA00031762 /* MainTabBarViewController.swift */; };
 		85BFE70C249E9B6D00031762 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BFE70B249E9B6D00031762 /* SettingsViewController.swift */; };
 		85BFE72F24A07A6900031762 /* Jumping Jacks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72524A07A6600031762 /* Jumping Jacks.mp3 */; };
-		85BFE73024A07A6900031762 /* Seal Jack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72624A07A6600031762 /* Seal Jack.mp3 */; };
+		85BFE73024A07A6900031762 /* Seal Jacks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72624A07A6600031762 /* Seal Jacks.mp3 */; };
 		85BFE73124A07A6900031762 /* Close Body Squats.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72724A07A6600031762 /* Close Body Squats.mp3 */; };
 		85BFE73324A07A6900031762 /* Hips Raises.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72924A07A6700031762 /* Hips Raises.mp3 */; };
 		85BFE73424A07A6900031762 /* Planks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72A24A07A6700031762 /* Planks.mp3 */; };
@@ -90,7 +90,7 @@
 		01FA6D5AEFEB97FAC58BF177 /* Pods-FitLevel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitLevel.debug.xcconfig"; path = "Target Support Files/Pods-FitLevel/Pods-FitLevel.debug.xcconfig"; sourceTree = "<group>"; };
 		60EF21E04F3BCCB2319F001B /* Pods-FitLevel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitLevel.release.xcconfig"; path = "Target Support Files/Pods-FitLevel/Pods-FitLevel.release.xcconfig"; sourceTree = "<group>"; };
 		7E17ED6CF1A08FEE7F9877BA /* Pods_FitLevel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitLevel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		85190203249E2AA2002659F5 /* Seal Jack.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Seal Jack.mp4"; sourceTree = "<group>"; };
+		85190203249E2AA2002659F5 /* Seal Jacks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Seal Jacks.mp4"; sourceTree = "<group>"; };
 		85190204249E2AA2002659F5 /* Superman.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Superman.mp4; sourceTree = "<group>"; };
 		85190205249E2AA3002659F5 /* Planks.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Planks.mp4; sourceTree = "<group>"; };
 		85190206249E2AA3002659F5 /* Push Ups.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Push Ups.mp4"; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 		85BFE709249E91DA00031762 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		85BFE70B249E9B6D00031762 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		85BFE72524A07A6600031762 /* Jumping Jacks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jumping Jacks.mp3"; sourceTree = "<group>"; };
-		85BFE72624A07A6600031762 /* Seal Jack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Seal Jack.mp3"; sourceTree = "<group>"; };
+		85BFE72624A07A6600031762 /* Seal Jacks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Seal Jacks.mp3"; sourceTree = "<group>"; };
 		85BFE72724A07A6600031762 /* Close Body Squats.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Close Body Squats.mp3"; sourceTree = "<group>"; };
 		85BFE72924A07A6700031762 /* Hips Raises.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Hips Raises.mp3"; sourceTree = "<group>"; };
 		85BFE72A24A07A6700031762 /* Planks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Planks.mp3; sourceTree = "<group>"; };
@@ -271,7 +271,7 @@
 				85BFE72D24A07A6800031762 /* Mountain Climbers.mp3 */,
 				85BFE72A24A07A6700031762 /* Planks.mp3 */,
 				85BFE72B24A07A6700031762 /* Push Ups.mp3 */,
-				85BFE72624A07A6600031762 /* Seal Jack.mp3 */,
+				85BFE72624A07A6600031762 /* Seal Jacks.mp3 */,
 				85BFE72C24A07A6800031762 /* Superman.mp3 */,
 			);
 			path = WorkoutAudios;
@@ -288,7 +288,7 @@
 				8519020C249E2AA5002659F5 /* Mountain Climbers.mp4 */,
 				85190205249E2AA3002659F5 /* Planks.mp4 */,
 				85190206249E2AA3002659F5 /* Push Ups.mp4 */,
-				85190203249E2AA2002659F5 /* Seal Jack.mp4 */,
+				85190203249E2AA2002659F5 /* Seal Jacks.mp4 */,
 				85190204249E2AA2002659F5 /* Superman.mp4 */,
 			);
 			path = WorkoutVideos;
@@ -485,13 +485,13 @@
 				85BFE73124A07A6900031762 /* Close Body Squats.mp3 in Resources */,
 				85190216249E2AA5002659F5 /* Mountain Climbers.mp4 in Resources */,
 				85BFE73524A07A6900031762 /* Push Ups.mp3 in Resources */,
-				8519020D249E2AA5002659F5 /* Seal Jack.mp4 in Resources */,
+				8519020D249E2AA5002659F5 /* Seal Jacks.mp4 in Resources */,
 				85FD53C624651C94004E9AB9 /* LaunchScreen.storyboard in Resources */,
 				857EF7FF246843E400323533 /* Home.storyboard in Resources */,
 				85190211249E2AA5002659F5 /* Hips Raises.mp4 in Resources */,
 				85190214249E2AA5002659F5 /* Burpees.mp4 in Resources */,
 				8519020F249E2AA5002659F5 /* Planks.mp4 in Resources */,
-				85BFE73024A07A6900031762 /* Seal Jack.mp3 in Resources */,
+				85BFE73024A07A6900031762 /* Seal Jacks.mp3 in Resources */,
 				8575455024A7470E00524D30 /* README.md in Resources */,
 				85FD53C324651C94004E9AB9 /* Assets.xcassets in Resources */,
 				85190212249E2AA5002659F5 /* Jumping Jacks.mp4 in Resources */,

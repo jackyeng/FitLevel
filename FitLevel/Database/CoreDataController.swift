@@ -95,7 +95,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
            saveDraft()
            return customWorkout
        }
-       
+   
        
     func addActiveRoutine(activeroutineName: String) -> ActiveRoutine {
            let activeRoutine = NSEntityDescription.insertNewObject(forEntityName: "ActiveRoutine",
@@ -458,16 +458,16 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     //https://www.youtube.com/watch?time_continue=270&v=_knIf9vF4k4&feature=emb_logo
     func createDefaultWorkout(){
-        let _ = addWorkout(name: "Burpees", imageURL: "",level: 3)
+        let _ = addWorkout(name: "Burpees", imageURL: "",level: 1)
         let _ = addWorkout(name: "Close Body Squats", imageURL: "", level: 1)
-        let _ = addWorkout(name: "Forward Lunges", imageURL: "",level: 10)
-        let _ = addWorkout(name: "Hips Raises", imageURL: "",level:5)
-        let _ = addWorkout(name: "Jumping Jacks", imageURL: "",level:7)
-        let _ = addWorkout(name: "Mountain Climbers", imageURL: "",level:9)
-        let _ = addWorkout(name: "Planks", imageURL: "",level:4)
-        let _ = addWorkout(name: "Push Ups", imageURL: "",level:6)
-        let _ = addWorkout(name: "Seal Jacks", imageURL: "",level:2)
-        let _ = addWorkout(name: "Superman", imageURL: "",level:8)
+        let _ = addWorkout(name: "Forward Lunges", imageURL: "",level: 1)
+        let _ = addWorkout(name: "Hips Raises", imageURL: "",level:1)
+        let _ = addWorkout(name: "Jumping Jacks", imageURL: "",level:1)
+        let _ = addWorkout(name: "Mountain Climbers", imageURL: "",level:1)
+        let _ = addWorkout(name: "Planks", imageURL: "",level:1)
+        let _ = addWorkout(name: "Push Ups", imageURL: "",level:1)
+        let _ = addWorkout(name: "Seal Jacks", imageURL: "",level:1)
+        let _ = addWorkout(name: "Superman", imageURL: "",level:1)
 
     }
     
@@ -476,8 +476,39 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         let r1 = addRoutine(routineName: "Beginner Plan I")
         let r2 = addRoutine(routineName: "Intermediate Plan I")
         let r3 = addRoutine(routineName: "Advanced Plan I")
-        
                
+        var int = 0
+        let workouts = fetchAllWorkouts()
+        let workoutCount = workouts.count
+        
+        for item in workouts{
+            int += 1
+            let custom1 = addCustomWorkout( set: "3", repetition: "12", duration: "15")
+            let custom2 = addCustomWorkout( set: "3", repetition: "12", duration: "30")
+            let custom3 = addCustomWorkout( set: "3", repetition: "12", duration: "45")
+            let _ = addWorkoutToCustomWorkout(workout: item , customWorkout: custom1)
+            let _ = addWorkoutToCustomWorkout(workout: item , customWorkout: custom2)
+            let _ = addWorkoutToCustomWorkout(workout: item , customWorkout: custom3)
+            let _ = addCustomWorkoutToRoutine(customWorkout: custom1, routine: r1)
+            let _ = addCustomWorkoutToRoutine(customWorkout: custom2, routine: r2)
+            let _ = addCustomWorkoutToRoutine(customWorkout: custom3, routine: r3)
+            if int == workoutCount{
+                break
+                }
+            }
+               
+        let _ = addRoutineToPlan(routine: r1, plan: recommendedPlan)
+        let _ = addRoutineToPlan(routine: r2, plan: recommendedPlan)
+        let _ = addRoutineToPlan(routine: r3, plan: recommendedPlan)
+        
+        
+    }
+
+    
+    func createDefaultRoutine(){
+       
+        let r1 = addRoutine(routineName: "Fat Burning Bodyweight Workout")
+     
         var int = 0
         let workouts = fetchAllWorkouts()
         let workoutCount = workouts.count
@@ -486,68 +517,19 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             let custom = addCustomWorkout( set: "3", repetition: "12", duration: "30")
             let _ = addWorkoutToCustomWorkout(workout: item , customWorkout: custom)
             let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r1)
-            let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r2)
-            let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r3)
-            if int == workoutCount{
-                break
-                }
-            }
-               
-               
-               
-               /*let test = fetchRoutineWorkout()
-               for item in test{
-                   print(item.workout?.name ?? "Empty" )
-               }*/
-               
-               let _ = addRoutineToPlan(routine: r1, plan: recommendedPlan)
-               let _ = addRoutineToPlan(routine: r2, plan: recommendedPlan)
-               let _ = addRoutineToPlan(routine: r3, plan: recommendedPlan)
-        
-        
-    }
-
-    
-    func createDefaultRoutine(){
-       
-    
-        let r1 = addRoutine(routineName: "Fat Burning Bodyweight Workout")
-        let r2 = addRoutine(routineName: "Custom Routine")
-        
-        var int = 0
-        let workouts = fetchAllWorkouts()
-        
-        for item in workouts{
-            int += 1
-            let custom = addCustomWorkout( set: "3", repetition: "12", duration: "30")
-            let _ = addWorkoutToCustomWorkout(workout: item , customWorkout: custom)
-            let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r1)
-           let _ = addCustomWorkoutToRoutine(customWorkout: custom, routine: r2)
+          
             saveDraft()
-            if int == 10{
+            if int == workoutCount{
                 break
             }
         }
         
         let _ = addRoutineToActive(routine: r1, active: activeRoutine)
-        let _ = addRoutineToActive(routine: r2, active: activeRoutine)
-        
     
     }
     
     
-    
     func createDefaultWorkoutDate(){
-        let _ = addWorkoutDate(year: 2020, month: 3, day: 17)
-        let _ = addWorkoutDate(year: 2020, month: 5, day: 3)
-        let _ = addWorkoutDate(year: 2020, month: 5, day: 5)
-        let _ = addWorkoutDate(year: 2020, month: 5, day: 8)
-        let _ = addWorkoutDate(year: 2020, month: 5, day: 10)
-        let _ = addWorkoutDate(year: 2020, month: 5, day: 18)
-        let _ = addWorkoutDate(year: 2020, month: 6, day: 2)
-        let _ = addWorkoutDate(year: 2020, month: 6, day: 6)
-        let _ = addWorkoutDate(year: 2020, month: 6, day: 10)
-      
         
     }
     

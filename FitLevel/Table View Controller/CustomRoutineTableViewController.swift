@@ -145,15 +145,9 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete && indexPath.section == 1 {
             workouts.remove(at: indexPath.row)
+            
             self.tableView.reloadData()
-            //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
-            //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
-            //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
-            //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
-            //IMPORTANT REMOVE WORKOUT FROM PERSITENT STORAGE
-            
-            
-    
+   
         }
     }
     
