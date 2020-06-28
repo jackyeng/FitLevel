@@ -97,7 +97,7 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
             
         case section_routinename:
             let cell = tableView.dequeueReusableCell(withIdentifier: cell_routinename, for: indexPath)
-            cell.textLabel?.textColor = .black
+            cell.textLabel?.textColor = .label
             cell.selectionStyle = .none
             cell.textLabel?.text = routinename
             cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -118,6 +118,7 @@ class CustomRoutineTableViewController: UITableViewController,EditRoutineNameDel
             cell.textLabel?.textColor = .secondaryLabel
             cell.selectionStyle = .none
             cell.textLabel?.text = "Add Workout"
+            cell.textLabel?.textAlignment = .center
             cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             cell.textLabel?.numberOfLines = 0
     

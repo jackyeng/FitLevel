@@ -77,7 +77,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         WorkoutStats.delegate = self
         WorkoutStats.dataSource = self
         self.calenderFrame.layer.borderColor = UIColor.black.cgColor

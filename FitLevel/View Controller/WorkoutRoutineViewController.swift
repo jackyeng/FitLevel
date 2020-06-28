@@ -89,7 +89,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         //countdown timer initialisation
         countTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UIMenuController.update), userInfo: nil, repeats: true)
         countDownLabel.text = String(counter)
-        
+ 
         //Start warmup timer
         animateProgressBar(duration: 5)
         

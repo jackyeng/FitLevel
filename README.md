@@ -1,11 +1,20 @@
-Limitation
-couldn't implement childmanagedobject
-couldn't implement reordering
-workouts are not ordered the first time it is fetched but it doesnt matter since all workouts will be level 1 initially
-Unable to sort workout by muscle groups
-Design choices
-hide tab bar during workout to prevent inconsistency
-only increases level if user doesnt skip workout to discourage user from skipping workout
+DIFFERENCE FROM INITIAL DESIGN
+//Did not implement filtering workout by muscle group
 
-Difference
+LIMITATION
+//Couldn't implement ChildManageObject
+//Couldn't implement reordering of the tableviewcell to allow users to reorder their workouts. 
+
+DESIGN CHOICES
+//Hide tab bar during workout to prevent inconsistency
+//Only increases level if user complete workout on time to discourage user from skipping workout
+Objects
+//2 layers of objects (Workout & CustomWorkout) to allow users to customize their workout by making changes to CustomWorkout Object without affecting the original Workout object.
+Working out
+//Added a video tutorial as per feedback allows user to perform the workout
+//Added audio notification as per feedback allows user to focus on their workout
+//Added a warm up period for user to prepare for next workout
+
+
+
 
