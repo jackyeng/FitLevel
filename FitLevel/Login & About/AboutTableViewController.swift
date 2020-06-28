@@ -27,7 +27,10 @@ class AboutTableViewController: UITableViewController {
     var section_switchvc = 14
     var section_titleimage = 15
     var section_intcheck = 16
- 
+    var section_onboarding = 17
+    var section_hidetabbar = 18
+    var section_keyboardreturn = 19
+    
     var sectiontitle_cocoapods = "Cocoapods"
     var sectiontitle_workoutresources = "Workout Resources"
     var sectiontitle_assetresources = "Asset Resources"
@@ -45,6 +48,9 @@ class AboutTableViewController: UITableViewController {
     var sectiontitle_switchvc = "Switching to other view controller programmatically"
     var sectiontitle_titleimage = "Navigation Bar with UIImage for title"
     var sectiontitle_intcheck = "Checking if string is an int"
+    var sectiontitle_onboarding = "Onboarding"
+    var sectiontitle_hidetabbar = "Hide Tab Bar"
+    var sectiontitle_keyboardreturn = "Keyboard Return Key"
     
     var cell_cocoapods = "cocoapods"
     var cell_workoutresources = "workoutresources"
@@ -63,9 +69,27 @@ class AboutTableViewController: UITableViewController {
     var cell_switchvc = "switchvc"
     var cell_titleimage = "titleimage"
     var cell_intcheck = "intcheck"
+    var cell_onboarding = "onboarding"
+    var cell_hidetabbar = "hidetabbar"
+    var cell_keyboardreturn = "keyboardreturn"
     
     var cell_list = [String]()
     var reference_list = [String]()
+    
+    var asset_resources = ["https://icons8.com/icon/2244/walking",
+                           "https://icons8.com/icon/102349/round",
+                           "https://icons8.com/icon/111119/lotus",
+                           "https://icons8.com/icon/15/bar-chart",
+                           "https://cdn0.iconfinder.com/data/icons/shift-sports/32/Trophy-512.png",
+
+                           "https://cdn1.iconfinder.com/data/icons/education-set-1-8/74/48-512.png",
+                           "https://cdn0.iconfinder.com/data/icons/education-flat-icons-1/64/33-512.png",
+                           "https://icons8.com/icon/114612/planner",
+                           "https://icons8.com/icon/118551/level-1",
+                           "https://icons8.com/icon/114248/design",
+                           "https://icons8.com/icon/364/settings",
+                       "https://cdn3.iconfinder.com/data/icons/gamer-device/100/gamer_01_18_contour_info_infos_lines-512.png"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +110,10 @@ class AboutTableViewController: UITableViewController {
                       cell_seguefullscreen,
                       cell_switchvc,
                       cell_titleimage,
-                      cell_intcheck]
+                      cell_intcheck,
+                      cell_onboarding,
+                      cell_hidetabbar,
+                      cell_keyboardreturn]
         
         reference_list =
         ["Firebase / Firebase.google.com",
@@ -105,7 +132,10 @@ class AboutTableViewController: UITableViewController {
     "https://stackoverflow.com/questions/58507034/how-to-create-segue-which-make-view-controller-fullscreen-in-xcode-11-1",
     "https://stackoverflow.com/questions/48799481/how-to-switch-to-other-view-controller-programmatically-in-swift-4/48805442",
         "https://stackoverflow.com/questions/24803178/navigation-bar-with-uiimage-for-title ",
-        "https://stackoverflow.com/questions/38159397/how-to-check-if-a-string-is-an-int-in-swift"]
+        "https://stackoverflow.com/questions/38159397/how-to-check-if-a-string-is-an-int-in-swift",
+        "http://fabcoding.com/creating-an-onboarding-screen/",
+        "https://stackoverflow.com/questions/28777943/hide-tab-bar-in-ios-swift-app",
+        "https://stackoverflow.com/questions/48900072/swift-uitextfield-keyboard-return-key-is-not-working"]
     
     }
 
@@ -113,12 +143,14 @@ class AboutTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        
-        return 17
+        return 20
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if section == section_assetresources{
+            return asset_resources.count
+        }
         return 1
     }
     
@@ -158,6 +190,12 @@ class AboutTableViewController: UITableViewController {
             return sectiontitle_titleimage
         case section_intcheck:
             return sectiontitle_intcheck
+        case section_onboarding:
+            return sectiontitle_onboarding
+        case section_hidetabbar:
+            return sectiontitle_hidetabbar
+        case section_keyboardreturn:
+            return sectiontitle_keyboardreturn
         default:
             return nil
                
@@ -167,6 +205,15 @@ class AboutTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == section_assetresources {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cell_list[indexPath.section], for: indexPath) as! AboutTableViewCell
+        
+            cell.referenceLabel.text = asset_resources[indexPath.row]
+            cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.textLabel?.numberOfLines = 0
+            return cell
+        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cell_list[indexPath.section], for: indexPath) as! AboutTableViewCell
 

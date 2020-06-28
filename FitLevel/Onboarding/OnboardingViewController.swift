@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//http://fabcoding.com/creating-an-onboarding-screen/
 class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var scrollView: UIScrollView!
@@ -19,7 +20,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
 
     //data for the slides
     var titles = ["CUSTOMIZE","CALENDER","LEVEL UP","RANK UP"]
-    var descs = ["Customize your routine by \n selecting from our listed workout and setting its duration.","Calender to help you keep track of your overall progress","Level up your workout as you progress.","Rank up as you level up. \n Bronze(1-9) | Silver(10-19) | Gold(>20)"]
+    var descs = ["Customize your routine by \n selecting from our listed workout and setting its duration.","Calender to help you keep track of your overall progress. \n NOTE: Complete your entire routine to get marked on the calender.","Level up your workout as you progress. \n NOTE: Workout does not level up if you skip it. Finish it on timer.","Rank up as you level up. \n Bronze(1-9) | Silver(10-19) | Gold(>20)"]
     var imgs = ["customize","calender","level","rank"]
 
     //get dynamic width and height of scrollview and save it
@@ -83,6 +84,11 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
 
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //Set key to true so that Onboarding is no longer displayed after completion
+        UserDefaults.standard.set(true, forKey: "notFirstInApp")
+    }
  
     //indicator
     @IBAction func pageChanged(_ sender: Any) {
@@ -102,7 +108,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             // Get the new view controller using segue.destination.
             // Pass the selected object to the new view controller.
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let rootViewController = storyboard.instantiateViewController(withIdentifier: "Login") as UIViewController
+        let rootViewController = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
         rootViewController.navigationItem.setHidesBackButton(true, animated: true)
     }
         

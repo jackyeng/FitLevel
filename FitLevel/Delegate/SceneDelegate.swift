@@ -11,13 +11,28 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var rootViewController: UIViewController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        //Display Onboarding if first time using App
+        guard let winScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: winScene)
+        //https://medium.com/@rajatamil/root-view-controller-programmatically-in-swift-cc740e14192f
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+
+        if(UserDefaults.standard.bool(forKey: "notFirstInApp") == false){
+            //window?.rootViewController = your tutorial view controller
+            rootViewController = storyboard.instantiateViewController(withIdentifier: "Onboarding") as UIViewController
+            
+        }else{
+            //window?.rootViewController = your main viewcontroller
+            rootViewController = storyboard.instantiateViewController(withIdentifier: "Login") as UIViewController
+            
+        }
+        navigationController.viewControllers = [rootViewController!]
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

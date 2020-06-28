@@ -8,17 +8,22 @@
 
 import UIKit
 
-class EditRoutineNameViewController: UIViewController{
+class EditRoutineNameViewController: UIViewController, UITextFieldDelegate{
     weak var nameDelegate: EditRoutineNameDelegate?
     
     @IBOutlet weak var nameLabel: UITextField!
     
     override func viewDidLoad() {
+        nameLabel.delegate = self
         super.viewDidLoad()
 
     
     }
-    
+    //https://stackoverflow.com/questions/48900072/swift-uitextfield-keyboard-return-key-is-not-working
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           textField.resignFirstResponder()
+           return true
+       }
     
     @IBAction func editName(_ sender: Any) {
         if nameLabel.text != "" {  //only allow save when user enter name

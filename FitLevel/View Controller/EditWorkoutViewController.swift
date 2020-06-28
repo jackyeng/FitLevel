@@ -33,6 +33,7 @@ class EditWorkoutViewController: UIViewController, UITextFieldDelegate, Database
     
     }
     
+    //https://stackoverflow.com/questions/48900072/swift-uitextfield-keyboard-return-key-is-not-working
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

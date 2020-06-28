@@ -45,7 +45,10 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-  
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+    }
     //https://stackoverflow.com/questions/58507034/how-to-create-segue-which-make-view-controller-fullscreen-in-xcode-11-1
     
     

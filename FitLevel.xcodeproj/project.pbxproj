@@ -42,6 +42,7 @@
 		857EF803246845C000323533 /* WorkoutRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF802246845C000323533 /* WorkoutRoutineViewController.swift */; };
 		857EF806246855B100323533 /* WorkoutClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EF805246855B100323533 /* WorkoutClass.swift */; };
 		857F133F246AB0B300568E22 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F133E246AB0B300568E22 /* HomeScreenViewController.swift */; };
+		8593A54E24A875DD0078C2D9 /* Burpees.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8593A54D24A875DC0078C2D9 /* Burpees.mp3 */; };
 		8593EAD32471735C00914C4D /* VolumeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD22471735C00914C4D /* VolumeData.swift */; };
 		8593EAD5247173B700914C4D /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD4247173B700914C4D /* WorkoutData.swift */; };
 		8593EAD82472EB0800914C4D /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593EAD72472EB0800914C4D /* PlanTableViewCell.swift */; };
@@ -56,7 +57,6 @@
 		85BFE72F24A07A6900031762 /* Jumping Jacks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72524A07A6600031762 /* Jumping Jacks.mp3 */; };
 		85BFE73024A07A6900031762 /* Seal Jack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72624A07A6600031762 /* Seal Jack.mp3 */; };
 		85BFE73124A07A6900031762 /* Close Body Squats.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72724A07A6600031762 /* Close Body Squats.mp3 */; };
-		85BFE73224A07A6900031762 /* Burpees.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72824A07A6700031762 /* Burpees.mp3 */; };
 		85BFE73324A07A6900031762 /* Hips Raises.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72924A07A6700031762 /* Hips Raises.mp3 */; };
 		85BFE73424A07A6900031762 /* Planks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72A24A07A6700031762 /* Planks.mp3 */; };
 		85BFE73524A07A6900031762 /* Push Ups.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85BFE72B24A07A6700031762 /* Push Ups.mp3 */; };
@@ -125,6 +125,7 @@
 		857EF802246845C000323533 /* WorkoutRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRoutineViewController.swift; sourceTree = "<group>"; };
 		857EF805246855B100323533 /* WorkoutClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutClass.swift; sourceTree = "<group>"; };
 		857F133E246AB0B300568E22 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		8593A54D24A875DC0078C2D9 /* Burpees.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Burpees.mp3; sourceTree = "<group>"; };
 		8593EAD22471735C00914C4D /* VolumeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeData.swift; sourceTree = "<group>"; };
 		8593EAD4247173B700914C4D /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		8593EAD72472EB0800914C4D /* PlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
@@ -139,7 +140,6 @@
 		85BFE72524A07A6600031762 /* Jumping Jacks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jumping Jacks.mp3"; sourceTree = "<group>"; };
 		85BFE72624A07A6600031762 /* Seal Jack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Seal Jack.mp3"; sourceTree = "<group>"; };
 		85BFE72724A07A6600031762 /* Close Body Squats.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Close Body Squats.mp3"; sourceTree = "<group>"; };
-		85BFE72824A07A6700031762 /* Burpees.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Burpees.mp3; sourceTree = "<group>"; };
 		85BFE72924A07A6700031762 /* Hips Raises.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Hips Raises.mp3"; sourceTree = "<group>"; };
 		85BFE72A24A07A6700031762 /* Planks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Planks.mp3; sourceTree = "<group>"; };
 		85BFE72B24A07A6700031762 /* Push Ups.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Push Ups.mp3"; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 		85BFE72424A07A4900031762 /* WorkoutAudios */ = {
 			isa = PBXGroup;
 			children = (
-				85BFE72824A07A6700031762 /* Burpees.mp3 */,
+				8593A54D24A875DC0078C2D9 /* Burpees.mp3 */,
 				85BFE72724A07A6600031762 /* Close Body Squats.mp3 */,
 				85BFE72E24A07A6900031762 /* Forward Lunges.mp3 */,
 				85BFE72924A07A6700031762 /* Hips Raises.mp3 */,
@@ -498,7 +498,6 @@
 				85BFE73824A07A6900031762 /* Forward Lunges.mp3 in Resources */,
 				85190215249E2AA5002659F5 /* Close Body Squats.mp4 in Resources */,
 				85FD53C124651C93004E9AB9 /* Main.storyboard in Resources */,
-				85BFE73224A07A6900031762 /* Burpees.mp3 in Resources */,
 				85BFE73324A07A6900031762 /* Hips Raises.mp3 in Resources */,
 				85BFE73624A07A6900031762 /* Superman.mp3 in Resources */,
 				857EF8012468452E00323533 /* Stat.storyboard in Resources */,
@@ -510,6 +509,7 @@
 				857EF7FD2468439100323533 /* Routine.storyboard in Resources */,
 				85190210249E2AA5002659F5 /* Push Ups.mp4 in Resources */,
 				85BFE73424A07A6900031762 /* Planks.mp3 in Resources */,
+				8593A54E24A875DD0078C2D9 /* Burpees.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -57,6 +57,11 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
+
+        if workouts.count == 0{
+            displayMessage(title: "ERROR: 404", message: "Workout Not Found.")
+            return
+        }
         
         //Audio initialisation
         playWorkoutAudio()
@@ -150,6 +155,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
                 //Loop AVPlayer
                 //https://stackoverflow.com/questions/27808266/how-do-you-loop-avplayer-in-swift/27808482
                 playerViewController.player!.play()
+                playerViewController.player!.isMuted = true
                 NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem, queue: .main) { [weak self] _ in
                 self?.player?.seek(to: CMTime.zero)
                 self?.player?.play()
@@ -158,6 +164,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             }
         
     }
+  
     
     //This function gets the timer progress bar moving when the countdown starts to provide user with an aesthetic visualisation
     @objc private func animateProgressBar(duration: Int) {
@@ -303,7 +310,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     }
     
     
-    
+    //Update Counter
     @objc func update() {
         //ensure that counter doesnt go below zero
         if(counter > 0) {
@@ -352,6 +359,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+        
     }
     
     override func viewWillDisappear(_ animated: Bool){
