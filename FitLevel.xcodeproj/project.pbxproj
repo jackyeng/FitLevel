@@ -191,14 +191,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		85190217249E2BC5002659F5 /* Login View Controller */ = {
+		85190217249E2BC5002659F5 /* Login & About */ = {
 			isa = PBXGroup;
 			children = (
 				85BFE707249E8D8E00031762 /* LoginViewController.swift */,
 				85BFE70B249E9B6D00031762 /* SettingsViewController.swift */,
 				85CABF2E24A11800006FE274 /* AboutTableViewController.swift */,
 			);
-			path = "Login View Controller";
+			path = "Login & About";
 			sourceTree = "<group>";
 		};
 		8575455724A78A0500524D30 /* Onboarding */ = {
@@ -328,7 +328,7 @@
 				857EF7F724683FF200323533 /* Storyboard */,
 				85FD53CE2465A038004E9AB9 /* Database */,
 				85B9D8F9246BCC1A00D17F2E /* Calender */,
-				85190217249E2BC5002659F5 /* Login View Controller */,
+				85190217249E2BC5002659F5 /* Login & About */,
 				85FD53D32465A0E2004E9AB9 /* View Controller */,
 				85FD53D12465A0CC004E9AB9 /* Table View Controller */,
 				85F26FE1248948C000FBF776 /* Collection View */,

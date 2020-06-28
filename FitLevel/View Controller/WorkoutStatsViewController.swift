@@ -12,7 +12,8 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
     
     var listenerType: ListenerType = .workoutstats
     
-
+    @IBOutlet weak var statsCollectionView: UICollectionView!
+    
     func onWorkoutListChange(change: DatabaseChange, workouts: [Workout]) {
         self.workouts = workouts
     }
@@ -39,6 +40,7 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.statsCollectionView.reloadData()
         databaseController?.addListener(listener: self)
         
     }
@@ -70,8 +72,19 @@ class WorkoutStatsViewController: UIViewController,UICollectionViewDelegate, UIC
         cell.workoutNameLabel?.numberOfLines = 0
         
         //Sets the workout rank circle
-        let image : UIImage = UIImage(named:"bronze")!
-        cell.WorkoutStatImage.image = image
+        switch workouts[indexPath.row].level{
+        case 1..<4:
+            let image : UIImage = UIImage(named:"bronze")!
+            cell.WorkoutStatImage.image = image
+        case 4..<8:
+            let image : UIImage = UIImage(named:"silver")!
+            cell.WorkoutStatImage.image = image
+        default:
+            let image : UIImage = UIImage(named:"goldcircle")!
+            cell.WorkoutStatImage.image = image
+            
+        }
+    
         
         return cell
     }

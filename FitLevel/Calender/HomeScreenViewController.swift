@@ -64,6 +64,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         displayProgress(year: year, month: month + 1)
         calenderFrame.isUserInteractionEnabled = false
         Calender.reloadData()
+        WorkoutStats.reloadData()
         
         
     }
@@ -148,8 +149,6 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             displayProgress(year: year, month: month + 1)
             Calender.reloadData()
 
-           
-            
         default:
             month -= 1
             Direction = -1
@@ -160,8 +159,6 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             MonthLabel.text = "\(currentMonth) \(year)"
             displayProgress(year: year, month: month + 1)
             Calender.reloadData()
-     
-           
         
     }
     }
@@ -247,7 +244,6 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             }
         
         
-        
             if (Int(cell.DateLabel.text!)! > 0) && DateCheck[Int(cell.DateLabel.text!)!] == 1{
                 cell.backgroundColor = UIColor.systemIndigo //systemindigo
             
@@ -264,6 +260,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             if cell.isHidden{
                       cell.isHidden = false
                   }
+            
+            //Display Top Workout Information
             if workouts.count != 0{
                 cell.levelLabel.text = String(workouts[indexPath.row].level)
                 cell.workoutNameLabel.text = workouts[indexPath.row].name
@@ -274,8 +272,20 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             }
            cell.workoutNameLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
            cell.workoutNameLabel?.numberOfLines = 0
-           let image : UIImage = UIImage(named:"goldcircle")!
-           cell.WorkoutStatImage.image = image
+            
+           //Set workout rank
+           switch workouts[indexPath.row].level{
+           case 1..<4:
+               let image : UIImage = UIImage(named:"bronze")!
+               cell.WorkoutStatImage.image = image
+           case 4..<8:
+               let image : UIImage = UIImage(named:"silver")!
+               cell.WorkoutStatImage.image = image
+           default:
+               let image : UIImage = UIImage(named:"goldcircle")!
+               cell.WorkoutStatImage.image = image
+               
+           }
            return cell
         }
 

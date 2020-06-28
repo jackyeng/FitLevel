@@ -40,6 +40,12 @@ class RoutinePreviewTableViewController: UITableViewController, WorkoutRoutineDe
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
        
     }
+    
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+        
+    }
 
     // MARK: - Table view data source
 

@@ -416,7 +416,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     func fetchAllWorkouts(sort: String? = "name", bool: Bool? = true) -> [Workout] {
         // If results controller not currently initialized
-        if allWorkoutsFetchedResultsController == nil {
+    
             let fetchRequest: NSFetchRequest<Workout> = Workout.fetchRequest()
             // Sort by name
             let nameSortDescriptor = NSSortDescriptor(key: sort, ascending: bool! )
@@ -434,7 +434,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             } catch {
                 print("Fetch Request Failed: \(error)")
             }
-        }
+        
 
         var workout = [Workout]()
         if allWorkoutsFetchedResultsController?.fetchedObjects != nil {

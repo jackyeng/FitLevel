@@ -86,7 +86,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         countDownLabel.text = String(counter)
         
         //Start warmup timer
-        handleTap(duration: 5)
+        animateProgressBar(duration: 5)
         
         
         //TIMER PROGRESS BAR
@@ -160,7 +160,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     }
     
     //This function gets the timer progress bar moving when the countdown starts to provide user with an aesthetic visualisation
-    @objc private func handleTap(duration: Int) {
+    @objc private func animateProgressBar(duration: Int) {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         basicAnimation.toValue = 1
         basicAnimation.duration = CFTimeInterval(duration)
@@ -220,8 +220,10 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         
         warmUpLabel1.text = "Get"
         warmUpLabel2.text = "Ready"
+        //Set warm up duration
         counter = 5
-        handleTap(duration: 5)
+        //Begin countdown
+        animateProgressBar(duration: counter)
         countDownLabel.text = String(counter)
         
         //https://stackoverflow.com/questions/28821722/delaying-function-in-swift/28821805#28821805
@@ -236,16 +238,21 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
     func updateWorkout(){
         //Ends routine when the last workout is completed
         if workoutprogress > workoutcount-1{
+            
+            //Remove NSTimer
             self.countTimer?.invalidate()
+            //Hide warm up message
             warmUpLabel1.text = ""
             warmUpLabel2.text = ""
-            displayMessage(title: "Congratulation!", message: "You have completed your workout.")
             //Mark Calender with current date once completed workout
             let _ = databaseController?.addWorkoutDate(year: year, month: month+1, day: day)
+            displayMessage(title: "Congratulation!", message: "You have completed your workout.")
             return
         }
         
+        //Play Audio notification for warm up
         playWorkoutAudio()
+        //Display workout name
         workoutName.text = workouts[workoutprogress].workout!.name
         
         //Display current workout level
@@ -255,7 +262,7 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         else{
             workoutLevel.text = "Level: Unknown"
         }
-       
+    
         UpdateVideo((Any).self)
         
     }
@@ -308,16 +315,19 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
             if warmupStatus{
                 let duration = Int(workouts[workoutprogress].duration!)!
                 counter = duration
+                //Begin countdown for actual workout
                 countDownLabel.text = String(counter)
+                //Hide warm up message
                 warmUpLabel1.text = ""
                 warmUpLabel2.text = ""
                 
-                handleTap(duration: duration)
+                animateProgressBar(duration: duration)
                 warmupStatus = false
             }
             //if it workout is in session, then skip to the next workout
             else{
-                
+                workouts[workoutprogress].workout?.level += 1
+                databaseController?.saveDraft()
                 Complete((Any).self)
                
             }
@@ -339,9 +349,20 @@ class WorkoutRoutineViewController: UIViewController, DatabaseListener, WorkoutR
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool){
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+}
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.countTimer?.invalidate() //Stops timer when workout ends
+
     }
     
     

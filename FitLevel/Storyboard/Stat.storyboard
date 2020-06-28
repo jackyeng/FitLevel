@@ -115,6 +115,7 @@
                     <navigationItem key="navigationItem" title="Workout Stats" id="f0b-Xl-cNL"/>
                     <connections>
                         <outlet property="WorkoutStats" destination="wSe-Sw-OC2" id="ksu-oD-szr"/>
+                        <outlet property="statsCollectionView" destination="wSe-Sw-OC2" id="dsK-ha-igT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HgC-2h-rPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

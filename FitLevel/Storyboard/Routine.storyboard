@@ -29,7 +29,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2A-oF-DgZ">
                                 <rect key="frame" x="131" y="214" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="48-512"/>
+                                <state key="normal" title="Button" image="pen"/>
                                 <connections>
                                     <segue destination="K1i-7H-vnK" kind="show" id="XB9-uM-rOY"/>
                                 </connections>
@@ -37,7 +37,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZ5-kO-4hb">
                                 <rect key="frame" x="128" y="502" width="153" height="131"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="33-512"/>
+                                <state key="normal" title="Button" image="book"/>
                                 <connections>
                                     <segue destination="kKK-dU-OU9" kind="show" id="TLT-IP-P6o"/>
                                 </connections>
@@ -563,9 +563,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="33-512" width="512" height="512"/>
-        <image name="48-512" width="512" height="512"/>
+        <image name="book" width="512" height="512"/>
         <image name="icons8-walking-50" width="25" height="25"/>
+        <image name="pen" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="z1M-fx-QqM"/>
